@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PAccountantModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Currency">
+    <Key>
+      <PropertyRef Name="CurrencyId" />
+    </Key>
+    <Property Name="CurrencyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CurrencyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Operations" Relationship="Self.FK_Operation_Currency" FromRole="Currency" ToRole="Operation" />
+  </EntityType>
+  <EntityType Name="Operation">
+    <Key>
+      <PropertyRef Name="IdOperation" />
+    </Key>
+    <Property Name="IdOperation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Summ" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Commentary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="SourceId" Type="Int32" Nullable="false" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="CurrencyId" Type="Int32" Nullable="false" />
+    <Property Name="OperationTypeId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Currency" Relationship="Self.FK_Operation_Currency" FromRole="Operation" ToRole="Currency" />
+    <NavigationProperty Name="OperationCategory" Relationship="Self.FK_Operation_OperationCategory" FromRole="Operation" ToRole="OperationCategory" />
+    <NavigationProperty Name="OperationSource" Relationship="Self.FK_Operation_OperationSource" FromRole="Operation" ToRole="OperationSource" />
+    <NavigationProperty Name="OperationType" Relationship="Self.FK_Operation_OperationType" FromRole="Operation" ToRole="OperationType" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Operation_User" FromRole="Operation" ToRole="User" />
+  </EntityType>
+  <EntityType Name="OperationCategory">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OperationTypeId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Operations" Relationship="Self.FK_Operation_OperationCategory" FromRole="OperationCategory" ToRole="Operation" />
+    <NavigationProperty Name="OperationType" Relationship="Self.FK_OperationCategory_OperationType" FromRole="OperationCategory" ToRole="OperationType" />
+  </EntityType>
+  <EntityType Name="OperationSource">
+    <Key>
+      <PropertyRef Name="SourceId" />
+    </Key>
+    <Property Name="SourceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SourceName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Operations" Relationship="Self.FK_Operation_OperationSource" FromRole="OperationSource" ToRole="Operation" />
+  </EntityType>
+  <EntityType Name="OperationType">
+    <Key>
+      <PropertyRef Name="OpeartionTypeId" />
+    </Key>
+    <Property Name="OpeartionTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OperationTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Operations" Relationship="Self.FK_Operation_OperationType" FromRole="OperationType" ToRole="Operation" />
+    <NavigationProperty Name="OperationCategories" Relationship="Self.FK_OperationCategory_OperationType" FromRole="OperationType" ToRole="OperationCategory" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="IdUser" />
+    </Key>
+    <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="Binary" MaxLength="50" FixedLength="false" Nullable="false" />
+    <NavigationProperty Name="Operations" Relationship="Self.FK_Operation_User" FromRole="User" ToRole="Operation" />
+  </EntityType>
+  <Association Name="FK_Operation_Currency">
+    <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
+    <End Role="Operation" Type="Self.Operation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="CurrencyId" />
+      </Principal>
+      <Dependent Role="Operation">
+        <PropertyRef Name="CurrencyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Operation_OperationCategory">
+    <End Role="OperationCategory" Type="Self.OperationCategory" Multiplicity="1" />
+    <End Role="Operation" Type="Self.Operation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OperationCategory">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="Operation">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Operation_OperationSource">
+    <End Role="OperationSource" Type="Self.OperationSource" Multiplicity="1" />
+    <End Role="Operation" Type="Self.Operation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OperationSource">
+        <PropertyRef Name="SourceId" />
+      </Principal>
+      <Dependent Role="Operation">
+        <PropertyRef Name="SourceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Operation_OperationType">
+    <End Role="OperationType" Type="Self.OperationType" Multiplicity="1" />
+    <End Role="Operation" Type="Self.Operation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OperationType">
+        <PropertyRef Name="OpeartionTypeId" />
+      </Principal>
+      <Dependent Role="Operation">
+        <PropertyRef Name="OperationTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Operation_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Operation" Type="Self.Operation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="Operation">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OperationCategory_OperationType">
+    <End Role="OperationType" Type="Self.OperationType" Multiplicity="1" />
+    <End Role="OperationCategory" Type="Self.OperationCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OperationType">
+        <PropertyRef Name="OpeartionTypeId" />
+      </Principal>
+      <Dependent Role="OperationCategory">
+        <PropertyRef Name="OperationTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PAccountantEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Currencies" EntityType="Self.Currency" />
+    <EntitySet Name="Operations" EntityType="Self.Operation" />
+    <EntitySet Name="OperationCategories" EntityType="Self.OperationCategory" />
+    <EntitySet Name="OperationSources" EntityType="Self.OperationSource" />
+    <EntitySet Name="OperationTypes" EntityType="Self.OperationType" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_Operation_Currency" Association="Self.FK_Operation_Currency">
+      <End Role="Currency" EntitySet="Currencies" />
+      <End Role="Operation" EntitySet="Operations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Operation_OperationCategory" Association="Self.FK_Operation_OperationCategory">
+      <End Role="OperationCategory" EntitySet="OperationCategories" />
+      <End Role="Operation" EntitySet="Operations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Operation_OperationSource" Association="Self.FK_Operation_OperationSource">
+      <End Role="OperationSource" EntitySet="OperationSources" />
+      <End Role="Operation" EntitySet="Operations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Operation_OperationType" Association="Self.FK_Operation_OperationType">
+      <End Role="OperationType" EntitySet="OperationTypes" />
+      <End Role="Operation" EntitySet="Operations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Operation_User" Association="Self.FK_Operation_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Operation" EntitySet="Operations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OperationCategory_OperationType" Association="Self.FK_OperationCategory_OperationType">
+      <End Role="OperationType" EntitySet="OperationTypes" />
+      <End Role="OperationCategory" EntitySet="OperationCategories" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

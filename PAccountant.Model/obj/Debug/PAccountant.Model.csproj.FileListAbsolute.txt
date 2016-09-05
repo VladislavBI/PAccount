@@ -1,0 +1,11 @@
+D:\VSProjects\Projects\PAccountant\PAccountant.Model\bin\Debug\PAccountant.Model.dll.config
+D:\VSProjects\Projects\PAccountant\PAccountant.Model\bin\Debug\PAccountant.Model.dll
+D:\VSProjects\Projects\PAccountant\PAccountant.Model\bin\Debug\PAccountant.Model.pdb
+D:\VSProjects\Projects\PAccountant\PAccountant.Model\bin\Debug\AutoMapper.dll
+D:\VSProjects\Projects\PAccountant\PAccountant.Model\bin\Debug\EntityFramework.dll
+D:\VSProjects\Projects\PAccountant\PAccountant.Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\VSProjects\Projects\PAccountant\PAccountant.Model\bin\Debug\AutoMapper.xml
+D:\VSProjects\Projects\PAccountant\PAccountant.Model\bin\Debug\EntityFramework.xml
+D:\VSProjects\Projects\PAccountant\PAccountant.Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\VSProjects\Projects\PAccountant\PAccountant.Model\obj\Debug\PAccountant.Model.dll
+D:\VSProjects\Projects\PAccountant\PAccountant.Model\obj\Debug\PAccountant.Model.pdb

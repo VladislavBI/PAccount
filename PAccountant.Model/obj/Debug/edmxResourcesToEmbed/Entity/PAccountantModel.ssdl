@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PAccountantModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Currency">
+    <Key>
+      <PropertyRef Name="CurrencyId" />
+    </Key>
+    <Property Name="CurrencyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CurrencyName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Operation">
+    <Key>
+      <PropertyRef Name="IdOperation" />
+    </Key>
+    <Property Name="IdOperation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="Summ" Type="money" Nullable="false" />
+    <Property Name="Commentary" Type="text" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="SourceId" Type="int" Nullable="false" />
+    <Property Name="CategoryId" Type="int" Nullable="false" />
+    <Property Name="CurrencyId" Type="int" Nullable="false" />
+    <Property Name="OperationTypeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OperationCategory">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OperationTypeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OperationSource">
+    <Key>
+      <PropertyRef Name="SourceId" />
+    </Key>
+    <Property Name="SourceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SourceName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OperationType">
+    <Key>
+      <PropertyRef Name="OpeartionTypeId" />
+    </Key>
+    <Property Name="OpeartionTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OperationTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="IdUser" />
+    </Key>
+    <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varbinary" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Operation_Currency">
+    <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
+    <End Role="Operation" Type="Self.Operation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="CurrencyId" />
+      </Principal>
+      <Dependent Role="Operation">
+        <PropertyRef Name="CurrencyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Operation_OperationCategory">
+    <End Role="OperationCategory" Type="Self.OperationCategory" Multiplicity="1" />
+    <End Role="Operation" Type="Self.Operation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OperationCategory">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="Operation">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Operation_OperationSource">
+    <End Role="OperationSource" Type="Self.OperationSource" Multiplicity="1" />
+    <End Role="Operation" Type="Self.Operation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OperationSource">
+        <PropertyRef Name="SourceId" />
+      </Principal>
+      <Dependent Role="Operation">
+        <PropertyRef Name="SourceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Operation_OperationType">
+    <End Role="OperationType" Type="Self.OperationType" Multiplicity="1" />
+    <End Role="Operation" Type="Self.Operation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OperationType">
+        <PropertyRef Name="OpeartionTypeId" />
+      </Principal>
+      <Dependent Role="Operation">
+        <PropertyRef Name="OperationTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Operation_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Operation" Type="Self.Operation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="Operation">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OperationCategory_OperationType">
+    <End Role="OperationType" Type="Self.OperationType" Multiplicity="1" />
+    <End Role="OperationCategory" Type="Self.OperationCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OperationType">
+        <PropertyRef Name="OpeartionTypeId" />
+      </Principal>
+      <Dependent Role="OperationCategory">
+        <PropertyRef Name="OperationTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PAccountantModelStoreContainer">
+    <EntitySet Name="Currency" EntityType="Self.Currency" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Operation" EntityType="Self.Operation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OperationCategory" EntityType="Self.OperationCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OperationSource" EntityType="Self.OperationSource" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OperationType" EntityType="Self.OperationType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Operation_Currency" Association="Self.FK_Operation_Currency">
+      <End Role="Currency" EntitySet="Currency" />
+      <End Role="Operation" EntitySet="Operation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Operation_OperationCategory" Association="Self.FK_Operation_OperationCategory">
+      <End Role="OperationCategory" EntitySet="OperationCategory" />
+      <End Role="Operation" EntitySet="Operation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Operation_OperationSource" Association="Self.FK_Operation_OperationSource">
+      <End Role="OperationSource" EntitySet="OperationSource" />
+      <End Role="Operation" EntitySet="Operation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Operation_OperationType" Association="Self.FK_Operation_OperationType">
+      <End Role="OperationType" EntitySet="OperationType" />
+      <End Role="Operation" EntitySet="Operation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Operation_User" Association="Self.FK_Operation_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Operation" EntitySet="Operation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OperationCategory_OperationType" Association="Self.FK_OperationCategory_OperationType">
+      <End Role="OperationType" EntitySet="OperationType" />
+      <End Role="OperationCategory" EntitySet="OperationCategory" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d7f4d5de841c44e687f0457ffb0abbbc" Name="Diagram1">
+        <EntityTypeShape EntityType="PAccountantModel.Currency" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PAccountantModel.Operation" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PAccountantModel.OperationCategory" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PAccountantModel.OperationSource" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PAccountantModel.OperationType" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PAccountantModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PAccountantModel.User" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <AssociationConnector Association="PAccountantModel.FK_Operation_Currency" ManuallyRouted="false" />
+        <AssociationConnector Association="PAccountantModel.FK_Operation_OperationCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="PAccountantModel.FK_Operation_OperationSource" ManuallyRouted="false" />
+        <AssociationConnector Association="PAccountantModel.FK_Operation_OperationType" ManuallyRouted="false" />
+        <AssociationConnector Association="PAccountantModel.FK_Operation_User" ManuallyRouted="false" />
+        <AssociationConnector Association="PAccountantModel.FK_OperationCategory_OperationType" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
