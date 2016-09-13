@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PAccountant.Model.View.Managers.Abstract
+namespace PAccountant.BussinessLogic.Managers.Abstract
 {
     public abstract class CryptographyManager
     {

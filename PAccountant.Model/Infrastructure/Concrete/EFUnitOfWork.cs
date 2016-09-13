@@ -1,4 +1,4 @@
-﻿using PAccountant.Model.Entity;
+﻿using PAccountant.DataLayer.Entity;
 using PAccountant.Model.Infrastructure.Abstract;
 using System;
 
@@ -7,7 +7,7 @@ namespace PAccountant.Model.Infrastructure.Concrete
     public class EFUnitOfWork : IUnitOfWork
     {
         PAccountantEntities context;
-        private bool disposed = false;
+        private bool _disposed = false;
         IRepository _repository;
        
         IRepository IUnitOfWork.Repository
@@ -31,13 +31,13 @@ namespace PAccountant.Model.Infrastructure.Concrete
 
         public void Dispose(bool disposing)
         {
-            if (!this.disposed)
+            if (!this._disposed)
             {
                 if (disposing)
                 {
                     context.Dispose();
                 }
-                this.disposed = true;
+                this._disposed = true;
             }
         }
 

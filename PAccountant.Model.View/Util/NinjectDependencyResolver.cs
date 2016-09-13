@@ -1,6 +1,7 @@
 ﻿using Ninject;
 using PAccountant.Model.Infrastructure.Abstract;
 using PAccountant.Model.Infrastructure.Concrete;
+using PAccountant.Model.View.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;

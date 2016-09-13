@@ -1,12 +1,9 @@
-﻿using PAccountant.Model.Entity;
-using PAccountant.Model.Infrastructure.Abstract;
+﻿using PAccountant.Model.Infrastructure.Abstract;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+using PAccountant.DataLayer.Entity;
+using System.Collections.Generic;
 
 namespace PAccountant.Model.Infrastructure.Concrete
 {
@@ -22,17 +19,14 @@ namespace PAccountant.Model.Infrastructure.Concrete
             db.Entry(item).State = EntityState.Deleted;
         }
 
-        public IEnumerable<TEntity> GetALL<TEntity>() where TEntity : class
+        public List<TEntity> GetALL<TEntity>() where TEntity : class
         {
-            return db.Set<TEntity>();
+            return db.Set<TEntity>().ToList();
         }
 
-        public TModel GetItemModel<TEntity, TModel>(Func<TEntity, bool> expression) where TEntity : class
+        public TEntity GetItemModel<TEntity>(Func<TEntity, bool> expression) where TEntity : class
         {
-            TEntity entity = GetALL<TEntity>().FirstOrDefault(x => expression(x));
-            Mapper.Initialize(cfg => cfg.CreateMap<TEntity, TModel>());
-            var model = Mapper.Map<TEntity, TModel>(entity);
-            return model;
+            return GetALL<TEntity>().FirstOrDefault(x=>expression(x));
         }
 
         public void Create<TEntity>(TEntity item) where TEntity:class
@@ -43,6 +37,11 @@ namespace PAccountant.Model.Infrastructure.Concrete
         public void Update<TEntity>(TEntity item) where TEntity : class
         {
             db.Entry(item).State = EntityState.Modified;
+        }
+
+        public bool AnyItemMeetingDemands<TEntity>(Predicate<TEntity> expression) where TEntity : class
+        {
+            return GetALL<TEntity>().Any(x=>expression(x));
         }
     }
 }

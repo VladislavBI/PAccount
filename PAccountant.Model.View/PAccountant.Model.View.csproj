@@ -155,12 +155,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Managers\Abstract\AuthorizationManager.cs" />
-    <Compile Include="Managers\Abstract\CryptographyManager.cs" />
-    <Compile Include="Managers\Concrete\FormAuthorizationManager.cs" />
-    <Compile Include="Managers\Concrete\MD5CryptographyManager.cs" />
-    <Compile Include="Managers\StaticClasses\DIManager.cs" />
-    <Compile Include="Managers\StaticClasses\IdentityManager.cs" />
     <Compile Include="Models\ClientModels\LoginModel.cs" />
     <Compile Include="Models\ClientModels\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -180,13 +174,18 @@
     <Content Include="Scripts\Angular\app.js" />
     <Content Include="Scripts\Angular\Custom\Controller\accountant-main-controller.js" />
     <Content Include="Scripts\Angular\Custom\Controller\authorization-controller.js" />
-    <Content Include="Scripts\Angular\Custom\Service\add-operation-popUp-service.js" />
+    <Content Include="Scripts\Angular\Custom\Controller\operation_popup_controller.js" />
     <Content Include="Scripts\Angular\Custom\Factory\api-url-factory.js" />
+    <Content Include="Scripts\Angular\Custom\Service\add-operation-popUp-service.js" />
     <Content Include="Scripts\Angular\Custom\Service\chain-of-responsibility-service.js" />
     <Content Include="Scripts\Angular\Custom\Service\http-service.js" />
+    <Content Include="Scripts\Angular\Custom\Service\modal_service.js" />
     <Content Include="Scripts\Angular\Custom\Service\validator-service.js" />
     <Content Include="Scripts\Bootstrap\bootstrap.js" />
     <Content Include="Scripts\Bootstrap\bootstrap.min.js" />
+    <Content Include="Scripts\Bootstrap\respond.js" />
+    <Content Include="Scripts\Bootstrap\respond.min.js" />
+    <Content Include="Scripts\Bootstrap\ui-bootstrap-2.1.3.min.js" />
     <None Include="Scripts\Jquery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Jquery\jquery-1.10.2.js" />
     <Content Include="Scripts\Jquery\jquery-1.10.2.min.js" />
@@ -196,9 +195,7 @@
     <Content Include="Scripts\Jquery\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\Jquery\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\Others\modernizr-2.6.2.js" />
-    <Content Include="Scripts\Bootstrap\respond.js" />
-    <Content Include="Scripts\Bootstrap\respond.min.js" />
-    <Content Include="Scripts\Others\_references.js" />
+    <None Include="Scripts\Others\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -219,6 +216,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Operation\OperationChoose.cshtml" />
     <Content Include="Views\popUp\addOperationPopup.cshtml" />
+    <Content Include="Scripts\Jquery\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -228,13 +226,17 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
+    <Content Include="App.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts\Jquery\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PAccountant.Model\PAccountant.Model.csproj">
+    <ProjectReference Include="..\BussinessLogic\PAccountant.BussinessLogic.csproj">
+      <Project>{9253194c-4878-4f92-a1ae-190d421b25de}</Project>
+      <Name>PAccountant.BussinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PAccountant.Model\PAccountant.DataLayer.csproj">
       <Project>{0a82a762-2e34-480e-a462-c7fb5b242429}</Project>
-      <Name>PAccountant.Model</Name>
+      <Name>PAccountant.DataLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

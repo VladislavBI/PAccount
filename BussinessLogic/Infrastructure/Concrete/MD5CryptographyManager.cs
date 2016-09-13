@@ -1,12 +1,8 @@
-﻿using PAccountant.Model.View.Managers.Abstract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using PAccountant.BussinessLogic.Managers.Abstract;
 using System.Security.Cryptography;
 using System.Text;
-using System.Web;
 
-namespace PAccountant.Model.View.Managers.Concrete
+namespace PAccountant.BussinessLogic.Managers.Concrete
 {
     public class MD5CryptographyManager : CryptographyManager
     {

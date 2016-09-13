@@ -19,7 +19,6 @@ D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\EntityFramework.Sq
 D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\Microsoft.Web.Infrastructure.dll
 D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\Newtonsoft.Json.dll
-D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\PAccountant.Model.dll
 D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\System.Web.Helpers.dll
 D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\System.Web.Mvc.dll
 D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\System.Web.Optimization.dll
@@ -28,7 +27,6 @@ D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\System.Web.WebPage
 D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\System.Web.WebPages.dll
 D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\System.Web.WebPages.Razor.dll
 D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\WebGrease.dll
-D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\PAccountant.Model.pdb
 D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\EntityFramework.xml
 D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\EntityFramework.SqlServer.xml
 D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
@@ -53,3 +51,7 @@ D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\Ninject.Web.Common
 D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\Ninject.Web.Mvc.xml
 D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\AutoMapper.dll
 D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\AutoMapper.xml
+D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\BussinessLogic.exe
+D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\BussinessLogic.pdb
+D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\PAccountant.DataLayer.dll
+D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\PAccountant.DataLayer.pdb

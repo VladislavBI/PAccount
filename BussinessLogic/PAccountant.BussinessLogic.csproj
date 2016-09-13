@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0A82A762-2E34-480E-A462-C7FB5B242429}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{9253194C-4878-4F92-A1AE-190D421B25DE}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PAccountant.Model</RootNamespace>
-    <AssemblyName>PAccountant.Model</AssemblyName>
+    <RootNamespace>BussinessLogic</RootNamespace>
+    <AssemblyName>BussinessLogic</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -45,8 +48,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,74 +57,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entity\Currency.cs">
-      <DependentUpon>PAccountantModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\Operation.cs">
-      <DependentUpon>PAccountantModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\OperationCategory.cs">
-      <DependentUpon>PAccountantModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\OperationSource.cs">
-      <DependentUpon>PAccountantModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\OperationType.cs">
-      <DependentUpon>PAccountantModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\PAccountantModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PAccountantModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\PAccountantModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PAccountantModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\PAccountantModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PAccountantModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\sysdiagram.cs">
-      <DependentUpon>PAccountantModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\User.cs">
-      <DependentUpon>PAccountantModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Infrastructure\Abstract\IRepository.cs" />
-    <Compile Include="Infrastructure\Abstract\IUnitOfWork.cs" />
-    <Compile Include="Infrastructure\Concrete\EFRepository.cs" />
-    <Compile Include="Infrastructure\Concrete\EFUnitOfWork.cs" />
+    <Compile Include="DBModelManagers\Abstract\IUserDBManager.cs" />
+    <Compile Include="DBModelManagers\Concrete\EFUserManager.cs" />
+    <Compile Include="Infrastructure\Concrete\ReflectionManager.cs" />
+    <Compile Include="Infrastructure\Concrete\ValidationManager.cs" />
+    <Compile Include="Model\UserLoginModel.cs" />
+    <Compile Include="ViewManagers\Abstract\AuthorizationManager.cs" />
+    <Compile Include="Infrastructure\Abstract\CryptographyManager.cs" />
+    <Compile Include="ViewManagers\Abstract\IAccountManager.cs" />
+    <Compile Include="ViewManagers\Abstract\IDBEntitiesManager.cs" />
+    <Compile Include="Infrastructure\Abstract\IMapperManager.cs" />
+    <Compile Include="Infrastructure\Concrete\AutoMapperManager.cs" />
+    <Compile Include="ViewManagers\Concrete\FormAccountManager.cs" />
+    <Compile Include="ViewManagers\Concrete\FormAuthorizationManager.cs" />
+    <Compile Include="Infrastructure\Concrete\MD5CryptographyManager.cs" />
+    <Compile Include="StaticClasses\DIManager.cs" />
+    <Compile Include="StaticClasses\IdentityManager.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="Entity\PAccountantModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PAccountantModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Entity\PAccountantModel.edmx.diagram">
-      <DependentUpon>PAccountantModel.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="Entity\PAccountantModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PAccountantModel.edmx</DependentUpon>
-      <LastGenOutput>PAccountantModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Entity\PAccountantModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PAccountantModel.edmx</DependentUpon>
-      <LastGenOutput>PAccountantModel.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <ProjectReference Include="..\PAccountant.Model\PAccountant.DataLayer.csproj">
+      <Project>{0a82a762-2e34-480e-a462-c7fb5b242429}</Project>
+      <Name>PAccountant.DataLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

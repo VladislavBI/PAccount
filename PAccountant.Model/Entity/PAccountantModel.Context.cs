@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PAccountant.Model.Entity
+namespace PAccountant.DataLayer.Entity
 {
     using System;
     using System.Data.Entity;

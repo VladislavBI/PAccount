@@ -1,4 +1,4 @@
-﻿<div class="modal fade" id="addOperationModal" role="dialog">
+﻿@*<div class="modal fade" id="addOperationModal" role="dialog">
     <div class="modal-dialog" style="left: 0;">
         <div class="modal-content ">
             <div class="modal-header">
@@ -101,4 +101,112 @@
         </div>
 
     </div>
-</div>
+</div>*@
+<script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">I'm a modal!</h3>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <div ng-show="isAddOperation">
+                    <h4>Income operation</h4>
+                </div>
+                <div ng-show="!isAddOperation">
+                    <h4>Outcome operation</h4>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-3">
+                        Current date
+                    </div>
+                    <div class="col-lg-9">
+                        <input type="date" ng-model="addOperationPopUp.popUpArguments.date" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                        Source
+                    </div>
+                    <div class="col-lg-5">
+                        <input type="text" name="name" value="" ng-model="addOperationPopUp.popUpArguments.source" />
+                    </div>
+                    <div class="col-lg-4">
+                        <label><input type="checkbox" name="name" ng-model="addOperationPopUp.popUpArguments.newSourceCheckBox" />New</label>
+                    </div>
+                </div>
+                <div class="row" ng-show="validation.variableIsTrue(addOperationPopUp.popUpArguments.newSourceCheckBox)">
+                    <div class="col-lg-3">
+                        New source
+                    </div>
+                    <div class="col-lg-9">
+                        <input type="text" ng-model="addOperationPopUp.popUpArguments.newSourceText" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                        Category
+                    </div>
+                    <div class="col-lg-5">
+                        <input type="text" name="name" value="" ng-model="addOperationPopUp.popUpArguments.category" />
+                    </div>
+                    <div class="col-lg-4">
+                        <label><input type="checkbox" name="name" ng-model="addOperationPopUp.popUpArguments.newCategoryCheckBox" />New</label>
+                    </div>
+                </div>
+                <div class="row" ng-show="validation.variableIsTrue(addOperationPopUp.popUpArguments.newCategoryCheckBox)">
+                    <div class="col-lg-3">
+                        New category
+                    </div>
+                    <div class="col-lg-9">
+                        <input type="text" ng-model="addOperationPopUp.popUpArguments.newCategoryText" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                        Currency
+                    </div>
+                    <div class="col-lg-5">
+                        <input type="text" name="name" value="" ng-model="addOperationPopUp.popUpArguments.currency" />
+                    </div>
+                    <div class="col-lg-4">
+                        <label><input type="checkbox" name="name" ng-model="addOperationPopUp.popUpArguments.newCurrencyCheckBox" />New</label>
+                    </div>
+                </div>
+                <div class="row" ng-show="validation.variableIsTrue(addOperationPopUp.popUpArguments.newCurrencyCheckBox)">
+                    <div class="col-lg-3">
+                        New currency
+                    </div>
+                    <div class="col-lg-9">
+                        <input type="text" ng-model="addOperationPopUp.popUpArguments.newCurrencyText" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                        Summ
+                    </div>
+                    <div class="col-lg-9">
+                        <input type="number" ng-model="addOperationPopUp.popUpArguments.summ" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                        Summ
+                    </div>
+                    <div class="col-lg-9">
+                        <input type="number" ng-model="addOperationPopUp.popUpArguments.commentary" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" data-ng-click="addOperationPopUp.okCallback">Ok</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+
+</script>
