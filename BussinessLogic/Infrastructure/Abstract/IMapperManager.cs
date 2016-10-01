@@ -10,5 +10,6 @@ namespace PAccountant.BussinessLogic.Infrastructure.Abstract
     {
         TTo MapModel<TFrom, TTo>(TFrom entity) where TTo: new();
 
+        List<TTo> MapListModel<TFrom, TTo>(List<TFrom> entity) where TTo : new();
     }
 }

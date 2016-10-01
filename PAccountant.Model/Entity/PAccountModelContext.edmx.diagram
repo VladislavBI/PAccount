@@ -4,14 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d7f4d5de841c44e687f0457ffb0abbbc" Name="Diagram1">
-        <EntityTypeShape EntityType="PAccountantModel.Currency" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+      <Diagram DiagramId="451b43aad72f4ad28c3294476cb99d6e" Name="Diagram1">
+        <EntityTypeShape EntityType="PAccountantModel.Currency" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="PAccountantModel.Operation" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PAccountantModel.OperationCategory" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="PAccountantModel.OperationSource" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PAccountantModel.OperationSource" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="PAccountantModel.OperationType" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="PAccountantModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PAccountantModel.User" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PAccountantModel.User" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
         <AssociationConnector Association="PAccountantModel.FK_Operation_Currency" ManuallyRouted="false" />
         <AssociationConnector Association="PAccountantModel.FK_Operation_OperationCategory" ManuallyRouted="false" />
         <AssociationConnector Association="PAccountantModel.FK_Operation_OperationSource" ManuallyRouted="false" />

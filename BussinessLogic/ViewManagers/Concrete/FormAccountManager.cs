@@ -55,7 +55,7 @@ namespace BussinessLogic.Managers.Concrete
         {
             using (_unitOfWork = DIManager.UnitOfWork)
             {
-                if (_unitOfWork.Repository.AnyItemMeetingDemands<User>(x=>x.UserName==Name&& _cryptography.CheckingEquals(x.Password, password)))
+                if (_unitOfWork.Repository.AnyItemMeetingDemands<User>(x=>x.Name==Name&& _cryptography.CheckingEquals(x.Password, password)))
                 {
                     return true;
                 }

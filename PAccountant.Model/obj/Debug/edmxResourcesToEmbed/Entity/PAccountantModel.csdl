@@ -1,13 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="PAccountantModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="Currency">
-    <Key>
-      <PropertyRef Name="CurrencyId" />
-    </Key>
-    <Property Name="CurrencyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CurrencyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Operations" Relationship="Self.FK_Operation_Currency" FromRole="Currency" ToRole="Operation" />
-  </EntityType>
   <EntityType Name="Operation">
     <Key>
       <PropertyRef Name="IdOperation" />
@@ -21,11 +13,11 @@
     <Property Name="CategoryId" Type="Int32" Nullable="false" />
     <Property Name="CurrencyId" Type="Int32" Nullable="false" />
     <Property Name="OperationTypeId" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Currency" Relationship="Self.FK_Operation_Currency" FromRole="Operation" ToRole="Currency" />
     <NavigationProperty Name="OperationCategory" Relationship="Self.FK_Operation_OperationCategory" FromRole="Operation" ToRole="OperationCategory" />
     <NavigationProperty Name="OperationSource" Relationship="Self.FK_Operation_OperationSource" FromRole="Operation" ToRole="OperationSource" />
     <NavigationProperty Name="OperationType" Relationship="Self.FK_Operation_OperationType" FromRole="Operation" ToRole="OperationType" />
     <NavigationProperty Name="User" Relationship="Self.FK_Operation_User" FromRole="Operation" ToRole="User" />
+    <NavigationProperty Name="Currency" Relationship="PAccountantModel.FK_Operation_Currency" FromRole="Operation" ToRole="Currency" />
   </EntityType>
   <EntityType Name="OperationCategory">
     <Key>
@@ -73,18 +65,6 @@
     <Property Name="Password" Type="Binary" MaxLength="50" FixedLength="false" Nullable="false" />
     <NavigationProperty Name="Operations" Relationship="Self.FK_Operation_User" FromRole="User" ToRole="Operation" />
   </EntityType>
-  <Association Name="FK_Operation_Currency">
-    <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
-    <End Role="Operation" Type="Self.Operation" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Currency">
-        <PropertyRef Name="CurrencyId" />
-      </Principal>
-      <Dependent Role="Operation">
-        <PropertyRef Name="CurrencyId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Operation_OperationCategory">
     <End Role="OperationCategory" Type="Self.OperationCategory" Multiplicity="1" />
     <End Role="Operation" Type="Self.Operation" Multiplicity="*" />
@@ -146,17 +126,12 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="PAccountantEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Currencies" EntityType="Self.Currency" />
     <EntitySet Name="Operations" EntityType="Self.Operation" />
     <EntitySet Name="OperationCategories" EntityType="Self.OperationCategory" />
     <EntitySet Name="OperationSources" EntityType="Self.OperationSource" />
     <EntitySet Name="OperationTypes" EntityType="Self.OperationType" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="Users" EntityType="Self.User" />
-    <AssociationSet Name="FK_Operation_Currency" Association="Self.FK_Operation_Currency">
-      <End Role="Currency" EntitySet="Currencies" />
-      <End Role="Operation" EntitySet="Operations" />
-    </AssociationSet>
     <AssociationSet Name="FK_Operation_OperationCategory" Association="Self.FK_Operation_OperationCategory">
       <End Role="OperationCategory" EntitySet="OperationCategories" />
       <End Role="Operation" EntitySet="Operations" />
@@ -177,5 +152,31 @@
       <End Role="OperationType" EntitySet="OperationTypes" />
       <End Role="OperationCategory" EntitySet="OperationCategories" />
     </AssociationSet>
+    <EntitySet Name="Currencies" EntityType="PAccountantModel.Currency" />
+    <AssociationSet Name="FK_Operation_Currency" Association="PAccountantModel.FK_Operation_Currency">
+      <End Role="Currency" EntitySet="Currencies" />
+      <End Role="Operation" EntitySet="Operations" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Currency">
+    <Key>
+      <PropertyRef Name="CurrencyId" />
+    </Key>
+    <Property Name="CurrencyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CurrencyName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CurrencyRate" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Operations" Relationship="PAccountantModel.FK_Operation_Currency" FromRole="Currency" ToRole="Operation" />
+  </EntityType>
+  <Association Name="FK_Operation_Currency">
+    <End Type="PAccountantModel.Currency" Role="Currency" Multiplicity="1" />
+    <End Type="PAccountantModel.Operation" Role="Operation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="CurrencyId" />
+      </Principal>
+      <Dependent Role="Operation">
+        <PropertyRef Name="CurrencyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -11,9 +11,7 @@ namespace PAccountant.Model.View.Controllers
     {
         public ActionResult Index()
         {
-           
-            var a=User.Identity.IsAuthenticated;
-            var b=User.Identity.Name;
+       
             return View();
         }
 

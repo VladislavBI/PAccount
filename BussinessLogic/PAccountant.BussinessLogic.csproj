@@ -57,10 +57,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DBModelManagers\Abstract\IUserDBManager.cs" />
-    <Compile Include="DBModelManagers\Concrete\EFUserManager.cs" />
+    <Compile Include="DBModelManagers\Abstract\IDBManager.cs" />
+    <Compile Include="DBModelManagers\Concrete\EFDBCategoryManager.cs" />
+    <Compile Include="DBModelManagers\Concrete\EFDBCurrencyManager.cs" />
+    <Compile Include="DBModelManagers\Abstract\DBManager.cs" />
+    <Compile Include="DBModelManagers\Concrete\EFDBSourceManager.cs" />
+    <Compile Include="DBModelManagers\Concrete\EFDBUserManager.cs" />
+    <Compile Include="Helpers\ResponseHelper.cs" />
     <Compile Include="Infrastructure\Concrete\ReflectionManager.cs" />
     <Compile Include="Infrastructure\Concrete\ValidationManager.cs" />
+    <Compile Include="LogicManagers\State\EFStateDBManager.cs" />
+    <Compile Include="LogicManagers\State\IDBStateManager.cs" />
     <Compile Include="Model\UserLoginModel.cs" />
     <Compile Include="ViewManagers\Abstract\AuthorizationManager.cs" />
     <Compile Include="Infrastructure\Abstract\CryptographyManager.cs" />
@@ -68,6 +75,7 @@
     <Compile Include="ViewManagers\Abstract\IDBEntitiesManager.cs" />
     <Compile Include="Infrastructure\Abstract\IMapperManager.cs" />
     <Compile Include="Infrastructure\Concrete\AutoMapperManager.cs" />
+    <Compile Include="ViewManagers\Concrete\AddOperationManager.cs" />
     <Compile Include="ViewManagers\Concrete\FormAccountManager.cs" />
     <Compile Include="ViewManagers\Concrete\FormAuthorizationManager.cs" />
     <Compile Include="Infrastructure\Concrete\MD5CryptographyManager.cs" />
@@ -86,6 +94,7 @@
       <Name>PAccountant.DataLayer</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

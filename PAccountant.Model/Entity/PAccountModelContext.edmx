@@ -7,16 +7,17 @@
       <Schema Namespace="PAccountantModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Currency">
           <Key>
-            <PropertyRef Name="CurrencyId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="CurrencyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CurrencyName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Rate" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="Operation">
           <Key>
-            <PropertyRef Name="IdOperation" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="IdOperation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="Summ" Type="money" Nullable="false" />
           <Property Name="Commentary" Type="text" Nullable="false" />
@@ -28,25 +29,25 @@
         </EntityType>
         <EntityType Name="OperationCategory">
           <Key>
-            <PropertyRef Name="CategoryId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="OperationTypeId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="OperationSource">
           <Key>
-            <PropertyRef Name="SourceId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="SourceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="SourceName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="OperationType">
           <Key>
-            <PropertyRef Name="OpeartionTypeId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="OpeartionTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="OperationTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -60,10 +61,10 @@
         </EntityType>
         <EntityType Name="User">
           <Key>
-            <PropertyRef Name="IdUser" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="varbinary" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK_Operation_Currency">
@@ -71,7 +72,7 @@
           <End Role="Operation" Type="Self.Operation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Currency">
-              <PropertyRef Name="CurrencyId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Operation">
               <PropertyRef Name="CurrencyId" />
@@ -83,7 +84,7 @@
           <End Role="Operation" Type="Self.Operation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="OperationCategory">
-              <PropertyRef Name="CategoryId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Operation">
               <PropertyRef Name="CategoryId" />
@@ -95,7 +96,7 @@
           <End Role="Operation" Type="Self.Operation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="OperationSource">
-              <PropertyRef Name="SourceId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Operation">
               <PropertyRef Name="SourceId" />
@@ -107,7 +108,7 @@
           <End Role="Operation" Type="Self.Operation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="OperationType">
-              <PropertyRef Name="OpeartionTypeId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Operation">
               <PropertyRef Name="OperationTypeId" />
@@ -119,7 +120,7 @@
           <End Role="Operation" Type="Self.Operation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
-              <PropertyRef Name="IdUser" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Operation">
               <PropertyRef Name="UserId" />
@@ -131,7 +132,7 @@
           <End Role="OperationCategory" Type="Self.OperationCategory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="OperationType">
-              <PropertyRef Name="OpeartionTypeId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="OperationCategory">
               <PropertyRef Name="OperationTypeId" />
@@ -178,17 +179,18 @@
       <Schema Namespace="PAccountantModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Currency">
           <Key>
-            <PropertyRef Name="CurrencyId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="CurrencyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CurrencyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Rate" Type="Double" Nullable="false" />
           <NavigationProperty Name="Operations" Relationship="Self.FK_Operation_Currency" FromRole="Currency" ToRole="Operation" />
         </EntityType>
         <EntityType Name="Operation">
           <Key>
-            <PropertyRef Name="IdOperation" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="IdOperation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Summ" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="Commentary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
@@ -205,28 +207,28 @@
         </EntityType>
         <EntityType Name="OperationCategory">
           <Key>
-            <PropertyRef Name="CategoryId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="OperationTypeId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Operations" Relationship="Self.FK_Operation_OperationCategory" FromRole="OperationCategory" ToRole="Operation" />
           <NavigationProperty Name="OperationType" Relationship="Self.FK_OperationCategory_OperationType" FromRole="OperationCategory" ToRole="OperationType" />
         </EntityType>
         <EntityType Name="OperationSource">
           <Key>
-            <PropertyRef Name="SourceId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="SourceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SourceName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Operations" Relationship="Self.FK_Operation_OperationSource" FromRole="OperationSource" ToRole="Operation" />
         </EntityType>
         <EntityType Name="OperationType">
           <Key>
-            <PropertyRef Name="OpeartionTypeId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="OpeartionTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OperationTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Operations" Relationship="Self.FK_Operation_OperationType" FromRole="OperationType" ToRole="Operation" />
           <NavigationProperty Name="OperationCategories" Relationship="Self.FK_OperationCategory_OperationType" FromRole="OperationType" ToRole="OperationCategory" />
         </EntityType>
@@ -242,10 +244,10 @@
         </EntityType>
         <EntityType Name="User">
           <Key>
-            <PropertyRef Name="IdUser" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="Binary" MaxLength="50" FixedLength="false" Nullable="false" />
           <NavigationProperty Name="Operations" Relationship="Self.FK_Operation_User" FromRole="User" ToRole="Operation" />
         </EntityType>
@@ -254,7 +256,7 @@
           <End Role="Operation" Type="Self.Operation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Currency">
-              <PropertyRef Name="CurrencyId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Operation">
               <PropertyRef Name="CurrencyId" />
@@ -266,7 +268,7 @@
           <End Role="Operation" Type="Self.Operation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="OperationCategory">
-              <PropertyRef Name="CategoryId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Operation">
               <PropertyRef Name="CategoryId" />
@@ -278,7 +280,7 @@
           <End Role="Operation" Type="Self.Operation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="OperationSource">
-              <PropertyRef Name="SourceId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Operation">
               <PropertyRef Name="SourceId" />
@@ -290,7 +292,7 @@
           <End Role="Operation" Type="Self.Operation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="OperationType">
-              <PropertyRef Name="OpeartionTypeId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Operation">
               <PropertyRef Name="OperationTypeId" />
@@ -302,7 +304,7 @@
           <End Role="Operation" Type="Self.Operation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
-              <PropertyRef Name="IdUser" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Operation">
               <PropertyRef Name="UserId" />
@@ -314,7 +316,7 @@
           <End Role="OperationCategory" Type="Self.OperationCategory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="OperationType">
-              <PropertyRef Name="OpeartionTypeId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="OperationCategory">
               <PropertyRef Name="OperationTypeId" />
@@ -363,15 +365,16 @@
           <EntitySetMapping Name="Currencies">
             <EntityTypeMapping TypeName="PAccountantModel.Currency">
               <MappingFragment StoreEntitySet="Currency">
-                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
-                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Operations">
             <EntityTypeMapping TypeName="PAccountantModel.Operation">
               <MappingFragment StoreEntitySet="Operation">
-                <ScalarProperty Name="IdOperation" ColumnName="IdOperation" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Summ" ColumnName="Summ" />
                 <ScalarProperty Name="Commentary" ColumnName="Commentary" />
@@ -386,8 +389,8 @@
           <EntitySetMapping Name="OperationCategories">
             <EntityTypeMapping TypeName="PAccountantModel.OperationCategory">
               <MappingFragment StoreEntitySet="OperationCategory">
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="OperationTypeId" ColumnName="OperationTypeId" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -395,16 +398,16 @@
           <EntitySetMapping Name="OperationSources">
             <EntityTypeMapping TypeName="PAccountantModel.OperationSource">
               <MappingFragment StoreEntitySet="OperationSource">
-                <ScalarProperty Name="SourceId" ColumnName="SourceId" />
-                <ScalarProperty Name="SourceName" ColumnName="SourceName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OperationTypes">
             <EntityTypeMapping TypeName="PAccountantModel.OperationType">
               <MappingFragment StoreEntitySet="OperationType">
-                <ScalarProperty Name="OpeartionTypeId" ColumnName="OpeartionTypeId" />
-                <ScalarProperty Name="OperationTypeName" ColumnName="OperationTypeName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -422,8 +425,8 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="PAccountantModel.User">
               <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
             </EntityTypeMapping>

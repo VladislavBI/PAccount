@@ -20,8 +20,8 @@ namespace PAccountant.DataLayer.Entity
             this.Operations = new HashSet<Operation>();
         }
     
-        public int CategoryId { get; set; }
-        public string CategoryName { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
         public int OperationTypeId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

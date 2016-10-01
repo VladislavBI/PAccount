@@ -21,8 +21,8 @@ namespace PAccountant.DataLayer.Entity
             this.OperationCategories = new HashSet<OperationCategory>();
         }
     
-        public int OpeartionTypeId { get; set; }
-        public string OperationTypeName { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Operation> Operations { get; set; }

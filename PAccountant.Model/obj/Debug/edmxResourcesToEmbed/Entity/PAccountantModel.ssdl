@@ -6,6 +6,7 @@
     </Key>
     <Property Name="CurrencyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CurrencyName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CurrencyRate" Type="float" Nullable="false" />
   </EntityType>
   <EntityType Name="Operation">
     <Key>

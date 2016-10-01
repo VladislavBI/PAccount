@@ -14,7 +14,7 @@ namespace PAccountant.DataLayer.Entity
     
     public partial class Operation
     {
-        public int IdOperation { get; set; }
+        public int Id { get; set; }
         public System.DateTime Date { get; set; }
         public decimal Summ { get; set; }
         public string Commentary { get; set; }

@@ -52,40 +52,40 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entity\Currency.cs">
-      <DependentUpon>PAccountantModel.tt</DependentUpon>
+      <DependentUpon>PAccountModelContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\Operation.cs">
-      <DependentUpon>PAccountantModel.tt</DependentUpon>
+      <DependentUpon>PAccountModelContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\OperationCategory.cs">
-      <DependentUpon>PAccountantModel.tt</DependentUpon>
+      <DependentUpon>PAccountModelContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\OperationSource.cs">
-      <DependentUpon>PAccountantModel.tt</DependentUpon>
+      <DependentUpon>PAccountModelContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\OperationType.cs">
-      <DependentUpon>PAccountantModel.tt</DependentUpon>
+      <DependentUpon>PAccountModelContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\PAccountantModel.Context.cs">
+    <Compile Include="Entity\PAccountModelContext.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PAccountantModel.Context.tt</DependentUpon>
+      <DependentUpon>PAccountModelContext.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\PAccountantModel.cs">
+    <Compile Include="Entity\PAccountModelContext.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PAccountantModel.tt</DependentUpon>
+      <DependentUpon>PAccountModelContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\PAccountantModel.Designer.cs">
+    <Compile Include="Entity\PAccountModelContext.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PAccountantModel.edmx</DependentUpon>
+      <DependentUpon>PAccountModelContext.edmx</DependentUpon>
     </Compile>
     <Compile Include="Entity\sysdiagram.cs">
-      <DependentUpon>PAccountantModel.tt</DependentUpon>
+      <DependentUpon>PAccountModelContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\User.cs">
-      <DependentUpon>PAccountantModel.tt</DependentUpon>
+      <DependentUpon>PAccountModelContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Abstract\IRepository.cs" />
     <Compile Include="Infrastructure\Abstract\IUnitOfWork.cs" />
@@ -95,30 +95,29 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="Entity\PAccountantModel.edmx">
+    <EntityDeploy Include="Entity\PAccountModelContext.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PAccountantModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>PAccountModelContext.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Entity\PAccountantModel.edmx.diagram">
-      <DependentUpon>PAccountantModel.edmx</DependentUpon>
+    <None Include="Entity\PAccountModelContext.edmx.diagram">
+      <DependentUpon>PAccountModelContext.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <Content Include="Entity\PAccountantModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PAccountantModel.edmx</DependentUpon>
-      <LastGenOutput>PAccountantModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Entity\PAccountantModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PAccountantModel.edmx</DependentUpon>
-      <LastGenOutput>PAccountantModel.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Entity\PAccountModelContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PAccountModelContext.edmx</DependentUpon>
+      <LastGenOutput>PAccountModelContext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entity\PAccountModelContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PAccountModelContext.edmx</DependentUpon>
+      <LastGenOutput>PAccountModelContext.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

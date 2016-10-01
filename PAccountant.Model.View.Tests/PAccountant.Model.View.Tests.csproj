@@ -96,6 +96,10 @@
       <Project>{8033283E-B47C-4622-AA5D-422E1FBB250B}</Project>
       <Name>PAccountant.Model.View</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PAccountant.Model\PAccountant.DataLayer.csproj">
+      <Project>{0A82A762-2E34-480E-A462-C7FB5B242429}</Project>
+      <Name>PAccountant.DataLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

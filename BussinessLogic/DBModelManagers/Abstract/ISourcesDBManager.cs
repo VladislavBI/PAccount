@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BussinessLogic.DBModelManagers.Abstract
 {
-    public interface IUserDBManager<TEntity>
+    public interface ISourcesDBManager
     {
         void CreateEntityFromModel<TModel>(TModel modelParam);
-        List<TEntity> GetAllInList();
+
     }
 }

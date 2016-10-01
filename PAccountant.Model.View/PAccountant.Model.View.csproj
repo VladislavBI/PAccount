@@ -149,6 +149,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountantController.cs" />
     <Compile Include="Controllers\AuthorizationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OperationController.cs" />
@@ -164,28 +165,40 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\CustomCss.css" />
+    <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\minus-icon.png" />
     <Content Include="Images\plus-icon.png" />
+    <Content Include="Scripts\angular-ui\angular-animate.js" />
+    <Content Include="Scripts\angular-ui\angular-animate.min.js" />
+    <Content Include="Scripts\Angular\angular-mocks.js" />
+    <Content Include="Scripts\Angular\angular-route.js" />
+    <Content Include="Scripts\Angular\angular-route.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="Scripts\Angular\angular.min.js" />
     <Content Include="Scripts\Angular\app.js" />
     <Content Include="Scripts\Angular\Custom\Controller\accountant-main-controller.js" />
     <Content Include="Scripts\Angular\Custom\Controller\authorization-controller.js" />
-    <Content Include="Scripts\Angular\Custom\Controller\operation_popup_controller.js" />
+    <Content Include="Scripts\Angular\Custom\Controller\popup_controllers.js" />
     <Content Include="Scripts\Angular\Custom\Factory\api-url-factory.js" />
-    <Content Include="Scripts\Angular\Custom\Service\add-operation-popUp-service.js" />
     <Content Include="Scripts\Angular\Custom\Service\chain-of-responsibility-service.js" />
     <Content Include="Scripts\Angular\Custom\Service\http-service.js" />
     <Content Include="Scripts\Angular\Custom\Service\modal_service.js" />
     <Content Include="Scripts\Angular\Custom\Service\validator-service.js" />
     <Content Include="Scripts\Bootstrap\bootstrap.js" />
     <Content Include="Scripts\Bootstrap\bootstrap.min.js" />
+    <Content Include="Scripts\Bootstrap\ui-bootstrap-tpls.min.js" />
     <Content Include="Scripts\Bootstrap\respond.js" />
     <Content Include="Scripts\Bootstrap\respond.min.js" />
     <Content Include="Scripts\Bootstrap\ui-bootstrap-2.1.3.min.js" />
+    <Content Include="Scripts\Angular\angular-route.min.js.map" />
+    <Content Include="Scripts\angular-ui\angular-animate.min.js.map" />
     <None Include="Scripts\Jquery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Jquery\jquery-1.10.2.js" />
     <Content Include="Scripts\Jquery\jquery-1.10.2.min.js" />
@@ -209,7 +222,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_AuthorizationLayout.cshtml" />
     <Content Include="Views\Authorization\LogIn.cshtml" />
     <Content Include="Views\Authorization\Registration.cshtml" />
@@ -217,9 +229,11 @@
     <Content Include="Views\Operation\OperationChoose.cshtml" />
     <Content Include="Views\popUp\addOperationPopup.cshtml" />
     <Content Include="Scripts\Jquery\jquery-1.10.2.min.map" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Accountant\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
