@@ -18,4 +18,14 @@
         }
         return true;
     }
+
+    me.formContainsNullParams = function (objectForCheck, exceptionsNamesArray) {
+        exceptionsArray = exceptionsArray ? exceptionsArray : [];
+        for (var key in objectForCheck) {
+            if (p.hasOwnProperty(key) && !exceptionsNamesArray.includes(key)&&!objectForCheck[key]) {
+                return key + " should contain value";
+            }
+        }
+        return false;
+    }
 }]);

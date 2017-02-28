@@ -12,7 +12,8 @@ namespace BussinessLogic.LogicManagers.State
         Category,
         Currency,
         Source,
-        User
+        User,
+        Operation
     }
     /// <summary>
     /// Inherit state method for choose from different db managers

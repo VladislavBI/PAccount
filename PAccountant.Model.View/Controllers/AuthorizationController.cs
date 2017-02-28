@@ -53,7 +53,7 @@ namespace PAccountant.Model.View.Controllers
         {
 
             byte[] userPassword = _cryptoManager.EncodingString(model.Password);
-            if (ValidationManager.modelIsValid(model) && _accountManager.userExists(model.Name, userPassword)
+            if (ValidationManager.modelIsValid(model) && !_accountManager.userExists(model.Name, userPassword)
                 && _authorizationManager.Registration(model.Name, userPassword))
             {
                 return RedirectToAction("Index", "Home");

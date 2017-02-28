@@ -1,6 +1,7 @@
 ﻿angular.module('app').service('httpService', ['$http', function ($http) {
 
     me = {};
+
     me.get = function (url, config, data) {
         //url=createUrl(url, data);
         if (!config) {

@@ -17,7 +17,7 @@ namespace PAccountant.BussinessLogic.Managers.Concrete
             UserLoginModel model=CreateUserLoginModel(name, password);
             if (model != null)
             {
-                userAthorization(model.UserName);
+                userAthorization(model.Name);
                 return true;
             }
             else
@@ -25,9 +25,9 @@ namespace PAccountant.BussinessLogic.Managers.Concrete
                 return false;
             }
         }
-        private void CreateUser(object modelParam, IUnitOfWork unit)
+        private void CreateUser(UserLoginModel loginModel, IUnitOfWork unit)
         {
-            UserLoginModel loginModel = ReflectionManager.GetClassFromObject<UserLoginModel>(modelParam);
+            //UserLoginModel loginModel = ReflectionManager.GetClassFromObject<UserLoginModel>(modelParam);
             _accountManager.CreateUserFromModel<UserLoginModel>(loginModel);
         }
 
@@ -39,7 +39,7 @@ namespace PAccountant.BussinessLogic.Managers.Concrete
                 using (var unit = DIManager.UnitOfWork)
                 {
                     CreateUser(model, unit);
-                    userAthorization(model.UserName);
+                    userAthorization(model.Name);
                     return true;
                 }
                
@@ -59,7 +59,7 @@ namespace PAccountant.BussinessLogic.Managers.Concrete
 
         private static UserLoginModel CreateUserLoginModel(string name, byte[] password)
         {
-            return new UserLoginModel { UserName = name, Password = password };
+            return new UserLoginModel { Name = name, Password = password };
         }
     }
 }

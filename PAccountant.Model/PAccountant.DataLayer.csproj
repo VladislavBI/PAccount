@@ -94,7 +94,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="Entity\PAccountModelContext.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>PAccountModelContext.Designer.cs</LastGenOutput>
@@ -113,6 +115,7 @@
       <DependentUpon>PAccountModelContext.edmx</DependentUpon>
       <LastGenOutput>PAccountModelContext.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Entity\PAccountModelContext.edmx.sql" />
     <Content Include="Entity\PAccountModelContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PAccountModelContext.edmx</DependentUpon>

@@ -22,9 +22,7 @@
                 Source
             </div>
             <div class="col-lg-5">
-                <select ng-model="popUpArguments.source">
-                    <option ng-repeat="dataRepeat in popUpArguments.availableSource" value="{{dataRepeat}}">{{dataRepeat}}</option>
-                </select>
+                <select ng-model="popUpArguments.source" ng-options="dataRepeat.Name for dataRepeat in popUpArguments.availableSource track by dataRepeat.Id"></select>               
             </div>
             <div class="col-lg-4">
                 <label><input type="checkbox" name="name" ng-model="popUpArguments.newSourceCheckBox" />New</label>
@@ -43,9 +41,7 @@
                 Category
             </div>
             <div class="col-lg-5">
-                <select ng-model="popUpArguments.category">
-                    <option ng-repeat="dataRepeat in popUpArguments.availableCategory" value="{{dataRepeat}}">{{dataRepeat}}</option>
-                </select>
+                <select ng-model="popUpArguments.category" ng-options="dataRepeat.Name for dataRepeat in popUpArguments.availableCategory track by dataRepeat.Id"></select>
             </div>
             <div class="col-lg-4">
                 <label><input type="checkbox" name="name" ng-model="popUpArguments.newCategoryCheckBox" />New</label>
@@ -59,18 +55,17 @@
                 <input type="text" ng-model="popUpArguments.newCategoryText" />
             </div>
         </div>
+        @* Currency are preinstalled now *@
         <div class="row">
             <div class="col-lg-3">
                 Currency
             </div>
             <div class="col-lg-5">
-                <select ng-model="popUpArguments.currency">
-                    <option ng-repeat="dataRepeat in popUpArguments.availableCurrency" value="{{dataRepeat}}">{{dataRepeat}}</option>
-                </select>
+                <select ng-model="popUpArguments.currency" ng-options="dataRepeat.Name for dataRepeat in popUpArguments.availableCurrency track by dataRepeat.Id"></select>
             </div>
-            <div class="col-lg-4">
+            @*<div class="col-lg-4">
                 <label><input type="checkbox" name="name" ng-model="popUpArguments.newCurrencyCheckBox" />New</label>
-            </div>
+            </div>*@
         </div>
         <div class="row" ng-show="validation.variableIsTrue(popUpArguments.newCurrencyCheckBox)">
             <div class="col-lg-3">
@@ -85,7 +80,7 @@
                 New currency rate
             </div>
             <div class="col-lg-9">
-                <input type="number" step="0.01" ng-model="popUpArguments.newCurrencyRate" />
+                <input type="number" step="0.01" ng-model="popUpArguments.newCurrencyRate" min="0.01"/>
             </div>
         </div>
         <div class="row">

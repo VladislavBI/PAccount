@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using PAccountant.DataLayer.Entity;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace PAccountant.Model.Infrastructure.Concrete
 {
@@ -24,7 +25,7 @@ namespace PAccountant.Model.Infrastructure.Concrete
             return db.Set<TEntity>().ToList();
         }
 
-        public TEntity GetItemModel<TEntity>(Func<TEntity, bool> expression) where TEntity : class
+        public TEntity FirstOrDefault<TEntity>(Func<TEntity, bool> expression) where TEntity : class
         {
             return GetALL<TEntity>().FirstOrDefault(x=>expression(x));
         }
@@ -42,6 +43,18 @@ namespace PAccountant.Model.Infrastructure.Concrete
         public bool AnyItemMeetingDemands<TEntity>(Predicate<TEntity> expression) where TEntity : class
         {
             return GetALL<TEntity>().Any(x=>expression(x));
+        }
+
+        public void CreateFromModel<TEntity, TModel>(TModel modelParam)
+            where TEntity : class
+            where TModel : class
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<TEntity> Where<TEntity>(Expression<Func<TEntity, bool>> expression) where TEntity : class
+        {
+            return db.Set<TEntity>().Where(expression).ToList();
         }
     }
 }

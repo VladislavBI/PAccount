@@ -29,7 +29,7 @@ namespace PAccountant.Model.View
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                         "~/Scripts/Angular/angular.min.js",
                         "~/Scripts/Angular/angular-route.min.js",
-                        "~/Scripts/angular-ui/angular-animate.min.js",                       
+                        "~/Scripts/angular-ui/angular-animate.min.js",
                         //"~/Scripts/angular-ui/ui-bootstrap-custom-2.1.3.min.js",
                         //"~/Scripts/angular-ui/ui-bootstrap-2.1.3.min.js",
                         "~/Scripts/Angular/app.js"));
@@ -45,13 +45,24 @@ namespace PAccountant.Model.View
                         "~/Scripts/Angular/Custom/Service/modal_service.js",
                         "~/Scripts/Angular/Custom/Service/validator-service.js",
                         "~/Scripts/Angular/Custom/Controller/accountant-main-controller.js",
-                        "~/Scripts/Angular/Custom/Controller/popup_controllers.js"));
+                        "~/Scripts/Angular/Custom/Controller/popup_controllers.js",
+                        "~/Scripts/Angular/Custom/Controller/statistic-personal-controller.js",
+                        "~/Scripts/Angular/Custom/Controller/operations-table-controller.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/ui-bootstrap-csp.css",
                       "~/Content/site.css",
                       "~/Content/CustomCss.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jsgrid").
+                IncludeDirectory("~/Scripts/Others/JSGrid", "*.js", true).
+                IncludeDirectory("~/Scripts/Others/JSGrid/fields", "*.js", true).
+                IncludeDirectory("~/Scripts/Others/JSGrid/i18n", "*.js", true));
+
+
+            bundles.Add(new StyleBundle("~/Content/jsgridCss")
+                .IncludeDirectory("~/Content/JSGrid", "*.css", true));
         }
     }
 }

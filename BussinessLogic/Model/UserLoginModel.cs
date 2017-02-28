@@ -8,7 +8,7 @@ namespace BussinessLogic.Model
 {
     public class UserLoginModel
     {
-        public string UserName { get; set; }
+        public string Name { get; set; }
         public byte[] Password { get; set; }
     }
 }

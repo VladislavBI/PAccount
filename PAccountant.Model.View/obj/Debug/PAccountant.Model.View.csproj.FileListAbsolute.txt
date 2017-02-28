@@ -55,3 +55,11 @@ D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\BussinessLogic.exe
 D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\BussinessLogic.pdb
 D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\PAccountant.DataLayer.dll
 D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\PAccountant.DataLayer.pdb
+D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\Glimpse.Ado.dll
+D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\Glimpse.AspNet.dll
+D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\Glimpse.Core.dll
+D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\Glimpse.EF6.dll
+D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\Glimpse.Mvc5.dll
+D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\Elmah.dll
+D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\RateScriptorLibrary.dll
+D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\RateScriptorLibrary.pdb

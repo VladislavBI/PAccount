@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
-
+    @Styles.Render("~/Content/jsgridCss")
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -38,10 +38,12 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jsgrid")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/accountant")
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

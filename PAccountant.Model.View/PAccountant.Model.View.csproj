@@ -48,12 +48,36 @@
       <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Glimpse.Ado, Version=1.7.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Glimpse.Ado.1.7.3\lib\net45\Glimpse.Ado.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Glimpse.AspNet, Version=1.9.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Glimpse.AspNet.1.9.2\lib\net45\Glimpse.AspNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Glimpse.Core, Version=1.8.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Glimpse.1.8.6\lib\net45\Glimpse.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Glimpse.EF6, Version=1.6.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Glimpse.EF6.1.6.5\lib\net45\Glimpse.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Glimpse.Mvc5, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Glimpse.Mvc5.1.5.3\lib\net45\Glimpse.Mvc5.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -153,6 +177,8 @@
     <Compile Include="Controllers\AuthorizationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OperationController.cs" />
+    <Compile Include="Controllers\StatisticController.cs" />
+    <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -162,9 +188,14 @@
     <Compile Include="Util\NinjectDependencyResolver.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Readme\Elmah.txt" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\CustomCss.css" />
+    <Content Include="Content\JSGrid\icons-2x.png" />
+    <Content Include="Content\JSGrid\icons.png" />
+    <Content Include="Content\JSGrid\jsgrid.css" />
+    <Content Include="Content\JSGrid\theme.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -185,8 +216,11 @@
     <Content Include="Scripts\Angular\app.js" />
     <Content Include="Scripts\Angular\Custom\Controller\accountant-main-controller.js" />
     <Content Include="Scripts\Angular\Custom\Controller\authorization-controller.js" />
+    <Content Include="Scripts\Angular\Custom\Controller\operations-table-controller.js" />
     <Content Include="Scripts\Angular\Custom\Controller\popup_controllers.js" />
+    <Content Include="Scripts\Angular\Custom\Controller\statistic-personal-controller.js" />
     <Content Include="Scripts\Angular\Custom\Factory\api-url-factory.js" />
+    <Content Include="Scripts\Angular\Custom\Factory\table-factory.js" />
     <Content Include="Scripts\Angular\Custom\Service\chain-of-responsibility-service.js" />
     <Content Include="Scripts\Angular\Custom\Service\http-service.js" />
     <Content Include="Scripts\Angular\Custom\Service\modal_service.js" />
@@ -199,7 +233,14 @@
     <Content Include="Scripts\Bootstrap\ui-bootstrap-2.1.3.min.js" />
     <Content Include="Scripts\Angular\angular-route.min.js.map" />
     <Content Include="Scripts\angular-ui\angular-animate.min.js.map" />
+    <None Include="Scripts\jquery-1.12.4.intellisense.js" />
+    <Content Include="Scripts\jquery-1.12.4.js" />
+    <Content Include="Scripts\jquery-1.12.4.min.js" />
+    <Content Include="Scripts\jquery-1.12.4.min.map" />
     <None Include="Scripts\Jquery\jquery-1.10.2.intellisense.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\Jquery\jquery-1.10.2.js" />
     <Content Include="Scripts\Jquery\jquery-1.10.2.min.js" />
     <None Include="Scripts\Jquery\jquery.validate-vsdoc.js" />
@@ -207,9 +248,36 @@
     <Content Include="Scripts\Jquery\jquery.validate.min.js" />
     <Content Include="Scripts\Jquery\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\Jquery\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Others\JSGrid\fields\jsgrid.field.checkbox.js" />
+    <Content Include="Scripts\Others\JSGrid\fields\jsgrid.field.control.js" />
+    <Content Include="Scripts\Others\JSGrid\fields\jsgrid.field.number.js" />
+    <Content Include="Scripts\Others\JSGrid\fields\jsgrid.field.select.js" />
+    <Content Include="Scripts\Others\JSGrid\fields\jsgrid.field.text.js" />
+    <Content Include="Scripts\Others\JSGrid\fields\jsgrid.field.textarea.js" />
+    <Content Include="Scripts\Others\JSGrid\i18n\de.js" />
+    <Content Include="Scripts\Others\JSGrid\i18n\es.js" />
+    <Content Include="Scripts\Others\JSGrid\i18n\fr.js" />
+    <Content Include="Scripts\Others\JSGrid\i18n\he.js" />
+    <Content Include="Scripts\Others\JSGrid\i18n\ja.js" />
+    <Content Include="Scripts\Others\JSGrid\i18n\ka.js" />
+    <Content Include="Scripts\Others\JSGrid\i18n\pl.js" />
+    <Content Include="Scripts\Others\JSGrid\i18n\pt-br.js" />
+    <Content Include="Scripts\Others\JSGrid\i18n\pt.js" />
+    <Content Include="Scripts\Others\JSGrid\i18n\ru.js" />
+    <Content Include="Scripts\Others\JSGrid\i18n\tr.js" />
+    <Content Include="Scripts\Others\JSGrid\i18n\zh-cn.js" />
+    <Content Include="Scripts\Others\JSGrid\i18n\zh-tw.js" />
+    <Content Include="Scripts\Others\JSGrid\jsgrid.core.js" />
+    <Content Include="Scripts\Others\JSGrid\jsgrid.field.js" />
+    <Content Include="Scripts\Others\JSGrid\jsgrid.load-indicator.js" />
+    <Content Include="Scripts\Others\JSGrid\jsgrid.load-strategies.js" />
+    <Content Include="Scripts\Others\JSGrid\jsgrid.sort-strategies.js" />
+    <Content Include="Scripts\Others\JSGrid\jsgrid.validation.js" />
     <Content Include="Scripts\Others\modernizr-2.6.2.js" />
     <None Include="Scripts\Others\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -230,6 +298,10 @@
     <Content Include="Views\popUp\addOperationPopup.cshtml" />
     <Content Include="Scripts\Jquery\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Statistic\MainInfo.cshtml" />
+    <Content Include="Views\Statistic\DetailedSourceInfo.cshtml" />
+    <Content Include="Views\Shared\_StatisticsLayout.cshtml" />
+    <Content Include="Views\Statistic\monthFullStatistic.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

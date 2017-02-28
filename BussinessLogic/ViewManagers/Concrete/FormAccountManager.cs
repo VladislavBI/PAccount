@@ -45,7 +45,7 @@ namespace BussinessLogic.Managers.Concrete
         {
             using (_unitOfWork=DIManager.UnitOfWork)
             {
-                User tempUser =_unitOfWork.Repository.GetItemModel<User>(x=>expression(x));
+                User tempUser =_unitOfWork.Repository.FirstOrDefault<User>(x=>expression(x));
                 return _mapperManager.MapModel<User, TModel>(tempUser);
             }
             

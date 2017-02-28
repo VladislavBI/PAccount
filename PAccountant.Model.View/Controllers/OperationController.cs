@@ -1,5 +1,10 @@
-﻿using BussinessLogic.LogicManagers.State;
+﻿using BussinessLogic.DBModelManagers.Abstract;
+using BussinessLogic.LogicManagers.State;
+using BussinessLogic.ViewManagers.Abstract;
+using BussinessLogic.ViewManagers.Concrete;
+using PAccountant.BussinessLogic.Infrastructure.Abstract;
 using PAccountant.Model.Infrastructure.Abstract;
+using System;
 using System.Web.Mvc;
 
 namespace PAccountant.Model.View.Controllers
@@ -7,9 +12,19 @@ namespace PAccountant.Model.View.Controllers
     public class OperationController : Controller
     {
         IDBStateManager _stateManager;
-        public OperationController(IDBStateManager stateManager)
+        IMapperManager _mapperManager;
+        public OperationController(IDBStateManager stateManager, IMapperManager mapperManager)
         {
             _stateManager = stateManager;
+            _mapperManager = mapperManager;
+        }
+
+        // GET: Accountant
+        [HttpPost]
+        public void AddOperation(AddOperationModel model)
+        {
+            AddOperationProcessor manager = new AddOperationProcessor(_stateManager, _mapperManager);
+            manager.addNewOperation(model, User.Identity.Name);
         }
 
         public JsonResult GetSources()
@@ -24,10 +39,12 @@ namespace PAccountant.Model.View.Controllers
             return Json(currencyList, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetCategories()
+        public JsonResult GetCategories(bool isAddOperation)
         {
-            var categoriesList = _stateManager.DbMangerList[DbNames.Category].GetAllInList();
+            var categoriesList = _stateManager.DbMangerList[DbNames.Category].GetAllInList(isAddOperation?OperationType.Income:OperationType.Outcome);
             return Json(categoriesList, JsonRequestBehavior.AllowGet);
         }
-    }
+
+       
+    } 
 }

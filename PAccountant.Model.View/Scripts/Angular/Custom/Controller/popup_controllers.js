@@ -31,20 +31,26 @@ function ($scope, $uibModalInstance, items, httpService, validationService, apiU
         newCurrencyText: null,
         newCurrencyRate: 1,
         summ: 0,
-        commentary: null
+        commentary: null,
+        exception:""
     };
 
     $scope.init = function () {
         $scope.isAddOperation = items;
+        $scope.popUpArguments.exception = "";
 
         $scope.http.get($scope.url.GetSources).then(function (response) {
             $scope.popUpArguments.availableSource = response.data;
+            $scope.popUpArguments.source = (response.data) ? response.data[0] : null;
         });
-        $scope.http.get($scope.url.GetCategories).then(function (response) {
+        $scope.http.get($scope.url.GetCategories, null, { isAddOperation: $scope.isAddOperation }).then(function (response) {
             $scope.popUpArguments.availableCategory = response.data;
+            $scope.popUpArguments.category = (response.data) ? response.data[0] : null;
         });
+
         $scope.http.get($scope.url.GetCurrencies).then(function (response) {
             $scope.popUpArguments.availableCurrency = response.data;
+            $scope.popUpArguments.currency = (response.data) ? response.data[0] : null;
         });
     };
 
@@ -73,9 +79,11 @@ function ($scope, $uibModalInstance, items, httpService, validationService, apiU
         postData = $scope.popUpArguments;
         postData.isAddOperation = $scope.isAddOperation;
         postData = createPostData(postData);
-        $scope.http.post($scope.url.addAccountOperation, postData, null).then(function (response) {
-            $scope.cancel();
-        });
+        if (!$scope.validation.formIsValid(postData)) {
+            $scope.http.post($scope.url.addAccountOperation, postData, null).then(function (response) {
+                $scope.cancel();
+            });
+        }
     };
 
     var createPostData = function (dataParam) {
@@ -94,8 +102,12 @@ function ($scope, $uibModalInstance, items, httpService, validationService, apiU
         return postData;
     };
 
+    var checkNullArguments = function () {
+
+    }
+
     var checkNewParam = function (newParamCheckBox, oldParam, newParam) {
-        return (newParamCheckBox && newParam && newParam != "") ? newParam : oldParam;
+        return (newParamCheckBox && newParam && newParam != "") ? newParam : oldParam.Name;
     };
 
     $scope.cancel = function () {

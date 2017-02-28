@@ -1,5 +1,7 @@
 ﻿using BussinessLogic.LogicManagers.State;
 using Ninject;
+using PAccountant.BussinessLogic.Infrastructure.Abstract;
+using PAccountant.BussinessLogic.Infrastructure.Concrete;
 using PAccountant.Model.Infrastructure.Abstract;
 using PAccountant.Model.Infrastructure.Concrete;
 using PAccountant.Model.View.Controllers;
@@ -35,6 +37,7 @@ namespace PAccountant.Model.View.Util
         {
             kernel.Bind<IUnitOfWork>().To<EFUnitOfWork>();
             kernel.Bind<IDBStateManager>().To<EFStateDBManager>();
+            kernel.Bind<IMapperManager>().To<AutoMapperManager>();
         }
     }
 }

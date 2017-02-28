@@ -26,7 +26,7 @@ namespace BussinessLogic.LogicManagers.State
             _dbMangerList.Add(DbNames.Category, new EFDBCategoryManager());
             _dbMangerList.Add(DbNames.Currency, new EFDBCurrencyManager());
             _dbMangerList.Add(DbNames.Source, new EFDBSourceManager());
-
+            _dbMangerList.Add(DbNames.Operation, new EFDBOperationManager());
         }
     }
 }
