@@ -1,0 +1,9 @@
+﻿<div class="container" ng-controller="extremumsController as extremums" ng-init="extremums.init()">
+    <h2>Basic List Group</h2>
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="extremum in extremums.operationsExtremums.ExtremumsList">
+            <span ng-bind="extremum.ExtremumCategory"></span>
+            is <span ng-bind="extremum.ExtremumName">ExtremumName</span>:<span ng-bind="extremum.Summ"></span>
+        </li>
+    </ul>
+</div>

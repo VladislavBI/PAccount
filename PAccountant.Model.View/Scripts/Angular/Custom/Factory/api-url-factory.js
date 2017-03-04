@@ -10,6 +10,7 @@
     me.getCurrenciesOperationsSumms = '/Statistic/GetCurrenciesOperationsSumms';
     me.getDetailedSourceInfo = '/Statistic/GetDetailedSourceInfo';
     me.detailedSourceInfo = '/Statistic/DetailedSourceInfo';
-    
+    me.getExtremums = '/Statistic/GetMonthExtremums';
+
     return me;
 }]);

@@ -97,6 +97,10 @@
       <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="RateScriptorLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\CurrencyRate\RateScriptorLibrary\bin\Debug\RateScriptorLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -219,6 +223,7 @@
     <Content Include="Scripts\Angular\Custom\Controller\operations-table-controller.js" />
     <Content Include="Scripts\Angular\Custom\Controller\popup_controllers.js" />
     <Content Include="Scripts\Angular\Custom\Controller\statistic-personal-controller.js" />
+    <Content Include="Scripts\Angular\Custom\Controller\extremums-controller.js" />
     <Content Include="Scripts\Angular\Custom\Factory\api-url-factory.js" />
     <Content Include="Scripts\Angular\Custom\Factory\table-factory.js" />
     <Content Include="Scripts\Angular\Custom\Service\chain-of-responsibility-service.js" />
@@ -302,6 +307,7 @@
     <Content Include="Views\Statistic\DetailedSourceInfo.cshtml" />
     <Content Include="Views\Shared\_StatisticsLayout.cshtml" />
     <Content Include="Views\Statistic\monthFullStatistic.cshtml" />
+    <Content Include="Views\Statistic\OperationsExtremums.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

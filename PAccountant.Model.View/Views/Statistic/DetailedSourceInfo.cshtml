@@ -1,0 +1,19 @@
+﻿@{
+    Layout = "~/Views/Shared/_StatisticsLayout.cshtml";
+}
+    <div class="table" ng-controller="statisticPersonalController as statistic" ng-init="statistic.getDetailedSourceInfo()">
+        <div class="row" ng-repeat="sourceInfo in statistic.sourceInfoList">
+            <div class="col-lg-1">
+                {{index}}
+            </div>
+            <div class="col-lg-6">
+                {{sourceInfo.Source}}
+            </div>
+            <div class="col-lg-2">
+                {{sourceInfo.Currency}}
+            </div>
+            <div class="col-lg-3">
+                {{sourceInfo.Summ}}
+            </div>
+        </div>
+    </div>

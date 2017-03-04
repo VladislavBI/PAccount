@@ -47,7 +47,8 @@ namespace PAccountant.Model.View
                         "~/Scripts/Angular/Custom/Controller/accountant-main-controller.js",
                         "~/Scripts/Angular/Custom/Controller/popup_controllers.js",
                         "~/Scripts/Angular/Custom/Controller/statistic-personal-controller.js",
-                        "~/Scripts/Angular/Custom/Controller/operations-table-controller.js"));
+                        "~/Scripts/Angular/Custom/Controller/operations-table-controller.js",
+                        "~/Scripts/Angular/Custom/Controller/extremums-controller.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

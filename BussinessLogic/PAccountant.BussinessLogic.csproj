@@ -72,10 +72,12 @@
     <Compile Include="Infrastructure\Concrete\ValidationManager.cs" />
     <Compile Include="LogicManagers\State\EFStateDBManager.cs" />
     <Compile Include="LogicManagers\State\IDBStateManager.cs" />
+    <Compile Include="Model\ExtremumsModels.cs" />
     <Compile Include="Model\OperationModel.cs" />
     <Compile Include="Model\UserLoginModel.cs" />
     <Compile Include="ViewManagers\Abstract\AuthorizationManager.cs" />
     <Compile Include="Infrastructure\Abstract\CryptographyManager.cs" />
+    <Compile Include="ViewManagers\Abstract\ExtremumsManager.cs" />
     <Compile Include="ViewManagers\Abstract\IAccountManager.cs" />
     <Compile Include="ViewManagers\Abstract\IDBEntitiesManager.cs" />
     <Compile Include="Infrastructure\Abstract\IMapperManager.cs" />
