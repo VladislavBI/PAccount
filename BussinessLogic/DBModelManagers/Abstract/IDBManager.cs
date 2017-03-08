@@ -14,12 +14,8 @@ namespace BussinessLogic.DBModelManagers.Abstract
     public interface IDBManager
     {
 
-        void CreateEntityFromModel<TModel>(TModel modelParam);
-        List<NameIdClass> GetAllInList();
-        List<NameIdClass> GetAllInList(OperationType operationTypeParam);
-        NameIdClass GetCategoryWithCurrentName(string nameParam);
-        NameIdClass GetCategoryWithCurrentName(string nameParam, OperationType operationTypeParam);
-
+        void CreateEntityFromModelForPersAccount<TModel, TEntity>(TModel modelParam) where TEntity : class, new();
+        void CreateEntityFromModelForInvestment<TModel, TEntity>(TModel modelParam) where TEntity : class, new();
     }
 
 }

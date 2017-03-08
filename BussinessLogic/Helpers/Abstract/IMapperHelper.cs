@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PAccountant.BussinessLogic.Infrastructure.Abstract
 {
-    public interface IMapperManager
+    public interface IMapperHelper
     {
         TTo MapModel<TFrom, TTo>(TFrom entity) where TTo: new();
 

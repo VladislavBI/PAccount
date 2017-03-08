@@ -2,12 +2,13 @@
 using BussinessLogic.DBModelManagers.Abstract;
 using PAccountant.DataLayer.Entity;
 using PAccountant.BussinessLogic.StaticClasses;
+using BussinessLogic.Model;
 
 namespace BussinessLogic.DBModelManagers.Concrete
 {
     public class EFDBCurrencyManager : DBManager<Currency>
     {
-        public override NameIdClass GetCategoryWithCurrentName(string nameParam)
+        public override NameIdClassModel GetCategoryWithCurrentName(string nameParam)
         {
             using (_unitOfWork=DIManager.UnitOfWork)
             {
@@ -32,7 +33,7 @@ namespace BussinessLogic.DBModelManagers.Concrete
         }
     }
 
-    public class CurrencyNameIdRateClass : NameIdClass
+    public class CurrencyNameIdRateClass : NameIdClassModel
     {
         public double Buy_Rate { get; set; }
     }

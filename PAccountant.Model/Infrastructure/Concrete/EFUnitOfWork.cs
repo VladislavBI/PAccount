@@ -2,28 +2,40 @@
 using PAccountant.Model.Infrastructure.Abstract;
 using System;
 using System.Data.Entity.Validation;
+using System.Data.Entity;
 
 namespace PAccountant.Model.Infrastructure.Concrete
 {
     public class EFUnitOfWork : IUnitOfWork
     {
-        PAccountantEntities context;
+
+        private DbContext _investmentContext;
+        private DbContext _personalAccountantContext;
         private bool _disposed = false;
-        IRepository _repository;
-       
-        IRepository IUnitOfWork.Repository
-        {
-            get
-            {
-                return _repository;
-            }
-        }
 
         public EFUnitOfWork()
         {
-               context = new PAccountantEntities();
-               _repository = new EFRepository(context);
+                _personalAccountantContext = new PAccountantEntities();
+                _investmentContext = new PAccountantEntities();
         }
+
+        
+        public DbContext InvestmentContext
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public DbContext PersonalAccountantContext
+        {
+            get
+            {
+                return _personalAccountantContext;
+            }
+        }
+
         public void Dispose()
         {
             Dispose(true);
@@ -36,7 +48,22 @@ namespace PAccountant.Model.Infrastructure.Concrete
             {
                 if (disposing)
                 {
-                    context.Dispose();
+                    try
+                    {
+                        _investmentContext.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                       
+                    }
+                    try
+                    {
+                        _personalAccountantContext.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
                 }
                 this._disposed = true;
             }
@@ -46,7 +73,25 @@ namespace PAccountant.Model.Infrastructure.Concrete
         {
             try
             {
-                context.SaveChanges();
+                _investmentContext.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                foreach (var eve in ex.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
+            try
+            {
+                _personalAccountantContext.SaveChanges();
             }
             catch (DbEntityValidationException ex)
             {

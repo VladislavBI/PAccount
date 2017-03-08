@@ -1,50 +1,53 @@
 ﻿using BussinessLogic.DBModelManagers.Abstract;
-using BussinessLogic.LogicManagers.State;
+using BussinessLogic.Model;
 using BussinessLogic.ViewManagers.Abstract;
 using BussinessLogic.ViewManagers.Concrete;
-using PAccountant.BussinessLogic.Infrastructure.Abstract;
-using PAccountant.Model.Infrastructure.Abstract;
-using System;
 using System.Web.Mvc;
 
 namespace PAccountant.Model.View.Controllers
 {
     public class OperationController : Controller
     {
-        IDBStateManager _stateManager;
         IMapperManager _mapperManager;
-        public OperationController(IDBStateManager stateManager, IMapperManager mapperManager)
+        AddOperationProcessorBase<object, object> _operatorProcessor;
+        ISourceManager _sourceManager;
+        ICurrencyManager _currencyManager;
+        ICategoryManager _categoryManager;
+        public OperationController(IMapperManager mapperManager, AddOperationProcessorBase<object, object> operatorProcessorParam, ISourceManager sourceManagerParam,
+            ICurrencyManager currencyManagerParam, ICategoryManager categoryManagerParam)
         {
-            _stateManager = stateManager;
             _mapperManager = mapperManager;
+            _operatorProcessor = operatorProcessorParam;
+            _sourceManager = sourceManagerParam;
+            _currencyManager = currencyManagerParam;
+            _categoryManager = categoryManagerParam;
         }
 
         // GET: Accountant
         [HttpPost]
         public void AddOperation(AddOperationModel model)
         {
-            AddOperationProcessor manager = new AddOperationProcessor(_stateManager, _mapperManager);
-            manager.addNewOperation(model, User.Identity.Name);
+            _operatorProcessor.addNewOperation(model, User.Identity.Name);
         }
 
         public JsonResult GetSources()
         {
-            var sourceList = _stateManager.DbMangerList[DbNames.Source].GetAllInList();
+            var sourceList = _sourceManager.GetAllInList();
             return Json(sourceList, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetCurrencies()
         {
-            var currencyList = _stateManager.DbMangerList[DbNames.Currency].GetAllInList();
+            var currencyList = _currencyManager.GetAllInList();
             return Json(currencyList, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetCategories(bool isAddOperation)
         {
-            var categoriesList = _stateManager.DbMangerList[DbNames.Category].GetAllInList(isAddOperation?OperationType.Income:OperationType.Outcome);
+            var categoriesList = _categoryManager.GetAllInList(isAddOperation ? OperationType.Income : OperationType.Outcome);
             return Json(categoriesList, JsonRequestBehavior.AllowGet);
         }
 
-       
-    } 
+
+    }
 }

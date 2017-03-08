@@ -1,5 +1,4 @@
-﻿using BussinessLogic.LogicManagers.State;
-using BussinessLogic.Managers.Abstract;
+﻿using BussinessLogic.Managers.Abstract;
 using BussinessLogic.Managers.Concrete;
 using PAccountant.BussinessLogic.Infrastructure.Abstract;
 using PAccountant.BussinessLogic.Infrastructure.Concrete;
@@ -28,7 +27,7 @@ namespace PAccountant.BussinessLogic.StaticClasses
             }
         }
 
-        public static AuthorizationManager AuthorizationManager
+        public static AuthorizationManagerBase AuthorizationManager
         {
             get
             {
@@ -36,7 +35,7 @@ namespace PAccountant.BussinessLogic.StaticClasses
             }
         }
 
-        public static IMapperManager MapperManager
+        public static IMapperHelper MapperHelper
         {
             get
             {
@@ -50,12 +49,12 @@ namespace PAccountant.BussinessLogic.StaticClasses
                 return new FormAccountManager();
             }
         }
-        public static IDBStateManager DBStateManager
-        {
-            get
-            {
-                return new EFStateDBManager();
-            }
-        }
+        //public static IDBStateManager DBStateManager
+        //{
+        //    get
+        //    {
+        //        return new EFStateDBManager();
+        //    }
+        //}
     }
 }

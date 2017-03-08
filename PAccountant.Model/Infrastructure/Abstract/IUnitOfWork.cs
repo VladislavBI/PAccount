@@ -1,5 +1,8 @@
-﻿using System;
+﻿using PAccountant.DataLayer.Entity;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,8 +11,12 @@ namespace PAccountant.Model.Infrastructure.Abstract
 {
     public interface IUnitOfWork : IDisposable
     {
-        IRepository Repository { get;}
+        DbContext PersonalAccountantContext { get; }
+        DbContext InvestmentContext { get; }
         void Save();
         void Dispose(bool disposing);
     }
+
+   
 }
+

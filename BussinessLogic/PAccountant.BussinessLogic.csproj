@@ -60,38 +60,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBModelManagers\Concrete\DBManager.cs" />
     <Compile Include="DBModelManagers\Abstract\IDBManager.cs" />
-    <Compile Include="DBModelManagers\Concrete\EFDBCategoryManager.cs" />
-    <Compile Include="DBModelManagers\Concrete\EFDBCurrencyManager.cs" />
-    <Compile Include="DBModelManagers\Abstract\DBManager.cs" />
-    <Compile Include="DBModelManagers\Concrete\EFDBOperationManager.cs" />
-    <Compile Include="DBModelManagers\Concrete\EFDBSourceManager.cs" />
-    <Compile Include="DBModelManagers\Concrete\EFDBUserManager.cs" />
-    <Compile Include="Helpers\ResponseHelper.cs" />
-    <Compile Include="Infrastructure\Concrete\ReflectionManager.cs" />
-    <Compile Include="Infrastructure\Concrete\ValidationManager.cs" />
-    <Compile Include="LogicManagers\State\EFStateDBManager.cs" />
-    <Compile Include="LogicManagers\State\IDBStateManager.cs" />
+    <Compile Include="DBModelManagers\Abstract\IMapperManager.cs" />
+    <Compile Include="DBModelManagers\Abstract\ISourcesDBManager.cs" />
+    <Compile Include="Helpers\Concrete\ResponseHelper.cs" />
+    <Compile Include="Model\AddOperationModel.cs" />
+    <Compile Include="StaticClasses\ReflectionManager.cs" />
+    <Compile Include="StaticClasses\ValidationManager.cs" />
     <Compile Include="Model\ExtremumsModels.cs" />
+    <Compile Include="Model\NameIdClassModel.cs" />
     <Compile Include="Model\OperationModel.cs" />
     <Compile Include="Model\UserLoginModel.cs" />
-    <Compile Include="ViewManagers\Abstract\AuthorizationManager.cs" />
-    <Compile Include="Infrastructure\Abstract\CryptographyManager.cs" />
-    <Compile Include="ViewManagers\Abstract\ExtremumsManager.cs" />
+    <Compile Include="ViewManagers\Abstract\AddOperationProcessorBase.cs" />
+    <Compile Include="ViewManagers\Abstract\AuthorizationManagerBase.cs" />
+    <Compile Include="Helpers\Abstract\CryptographyHelper.cs" />
+    <Compile Include="ViewManagers\Abstract\ICategoryManager.cs" />
+    <Compile Include="ViewManagers\Abstract\ICurrencyManager.cs" />
+    <Compile Include="LogicManagers\IListGetter.cs" />
+    <Compile Include="ViewManagers\Abstract\ISourceManager.cs" />
+    <Compile Include="ViewManagers\Abstract\IUserManager.cs" />
+    <Compile Include="ViewManagers\Concrete\CurrencyManager.cs" />
+    <Compile Include="ViewManagers\Abstract\ExtremumsManagerBase.cs" />
     <Compile Include="ViewManagers\Abstract\IAccountManager.cs" />
     <Compile Include="ViewManagers\Abstract\IDBEntitiesManager.cs" />
-    <Compile Include="Infrastructure\Abstract\IMapperManager.cs" />
-    <Compile Include="Infrastructure\Concrete\AutoMapperManager.cs" />
+    <Compile Include="Helpers\Abstract\IMapperHelper.cs" />
+    <Compile Include="Helpers\Concrete\AutoMapperHelper.cs" />
     <Compile Include="Model\OperationsSumModel.cs" />
-    <Compile Include="ViewManagers\Abstract\StatisticManager.cs" />
-    <Compile Include="ViewManagers\Concrete\AddOperationProcessor.cs" />
+    <Compile Include="ViewManagers\Concrete\PersonalAccountant\PersAccountExtremumsManager.cs" />
+    <Compile Include="ViewManagers\Concrete\PersonalAccountant\PersAccountSourceManager.cs" />
+    <Compile Include="ViewManagers\Abstract\StatisticManagerBase.cs" />
+    <Compile Include="ViewManagers\Concrete\PersonalAccountant\PersAccounantAddOperationProcessor.cs" />
+    <Compile Include="ViewManagers\Concrete\PersonalAccountant\PersAccountCategoryManager.cs" />
     <Compile Include="ViewManagers\Concrete\FormAccountManager.cs" />
     <Compile Include="ViewManagers\Concrete\FormAuthorizationManager.cs" />
-    <Compile Include="Infrastructure\Concrete\MD5CryptographyManager.cs" />
+    <Compile Include="Helpers\Concrete\MD5CryptographyHelper.cs" />
     <Compile Include="StaticClasses\DIManager.cs" />
     <Compile Include="StaticClasses\IdentityManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewManagers\Concrete\PersonalAccountant\PersAccountStatisticManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -103,7 +111,10 @@
       <Name>PAccountant.DataLayer</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Infrastructure\" />
+    <Folder Include="LogicManagers\State\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

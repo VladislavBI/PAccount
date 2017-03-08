@@ -12,7 +12,7 @@ namespace PAccountant.Model.View.Controllers
     [AllowAnonymous]
     public class AuthorizationController : Controller
     {
-        static AuthorizationManager _authorizationManager;
+        static AuthorizationManagerBase _authorizationManager;
         static CryptographyManager _cryptoManager;
         static IAccountManager _accountManager;
         static AuthorizationController()

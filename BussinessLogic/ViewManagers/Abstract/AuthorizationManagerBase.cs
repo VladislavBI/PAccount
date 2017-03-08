@@ -7,13 +7,13 @@ using System.Linq;
 
 namespace PAccountant.BussinessLogic.Managers.Abstract
 {
-    public abstract class AuthorizationManager
+    public abstract class AuthorizationManagerBase
     {
 
         protected CryptographyManager _cryptography;
         protected IAccountManager _accountManager;
 
-        public AuthorizationManager()
+        public AuthorizationManagerBase()
         {
             _cryptography = DIManager.CryptographyManager;
             _accountManager = DIManager.AccountManager;

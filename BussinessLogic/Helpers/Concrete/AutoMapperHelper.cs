@@ -5,7 +5,7 @@ using PAccountant.BussinessLogic.Infrastructure.Abstract;
 
 namespace PAccountant.BussinessLogic.Infrastructure.Concrete
 {
-    public class AutoMapperManager : IMapperManager
+    public class AutoMapperManager : IMapperHelper
     {
         public TTo MapModel<TFrom, TTo>(TFrom entity) where TTo : new()
         {

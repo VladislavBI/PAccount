@@ -87,9 +87,7 @@
     <Compile Include="Entity\User.cs">
       <DependentUpon>PAccountModelContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\Abstract\IRepository.cs" />
     <Compile Include="Infrastructure\Abstract\IUnitOfWork.cs" />
-    <Compile Include="Infrastructure\Concrete\EFRepository.cs" />
     <Compile Include="Infrastructure\Concrete\EFUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

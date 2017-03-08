@@ -9,7 +9,7 @@ using System.Web.Security;
 namespace PAccountant.BussinessLogic.Managers.Concrete
 {
 
-    public class FormAuthorizationManager: AuthorizationManager
+    public class FormAuthorizationManager: AuthorizationManagerBase
     {
 
         public override bool Login(string name, byte[] password)

@@ -10,12 +10,12 @@ namespace PAccountant.Model.View.Controllers
 {
     public class StatisticController : Controller
     {
-        StatisticManager _statisticManager;
-        ExtremumsManager _managerEx;
-        public StatisticController()
+        StatisticManagerBase _statisticManager;
+        ExtremumsManagerBase _managerEx;
+        public StatisticController(StatisticManagerBase statisticManagerParam, ExtremumsManagerBase managerExParam)
         {
-            _statisticManager = new StatisticManager();
-            _managerEx = new ExtremumsManager();
+            _statisticManager = statisticManagerParam;
+            _managerEx = managerExParam;
         }
 
         public JsonResult GetOperationsSumm()

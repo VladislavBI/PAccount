@@ -15,12 +15,12 @@ namespace BussinessLogic.Managers.Concrete
 {
     public class FormAccountManager : IAccountManager
     {
-        IMapperManager _mapperManager;
+        IMapperHelper _mapperManager;
         IUnitOfWork _unitOfWork;
         CryptographyManager _cryptography;
         public FormAccountManager()
         {
-            _mapperManager = DIManager.MapperManager;
+            _mapperManager = DIManager.MapperHelper;
             _cryptography = DIManager.CryptographyManager;
         }
         public void CreateUserFromModel<TModel>(TModel modelParam)
@@ -30,7 +30,7 @@ namespace BussinessLogic.Managers.Concrete
             {
                 using (_unitOfWork = DIManager.UnitOfWork)
                 {
-                    _unitOfWork.Repository.Create<User>(userEntity);
+                    _unitOfWork.PersonalAccountantContext.Set<User>().Add(userEntity);
                     _unitOfWork.Save();
                 }
             }
@@ -38,14 +38,14 @@ namespace BussinessLogic.Managers.Concrete
 
         public bool AnyUserMatchingCriteria(Predicate<User> expression)
         {
-            return _unitOfWork.Repository.AnyItemMeetingDemands<User>(x => expression(x));
+            return _unitOfWork.PersonalAccountantContext.Set<User>().Any(x => expression(x));
         }
 
         public TModel GetModelForConcreteUser<TModel>(Predicate<User> expression) where TModel : new()
         {
             using (_unitOfWork=DIManager.UnitOfWork)
             {
-                User tempUser =_unitOfWork.Repository.FirstOrDefault<User>(x=>expression(x));
+                User tempUser =_unitOfWork.PersonalAccountantContext.Set<User>().FirstOrDefault<User>(x=>expression(x));
                 return _mapperManager.MapModel<User, TModel>(tempUser);
             }
             
@@ -55,7 +55,7 @@ namespace BussinessLogic.Managers.Concrete
         {
             using (_unitOfWork = DIManager.UnitOfWork)
             {
-                if (_unitOfWork.Repository.AnyItemMeetingDemands<User>(x=>x.Name==Name&& _cryptography.CheckingEquals(x.Password, password)))
+                if (_unitOfWork.PersonalAccountantContext.Set<User>().AsEnumerable().Any(x=>x.Name==Name&& _cryptography.CheckingEquals(x.Password, password)))
                 {
                     return true;
                 }

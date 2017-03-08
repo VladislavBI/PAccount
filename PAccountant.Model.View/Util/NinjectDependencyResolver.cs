@@ -1,14 +1,15 @@
-﻿using BussinessLogic.LogicManagers.State;
+﻿using BussinessLogic.Model;
+using BussinessLogic.ViewManagers.Abstract;
+using BussinessLogic.ViewManagers.Concrete;
+using BussinessLogic.ViewManagers.Concrete.PersonalAccountant;
 using Ninject;
 using PAccountant.BussinessLogic.Infrastructure.Abstract;
 using PAccountant.BussinessLogic.Infrastructure.Concrete;
+using PAccountant.DataLayer.Entity;
 using PAccountant.Model.Infrastructure.Abstract;
 using PAccountant.Model.Infrastructure.Concrete;
-using PAccountant.Model.View.Controllers;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace PAccountant.Model.View.Util
@@ -36,8 +37,13 @@ namespace PAccountant.Model.View.Util
         private void AddBindings()
         {
             kernel.Bind<IUnitOfWork>().To<EFUnitOfWork>();
-            kernel.Bind<IDBStateManager>().To<EFStateDBManager>();
-            kernel.Bind<IMapperManager>().To<AutoMapperManager>();
+            kernel.Bind<IMapperHelper>().To<AutoMapperManager>();
+            kernel.Bind(typeof(AddOperationProcessorBase<object, object>)).To<PersAccounantAddOperationProcessor>();
+            kernel.Bind<ISourceManager>().To<PersAccountSourceManager>();
+            kernel.Bind<ICategoryManager>().To<PersAccountCategoryManager>();
+            kernel.Bind<ICurrencyManager>().To<CurrencyManager>();
+            kernel.Bind<ExtremumsManagerBase>().To<PersAccountExtremumsManager>();
+            kernel.Bind<StatisticManagerBase>().To<PersAccountStatisticManager>(); 
         }
     }
 }
