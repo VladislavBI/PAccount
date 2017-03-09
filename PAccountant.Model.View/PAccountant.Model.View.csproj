@@ -220,12 +220,16 @@
     <Content Include="Scripts\Angular\app.js" />
     <Content Include="Scripts\Angular\Custom\Controller\accountant-main-controller.js" />
     <Content Include="Scripts\Angular\Custom\Controller\authorization-controller.js" />
+    <Content Include="Scripts\Angular\Custom\Controller\chart-controller.js" />
     <Content Include="Scripts\Angular\Custom\Controller\operations-table-controller.js" />
     <Content Include="Scripts\Angular\Custom\Controller\popup_controllers.js" />
     <Content Include="Scripts\Angular\Custom\Controller\site-mode-controller.js" />
     <Content Include="Scripts\Angular\Custom\Controller\statistic-personal-controller.js" />
     <Content Include="Scripts\Angular\Custom\Controller\extremums-controller.js" />
     <Content Include="Scripts\Angular\Custom\Factory\api-url-factory.js" />
+    <Content Include="Scripts\Angular\Custom\Factory\bar-chart-factory.js" />
+    <Content Include="Scripts\Angular\Custom\Factory\line-chart-factory.js" />
+    <Content Include="Scripts\Angular\Custom\Factory\pie-chart-factory.js" />
     <Content Include="Scripts\Angular\Custom\Factory\table-factory.js" />
     <Content Include="Scripts\Angular\Custom\Service\chain-of-responsibility-service.js" />
     <Content Include="Scripts\Angular\Custom\Service\http-service.js" />

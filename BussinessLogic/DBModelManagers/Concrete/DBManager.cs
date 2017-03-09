@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace BussinessLogic.DBModelManagers.Abstract
 {
 
-    public abstract class EFDBManager : IDBManager
+    public class EFDBManager : IDBManager
     {
         protected IMapperHelper _mapperManager;
         protected IUnitOfWork _unitOfWork;

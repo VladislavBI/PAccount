@@ -24,6 +24,7 @@ namespace BussinessLogic.ViewManagers.Abstract
 
         protected virtual List<OperationModel> GetMappedOperations()
         {
+            
             using (var _unitOfWork = DIManager.UnitOfWork)
             {
                 return _unitOfWork.PersonalAccountantContext.Set<Operation>()?.AsEnumerable().Select(x => new OperationModel

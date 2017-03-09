@@ -30,15 +30,15 @@ namespace BussinessLogic.ViewManagers.Concrete
         {
             using (_unitOfWork = DIManager.UnitOfWork)
             {
-
+                int operationTypeId = Convert.ToInt32(operationTypeParam);
                 OperationCategory contextCategory = _unitOfWork.PersonalAccountantContext.Set<OperationCategory>().
-                    FirstOrDefault<OperationCategory>(x => x.Name.ToUpper() == nameParam.ToUpper() && x.OperationTypeId == Convert.ToInt32(operationTypeParam));
+                    FirstOrDefault<OperationCategory>(x => x.Name.ToUpper() == nameParam.ToUpper() && x.OperationTypeId == operationTypeId);
 
                 if (contextCategory == null)
                 {
                     int Id = 0;
                     contextCategory = Int32.TryParse(nameParam, out Id) ?
-                   _unitOfWork.PersonalAccountantContext.Set<OperationCategory>().FirstOrDefault(x => x.Id == Id && x.OperationTypeId == Convert.ToInt32(operationTypeParam)) :
+                   _unitOfWork.PersonalAccountantContext.Set<OperationCategory>().FirstOrDefault(x => x.Id == Id && x.OperationTypeId == operationTypeId) :
                    CreateNewCategory(nameParam, operationTypeParam);
                 }
 
@@ -48,15 +48,24 @@ namespace BussinessLogic.ViewManagers.Concrete
 
         private OperationCategory CreateNewCategory(string nameParam, DBModelManagers.Abstract.OperationType operationTypeParam)
         {
-
-            _unitOfWork.PersonalAccountantContext.Set<OperationCategory>().Add(new OperationCategory() { Name = nameParam, OperationTypeId = Convert.ToInt32(operationTypeParam) });
-            _unitOfWork.Save();
-            return _unitOfWork.PersonalAccountantContext.Set<OperationCategory>().FirstOrDefault<OperationCategory>(x => x.Name.ToUpper() == nameParam.ToUpper());
+            using (_unitOfWork = DIManager.UnitOfWork)
+            {
+                _unitOfWork.PersonalAccountantContext.Set<OperationCategory>().Add(new OperationCategory() { Name = nameParam, OperationTypeId = Convert.ToInt32(operationTypeParam) });
+                _unitOfWork.Save();
+                return _unitOfWork.PersonalAccountantContext.Set<OperationCategory>().FirstOrDefault<OperationCategory>(x => x.Name.ToUpper() == nameParam.ToUpper());
+            }
         }
 
         public dynamic GetAllInList(DBModelManagers.Abstract.OperationType operationType)
         {
-            return _unitOfWork.PersonalAccountantContext.Set<OperationCategory>().Where(x => x.OperationTypeId == (int)operationType).ToList();
+            using (_unitOfWork = DIManager.UnitOfWork)
+            {
+                return _unitOfWork.PersonalAccountantContext.Set<OperationCategory>().Where(x => x.OperationTypeId == (int)operationType)?.Select(x => new
+                {
+                    Id = x.Id,
+                    Name = x.Name
+                }).ToList();
+            }
         }
     }
 }

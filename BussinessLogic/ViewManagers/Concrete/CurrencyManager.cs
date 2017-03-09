@@ -34,7 +34,14 @@ namespace BussinessLogic.ViewManagers.Concrete
         {
             using (_unitOfWork = DIManager.UnitOfWork)
             {
-                return _unitOfWork.PersonalAccountantContext.Set<Currency>().ToList();
+                var a = _unitOfWork.PersonalAccountantContext.Set<Currency>().Select(x => new
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Buy_Rate = x.Buy_Rate,
+                    Sale_Rate = x.Sale_Rate
+                }).ToList();
+                return a;
             }
         }
     }

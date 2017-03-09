@@ -3,7 +3,6 @@
 function ($scope, validationService, httpService, chainOfResponsibilityService, modalService, $uibModal) {
 
         me = {};
-        $scope.test = "fasdfsdfd";
         $scope.validation = validationService;
         $scope.http = httpService;
         $scope.chainOfResponsibility = chainOfResponsibilityService;

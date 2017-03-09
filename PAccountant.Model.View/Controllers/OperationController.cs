@@ -8,15 +8,13 @@ namespace PAccountant.Model.View.Controllers
 {
     public class OperationController : Controller
     {
-        IMapperManager _mapperManager;
-        AddOperationProcessorBase<object, object> _operatorProcessor;
+        AddOperationProcessorBase _operatorProcessor;
         ISourceManager _sourceManager;
         ICurrencyManager _currencyManager;
         ICategoryManager _categoryManager;
-        public OperationController(IMapperManager mapperManager, AddOperationProcessorBase<object, object> operatorProcessorParam, ISourceManager sourceManagerParam,
+        public OperationController(AddOperationProcessorBase operatorProcessorParam, ISourceManager sourceManagerParam,
             ICurrencyManager currencyManagerParam, ICategoryManager categoryManagerParam)
         {
-            _mapperManager = mapperManager;
             _operatorProcessor = operatorProcessorParam;
             _sourceManager = sourceManagerParam;
             _currencyManager = currencyManagerParam;

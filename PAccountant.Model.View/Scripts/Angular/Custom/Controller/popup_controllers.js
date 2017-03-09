@@ -43,15 +43,16 @@ function ($scope, $uibModalInstance, items, httpService, validationService, apiU
             $scope.popUpArguments.availableSource = response.data;
             $scope.popUpArguments.source = (response.data) ? response.data[0] : null;
         });
+        $scope.http.get($scope.url.GetCurrencies).then(function (response) {
+            $scope.popUpArguments.availableCurrency = response.data;
+            $scope.popUpArguments.currency = (response.data) ? response.data[0] : null;
+        });
         $scope.http.get($scope.url.GetCategories, null, { isAddOperation: $scope.isAddOperation }).then(function (response) {
             $scope.popUpArguments.availableCategory = response.data;
             $scope.popUpArguments.category = (response.data) ? response.data[0] : null;
         });
 
-        $scope.http.get($scope.url.GetCurrencies).then(function (response) {
-            $scope.popUpArguments.availableCurrency = response.data;
-            $scope.popUpArguments.currency = (response.data) ? response.data[0] : null;
-        });
+        
     };
 
     $scope.NullifyArguments = function () {
@@ -93,7 +94,7 @@ function ($scope, $uibModalInstance, items, httpService, validationService, apiU
         postData.Date = dataParam.date;
         postData.Source = checkNewParam(dataParam.newSourceCheckBox, dataParam.source, dataParam.newSourceText);
         postData.Category = checkNewParam(dataParam.newCategoryCheckBox, dataParam.category, dataParam.newCategoryText);
-        postData.Currency = checkNewParam(dataParam.newCurrencyCheckBox, dataParam.currency, dataParam.newCurrencyText);
+        postData.Currency = checkNewParam(dataParam.newCurrencyCheckBox, dataParam.currency);
         postData.CurrencyRate = dataParam.newCurrencyRate;
 
         postData.Summ = dataParam.summ;

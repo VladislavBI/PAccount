@@ -48,7 +48,10 @@ namespace BussinessLogic.ViewManagers.Concrete.PersonalAccountant
         {
             using (_unitOfWork = DIManager.UnitOfWork)
             {
-                return _unitOfWork.PersonalAccountantContext.Set<OperationSource>().ToList();
+                return _unitOfWork.PersonalAccountantContext.Set<OperationSource>().Select(x=>new {
+                    id=x.Id,
+                    Name=x.Name
+                }).ToList();
                  
             }
         }

@@ -6,32 +6,27 @@ using System;
 
 namespace BussinessLogic.ViewManagers.Abstract
 {
-    public abstract class AddOperationProcessorBase<TAddOperation, TDBOperation>
-        where TAddOperation : class
-        where TDBOperation : class, new()
+    public abstract class AddOperationProcessorBase
     {
         protected ICategoryManager _categoryManager;
         protected ISourceManager _sourceManager;
-        protected IDBManager _dbManager;
         protected ICurrencyManager _currencyManager;
-        protected IMapperManager _mapperManager;
         protected IUnitOfWork _unitOfWork;
+        protected IDBManager _dbManager;
         public AddOperationProcessorBase(ICategoryManager categoryManagerParam, ISourceManager sourceManagerParam,
-                                ICurrencyManager currencyManagerParam, IMapperManager mapperManagerParam,
-                                IDBManager dbManagerParam)
+                                ICurrencyManager currencyManagerParam, IDBManager dbManagerParam)
         {
             _categoryManager = categoryManagerParam;
             _sourceManager = sourceManagerParam;
             _currencyManager = currencyManagerParam;
-            _mapperManager = mapperManagerParam;
             _dbManager = dbManagerParam;
         }
 
-        public abstract bool addNewOperation(TAddOperation modelParam, string userName);
+        public abstract bool addNewOperation<TObject>(TObject modelParam, string userName) where TObject : class;
 
 
-        protected abstract void GetModelsForOperationOptions(TAddOperation modelParam, DBModelManagers.Abstract.OperationType operationType,
-            out CurrencyNameIdRateClass currencyModel, out NameIdClassModel categoryModel, out NameIdClassModel sourceModel);
+        protected abstract void GetModelsForOperationOptions<TObject>( DBModelManagers.Abstract.OperationType operationType, ref TObject modelParam,
+            ref CurrencyNameIdRateClass currencyModel, ref NameIdClassModel categoryModel, ref NameIdClassModel sourceModel) where TObject: class;
 
         /// <summary>
         /// Set ids for equal properties
@@ -40,14 +35,14 @@ namespace BussinessLogic.ViewManagers.Abstract
         /// <param name="categoryModel"></param>
         /// <param name="sourceModel"></param>
         /// <param name="modelForDb"></param>
-        protected abstract void SetIdForForeignKeys(
+        protected abstract void SetIdForForeignKeys<TObject>(
             CurrencyNameIdRateClass currencyModel,
             NameIdClassModel categoryModel,
             NameIdClassModel sourceModel,
             string userName,
             IUnitOfWork unitOfWork,
             DBModelManagers.Abstract.OperationType operationType,
-            ref TDBOperation operation);
+            ref TObject operation) where TObject : class;
 
         public abstract bool AddOperationToDB<TOPerationModel>(TOPerationModel operationToAdd) where TOPerationModel : class, new();
         

@@ -1,0 +1,173 @@
+﻿<error errorId="16c7bd7c-d1a8-4437-bf1f-91e45ab2b4b3" application="/LM/W3SVC/3/ROOT" host="COMP" type="Ninject.ActivationException" message="Error activating IMapperManager&#xD;&#xA;No matching bindings are available, and the type is not self-bindable.&#xD;&#xA;Activation path:&#xD;&#xA;  3) Injection of dependency IMapperManager into parameter mapperManagerParam of constructor of type PersAccounantAddOperationProcessor&#xD;&#xA;  2) Injection of dependency AddOperationProcessorBase{object, object} into parameter operatorProcessorParam of constructor of type OperationController&#xD;&#xA;  1) Request for OperationController&#xD;&#xA;&#xD;&#xA;Suggestions:&#xD;&#xA;  1) Ensure that you have defined a binding for IMapperManager.&#xD;&#xA;  2) If the binding was defined in a module, ensure that the module has been loaded into the kernel.&#xD;&#xA;  3) Ensure you have not accidentally created more than one kernel.&#xD;&#xA;  4) If you are using constructor arguments, ensure that the parameter name matches the constructors parameter name.&#xD;&#xA;  5) If you are using automatic module loading, ensure the search path and filters are correct.&#xD;&#xA;" source="Ninject" detail="System.InvalidOperationException: An error occurred when trying to create a controller of type 'PAccountant.Model.View.Controllers.OperationController'. Make sure that the controller has a parameterless public constructor. ---&gt; Ninject.ActivationException: Error activating IMapperManager&#xD;&#xA;No matching bindings are available, and the type is not self-bindable.&#xD;&#xA;Activation path:&#xD;&#xA;  3) Injection of dependency IMapperManager into parameter mapperManagerParam of constructor of type PersAccounantAddOperationProcessor&#xD;&#xA;  2) Injection of dependency AddOperationProcessorBase{object, object} into parameter operatorProcessorParam of constructor of type OperationController&#xD;&#xA;  1) Request for OperationController&#xD;&#xA;&#xD;&#xA;Suggestions:&#xD;&#xA;  1) Ensure that you have defined a binding for IMapperManager.&#xD;&#xA;  2) If the binding was defined in a module, ensure that the module has been loaded into the kernel.&#xD;&#xA;  3) Ensure you have not accidentally created more than one kernel.&#xD;&#xA;  4) If you are using constructor arguments, ensure that the parameter name matches the constructors parameter name.&#xD;&#xA;  5) If you are using automatic module loading, ensure the search path and filters are correct.&#xD;&#xA;&#xD;&#xA;   в Ninject.KernelBase.Resolve(IRequest request)&#xD;&#xA;   в Ninject.Planning.Targets.Target`1.GetValue(Type service, IContext parent)&#xD;&#xA;   в Ninject.Planning.Targets.Target`1.ResolveWithin(IContext parent)&#xD;&#xA;   в Ninject.Activation.Providers.StandardProvider.GetValue(IContext context, ITarget target)&#xD;&#xA;   в Ninject.Activation.Providers.StandardProvider.&lt;&gt;c__DisplayClass4.&lt;Create&gt;b__2(ITarget target)&#xD;&#xA;   в System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()&#xD;&#xA;   в System.Linq.Buffer`1..ctor(IEnumerable`1 source)&#xD;&#xA;   в System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)&#xD;&#xA;   в Ninject.Activation.Providers.StandardProvider.Create(IContext context)&#xD;&#xA;   в Ninject.Activation.Context.ResolveInternal(Object scope)&#xD;&#xA;   в Ninject.Activation.Context.Resolve()&#xD;&#xA;   в Ninject.KernelBase.&lt;&gt;c__DisplayClass15.&lt;Resolve&gt;b__f(IBinding binding)&#xD;&#xA;   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()&#xD;&#xA;   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)&#xD;&#xA;   в Ninject.Planning.Targets.Target`1.GetValue(Type service, IContext parent)&#xD;&#xA;   в Ninject.Planning.Targets.Target`1.ResolveWithin(IContext parent)&#xD;&#xA;   в Ninject.Activation.Providers.StandardProvider.GetValue(IContext context, ITarget target)&#xD;&#xA;   в Ninject.Activation.Providers.StandardProvider.&lt;&gt;c__DisplayClass4.&lt;Create&gt;b__2(ITarget target)&#xD;&#xA;   в System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()&#xD;&#xA;   в System.Linq.Buffer`1..ctor(IEnumerable`1 source)&#xD;&#xA;   в System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)&#xD;&#xA;   в Ninject.Activation.Providers.StandardProvider.Create(IContext context)&#xD;&#xA;   в Ninject.Activation.Context.ResolveInternal(Object scope)&#xD;&#xA;   в Ninject.Activation.Context.Resolve()&#xD;&#xA;   в Ninject.KernelBase.&lt;&gt;c__DisplayClass15.&lt;Resolve&gt;b__f(IBinding binding)&#xD;&#xA;   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()&#xD;&#xA;   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)&#xD;&#xA;   в Ninject.Web.Mvc.NinjectDependencyResolver.GetService(Type serviceType)&#xD;&#xA;   в Castle.Proxies.Invocations.IDependencyResolver_GetService.InvokeMethodOnTarget()&#xD;&#xA;   в Castle.DynamicProxy.AbstractInvocation.Proceed()&#xD;&#xA;   в Glimpse.Core.Extensibility.CastleInvocationToAlternateMethodContextAdapter.Proceed()&#xD;&#xA;   в Glimpse.Core.Extensions.AlternateMethodContextExtensions.TryProceedWithTimer(IAlternateMethodContext context, TimerResult&amp; timerResult)&#xD;&#xA;   в Glimpse.Core.Extensibility.AlternateMethod.NewImplementation(IAlternateMethodContext context)&#xD;&#xA;   в Glimpse.Core.Extensibility.AlternateTypeToCastleInterceptorAdapter.Intercept(IInvocation invocation)&#xD;&#xA;   в Castle.DynamicProxy.AbstractInvocation.Proceed()&#xD;&#xA;   в Castle.Proxies.IDependencyResolverProxy.GetService(Type serviceType)&#xD;&#xA;   в System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)&#xD;&#xA;   --- Конец трассировки внутреннего стека исключений ---&#xD;&#xA;   в System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)&#xD;&#xA;   в System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)&#xD;&#xA;   в System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)&#xD;&#xA;   в Castle.Proxies.Invocations.IControllerFactory_CreateController.InvokeMethodOnTarget()&#xD;&#xA;   в Castle.DynamicProxy.AbstractInvocation.Proceed()&#xD;&#xA;   в Glimpse.Core.Extensibility.CastleInvocationToAlternateMethodContextAdapter.Proceed()&#xD;&#xA;   в Glimpse.Core.Extensions.AlternateMethodContextExtensions.TryProceedWithTimer(IAlternateMethodContext context, TimerResult&amp; timerResult)&#xD;&#xA;   в Glimpse.Core.Extensibility.AlternateMethod.NewImplementation(IAlternateMethodContext context)&#xD;&#xA;   в Glimpse.Core.Extensibility.AlternateTypeToCastleInterceptorAdapter.Intercept(IInvocation invocation)&#xD;&#xA;   в Castle.DynamicProxy.AbstractInvocation.Proceed()&#xD;&#xA;   в Castle.Proxies.IControllerFactoryProxy.CreateController(RequestContext requestContext, String controllerName)&#xD;&#xA;   в System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController&amp; controller, IControllerFactory&amp; factory)&#xD;&#xA;   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   в System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)&#xD;&#xA;   в System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   в System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="vlad" time="2017-03-08T18:31:23.7623147Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:*/*&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, sdch, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken=MuR7xnDYcNFN1H0z2HzOcsBzV2OH80JTyuE-6gKg2cVgFh6vucsvvGTKDfuYle-3-xpZ_OK0N8XFpk-HMA5548VNkJNgxjPv0mHVQgaMFtA1; .ASPXAUTH=009C37F0029E0FACE6C60F83A662EC193BB352DCCBFC092EE557EE0943D877A927D035AECCA05A9C11C1162123D7BA3A9082FF33286AF8D2503700E7022B364D3C7900BD0F17857FBA77A1AB0FBBB859F1AAFF097BD779464FD8EBF634A39324&#xD;&#xA;HTTP_HOST:localhost:32290&#xD;&#xA;HTTP_REFERER:http://localhost:32290/&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36&#xD;&#xA;HTTP_X_REQUESTED_WITH:XMLHttpRequest&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Accept: */*&#xD;&#xA;Accept-Encoding: gzip, deflate, sdch, br&#xD;&#xA;Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4&#xD;&#xA;Cookie: __RequestVerificationToken=MuR7xnDYcNFN1H0z2HzOcsBzV2OH80JTyuE-6gKg2cVgFh6vucsvvGTKDfuYle-3-xpZ_OK0N8XFpk-HMA5548VNkJNgxjPv0mHVQgaMFtA1; .ASPXAUTH=009C37F0029E0FACE6C60F83A662EC193BB352DCCBFC092EE557EE0943D877A927D035AECCA05A9C11C1162123D7BA3A9082FF33286AF8D2503700E7022B364D3C7900BD0F17857FBA77A1AB0FBBB859F1AAFF097BD779464FD8EBF634A39324&#xD;&#xA;Host: localhost:32290&#xD;&#xA;Referer: http://localhost:32290/&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36&#xD;&#xA;X-Requested-With: XMLHttpRequest&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/3/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="Forms" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="vlad" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="vlad" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="3" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/3" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Operation/GetCategories" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\Operation\GetCategories" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="isAddOperation=true" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="62981" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Operation/GetCategories" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="32290" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/Operation/GetCategories" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="*/*" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, sdch, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken=MuR7xnDYcNFN1H0z2HzOcsBzV2OH80JTyuE-6gKg2cVgFh6vucsvvGTKDfuYle-3-xpZ_OK0N8XFpk-HMA5548VNkJNgxjPv0mHVQgaMFtA1; .ASPXAUTH=009C37F0029E0FACE6C60F83A662EC193BB352DCCBFC092EE557EE0943D877A927D035AECCA05A9C11C1162123D7BA3A9082FF33286AF8D2503700E7022B364D3C7900BD0F17857FBA77A1AB0FBBB859F1AAFF097BD779464FD8EBF634A39324" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:32290" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:32290/" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36" />
+    </item>
+    <item name="HTTP_X_REQUESTED_WITH">
+      <value string="XMLHttpRequest" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="isAddOperation">
+      <value string="true" />
+    </item>
+  </queryString>
+  <cookies>
+    <item name="__RequestVerificationToken">
+      <value string="MuR7xnDYcNFN1H0z2HzOcsBzV2OH80JTyuE-6gKg2cVgFh6vucsvvGTKDfuYle-3-xpZ_OK0N8XFpk-HMA5548VNkJNgxjPv0mHVQgaMFtA1" />
+    </item>
+    <item name=".ASPXAUTH">
+      <value string="009C37F0029E0FACE6C60F83A662EC193BB352DCCBFC092EE557EE0943D877A927D035AECCA05A9C11C1162123D7BA3A9082FF33286AF8D2503700E7022B364D3C7900BD0F17857FBA77A1AB0FBBB859F1AAFF097BD779464FD8EBF634A39324" />
+    </item>
+  </cookies>
+</error>

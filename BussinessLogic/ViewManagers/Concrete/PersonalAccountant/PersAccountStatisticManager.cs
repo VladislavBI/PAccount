@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BussinessLogic.ViewManagers.Concrete.PersonalAccountant
 {
-    public class PersAccountStatisticManager: StatisticManagerBase
+    public class PersAccountStatisticManager : StatisticManagerBase
     {
         public override double GetTotalBalance(string generalCurrency)
         {
@@ -22,7 +22,9 @@ namespace BussinessLogic.ViewManagers.Concrete.PersonalAccountant
                 Summ = Convert.ToDouble(x.Summ)
             }).ToList();
 
-            return _rateManager.SetOneCurrencyForAllOperations(operationModelList, "usd").Sum(x => x.Summ);
+            var a = _rateManager.SetOneCurrencyForAllOperations(operationModelList, "usd");
+            var b = a.Sum(x => x.Summ);
+            return b;
         }
         public override IEnumerable<OperationsSumModel> GetCurrenciesOperationsSumm()
         {

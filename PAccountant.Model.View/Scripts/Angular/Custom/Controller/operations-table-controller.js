@@ -12,7 +12,7 @@ $("#monthOperationStatistic").jsGrid({
     height: "auto",
     width: "100%",
 
-    filtering: true,
+    filtering: false,
     editing: false,
     sorting: true,
     paging: true,

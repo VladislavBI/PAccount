@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/_StatisticsLayout.cshtml";
 }
-    <div class="table" ng-controller="statisticPersonalController as statistic" ng-init="statistic.getDetailedSourceInfo()">
+    @*<div class="table" ng-controller="statisticPersonalController as statistic" ng-init="statistic.getDetailedSourceInfo()">
         <div class="row" ng-repeat="sourceInfo in statistic.sourceInfoList">
             <div class="col-lg-1">
                 {{index}}
@@ -16,4 +16,33 @@
                 {{sourceInfo.Summ}}
             </div>
         </div>
+    </div>*@
+<div class="row" ng-controller="chartController as chart" ng-init="chart.initPersonalChart();">
+    <div class="col-lg-4">
+        <div id="piechart_3d" style="height: 500px;">
+
+        </div>
     </div>
+    <div class="col-lg-8">
+            <div id="barchart_month" style="height: 500px;">
+
+            </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4">
+            <div id="barchart_s" style="height: 500px;">
+
+            </div>
+    </div>
+    <div class="col-lg-4">
+            <div id="barchart_c" style="height: 500px;">
+
+            </div>
+    </div>
+    <div class="col-lg-4">
+            <div id="barchart_cr" style="height: 500px;">
+
+            </div>
+    </div>
+</div>

@@ -1,4 +1,5 @@
-﻿using BussinessLogic.Model;
+﻿using BussinessLogic.DBModelManagers.Abstract;
+using BussinessLogic.Model;
 using BussinessLogic.ViewManagers.Abstract;
 using BussinessLogic.ViewManagers.Concrete;
 using BussinessLogic.ViewManagers.Concrete.PersonalAccountant;
@@ -38,12 +39,13 @@ namespace PAccountant.Model.View.Util
         {
             kernel.Bind<IUnitOfWork>().To<EFUnitOfWork>();
             kernel.Bind<IMapperHelper>().To<AutoMapperManager>();
-            kernel.Bind(typeof(AddOperationProcessorBase<object, object>)).To<PersAccounantAddOperationProcessor>();
+            kernel.Bind(typeof(AddOperationProcessorBase)).To<PersAccounantAddOperationProcessor>();
             kernel.Bind<ISourceManager>().To<PersAccountSourceManager>();
             kernel.Bind<ICategoryManager>().To<PersAccountCategoryManager>();
             kernel.Bind<ICurrencyManager>().To<CurrencyManager>();
             kernel.Bind<ExtremumsManagerBase>().To<PersAccountExtremumsManager>();
-            kernel.Bind<StatisticManagerBase>().To<PersAccountStatisticManager>(); 
+            kernel.Bind<StatisticManagerBase>().To<PersAccountStatisticManager>();
+            kernel.Bind(typeof(IDBManager)).To<EFDBManager>();  
         }
     }
 }

@@ -64,6 +64,12 @@ namespace PAccountant.Model.View
 
             bundles.Add(new StyleBundle("~/Content/jsgridCss")
                 .IncludeDirectory("~/Content/JSGrid", "*.css", true));
+
+            bundles.Add(new ScriptBundle("~/bundles/googleCharts").Include(
+                "~/Scripts/Angular/Custom/Controller/chart-controller.js",
+                "~/Scripts/Angular/Custom/Factory/line-chart-factory.js",
+                "~/Scripts/Angular/Custom/Factory/bar-chart-factory.js",
+                "~/Scripts/Angular/Custom/Factory/pie-chart-factory.js"));
         }
     }
 }

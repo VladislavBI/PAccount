@@ -1,24 +1,23 @@
-﻿<div class="table" ng-controller="statisticPersonalController as statistic">
+﻿<div class="table" ng-controller="statisticPersonalController as statistic" style="font-size:22px">
     <div ng-init="statistic.init()">
         <div class="row">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4"></div>
+        <img heigth="500"/>
         </div>
         <div class="row">
-            <div class="col-sm-4">Overall balance:</div>
-            <div class="col-sm-4" ng-bind="statistic.total"></div>
-            <div class="col-sm-4"></div>
+            Overall balance: <span ng-bind="statistic.total"></span>
         </div>
         <div class="row">
-            <ol>
-                <li ng-repeat="operation in statistic.currenciesOperations">
-                    {{operation.Name}}:{{operation.Sum}}
-                </li>
-            </ol>
+                <ul class="list-group">
+                    <li ng-repeat="operation in statistic.currenciesOperations" class="list-group-item">
+                        {{operation.Name}}:{{operation.Sum}}
+                    </li>
+                </ul>
         </div>
-        <div class="row">
-            <button ng-click="statistic.redirectToDetailedSourceInfo()">Detailed info</button>
+        <div class="row" style="align-content:center">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-9">
+                <button ng-click="statistic.redirectToDetailedSourceInfo()" class="btn btn-success">Detailed info</button>
+            </div>
         </div>
     </div>
 </div>
