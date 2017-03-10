@@ -10,6 +10,8 @@ using PAccountant.Model.Infrastructure.Abstract;
 using PAccountant.BussinessLogic.StaticClasses;
 using PAccountant.DataLayer.Entity;
 using PAccountant.BussinessLogic.Infrastructure.Abstract;
+using RateScriptorLibrary;
+using RateScriptorLibrary.ProgrammModel;
 
 namespace BussinessLogic.ViewManagers.Concrete
 {
@@ -17,9 +19,11 @@ namespace BussinessLogic.ViewManagers.Concrete
     {
         IUnitOfWork _unitOfWork;
         IMapperHelper _mapperManager;
+        RateScriptor _scriptor;
         public PersAccountCategoryManager(IMapperHelper mapperManagerParam)
         {
             _mapperManager = mapperManagerParam;
+            _scriptor = new RateScriptor();
         }
         public NameIdClassModel GetCategoryWithCurrentName(string nameParam)
         {
@@ -65,6 +69,31 @@ namespace BussinessLogic.ViewManagers.Concrete
                     Id = x.Id,
                     Name = x.Name
                 }).ToList();
+            }
+        }
+
+        public List<TotalFlowWithDateModel> GetMonthFlow()
+        {
+            using (_unitOfWork = DIManager.UnitOfWork)
+            {
+                var financeOperationModel = _unitOfWork.PersonalAccountantContext.Set<Operation>().Select(x => new FinanceOperationModel
+                {
+                    OperationId = x.OperationCategory.Name,
+                    CurrencyName = x.Currency.Name,
+                    SummDecimal = x.OperationTypeId == 1 ? x.Summ : -1 * x.Summ
+                }).ToList();
+                var on = _scriptor.SetOneCurrencyForAllOperations(financeOperationModel, "USD").Select(x => new TotalFlowWithDateModel
+                {
+                    IdentifyData = x.OperationId,
+                    IncomeSum = x.Summ > 0 ? x.SummDecimal : 0,
+                    OutcomeSum = x.Summ < 0 ? x.SummDecimal : 0
+                }).GroupBy(x => x.IdentifyData).Select(y => new TotalFlowWithDateModel
+                {
+                    IdentifyData = y.Key,
+                    IncomeSum = y.Sum(z => z.IncomeSum),
+                    OutcomeSum = y.Sum(z => z.OutcomeSum) * -1
+                }).Where(x => x.IncomeSum > 0 || x.OutcomeSum > 0).ToList();
+                return on;
             }
         }
     }

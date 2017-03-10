@@ -66,6 +66,7 @@
     <Compile Include="DBModelManagers\Abstract\ISourcesDBManager.cs" />
     <Compile Include="Helpers\Concrete\ResponseHelper.cs" />
     <Compile Include="Model\AddOperationModel.cs" />
+    <Compile Include="Model\TotalFlowModel.cs" />
     <Compile Include="StaticClasses\ReflectionManager.cs" />
     <Compile Include="StaticClasses\ValidationManager.cs" />
     <Compile Include="Model\ExtremumsModels.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="ViewManagers\Abstract\ICategoryManager.cs" />
     <Compile Include="ViewManagers\Abstract\ICurrencyManager.cs" />
     <Compile Include="LogicManagers\IListGetter.cs" />
+    <Compile Include="ViewManagers\Abstract\IOperationManager.cs" />
     <Compile Include="ViewManagers\Abstract\ISourceManager.cs" />
     <Compile Include="ViewManagers\Abstract\IUserManager.cs" />
     <Compile Include="ViewManagers\Concrete\CurrencyManager.cs" />
@@ -87,6 +89,7 @@
     <Compile Include="Helpers\Abstract\IMapperHelper.cs" />
     <Compile Include="Helpers\Concrete\AutoMapperHelper.cs" />
     <Compile Include="Model\OperationsSumModel.cs" />
+    <Compile Include="ViewManagers\Concrete\PersonalAccountant\OperationManager.cs" />
     <Compile Include="ViewManagers\Concrete\PersonalAccountant\PersAccountExtremumsManager.cs" />
     <Compile Include="ViewManagers\Concrete\PersonalAccountant\PersAccountSourceManager.cs" />
     <Compile Include="ViewManagers\Abstract\StatisticManagerBase.cs" />

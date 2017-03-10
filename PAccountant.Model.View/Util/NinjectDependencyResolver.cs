@@ -45,6 +45,7 @@ namespace PAccountant.Model.View.Util
             kernel.Bind<ICurrencyManager>().To<CurrencyManager>();
             kernel.Bind<ExtremumsManagerBase>().To<PersAccountExtremumsManager>();
             kernel.Bind<StatisticManagerBase>().To<PersAccountStatisticManager>();
+            kernel.Bind<IOperationManager>().To<OperationManager>();
             kernel.Bind(typeof(IDBManager)).To<EFDBManager>();  
         }
     }

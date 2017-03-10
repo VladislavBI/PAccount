@@ -44,6 +44,7 @@ namespace PAccountant.Model.View
                         "~/Scripts/Angular/Custom/Service/http-service.js",
                         "~/Scripts/Angular/Custom/Service/modal_service.js",
                         "~/Scripts/Angular/Custom/Service/validator-service.js",
+                        "~/Scripts/Angular/Custom/Service/converter-service.js",
                         "~/Scripts/Angular/Custom/Controller/accountant-main-controller.js",
                         "~/Scripts/Angular/Custom/Controller/popup_controllers.js",
                         "~/Scripts/Angular/Custom/Controller/statistic-personal-controller.js",

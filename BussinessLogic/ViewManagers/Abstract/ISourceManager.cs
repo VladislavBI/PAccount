@@ -12,5 +12,6 @@ namespace BussinessLogic.ViewManagers.Abstract
     {
         NameIdClassModel GetCategoryWithCurrentName(string nameParam);
         OperationSource CreateNewInstance(string nameParam);
+        List<TotalFlowWithDateModel> GetMonthFlow();
     }
 }

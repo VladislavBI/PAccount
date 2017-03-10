@@ -12,13 +12,16 @@ namespace PAccountant.Model.View.Controllers
         ISourceManager _sourceManager;
         ICurrencyManager _currencyManager;
         ICategoryManager _categoryManager;
+        IOperationManager _operationManager;
+
         public OperationController(AddOperationProcessorBase operatorProcessorParam, ISourceManager sourceManagerParam,
-            ICurrencyManager currencyManagerParam, ICategoryManager categoryManagerParam)
+            ICurrencyManager currencyManagerParam, ICategoryManager categoryManagerParam, IOperationManager operationManagerParam)
         {
             _operatorProcessor = operatorProcessorParam;
             _sourceManager = sourceManagerParam;
             _currencyManager = currencyManagerParam;
             _categoryManager = categoryManagerParam;
+            _operationManager = operationManagerParam;
         }
 
         // GET: Accountant
@@ -46,6 +49,16 @@ namespace PAccountant.Model.View.Controllers
             return Json(categoriesList, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult GetMonthTotalFlow()
+        {
+            var totalFlowList = _operationManager.GetMonthTotalFlow();
+            return Json(totalFlowList, JsonRequestBehavior.AllowGet);
+        }
 
+        public JsonResult GetToTalFlowByMonth()
+        {
+            var totalFlowList = _operationManager.GetToTalFlowByMonth();
+            return Json(totalFlowList, JsonRequestBehavior.AllowGet);
+        }
     }
 }

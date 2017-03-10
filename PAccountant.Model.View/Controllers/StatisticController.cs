@@ -12,10 +12,17 @@ namespace PAccountant.Model.View.Controllers
     {
         StatisticManagerBase _statisticManager;
         ExtremumsManagerBase _managerEx;
-        public StatisticController(StatisticManagerBase statisticManagerParam, ExtremumsManagerBase managerExParam)
+        ISourceManager _sourceManager;
+        ICategoryManager _categoryManager;
+        ICurrencyManager _currencyManager;
+        public StatisticController(StatisticManagerBase statisticManagerParam, ExtremumsManagerBase managerExParam,
+            ISourceManager sourceManagerParam, ICategoryManager categoryManagerParam, ICurrencyManager currencyManagerParam)
         {
             _statisticManager = statisticManagerParam;
             _managerEx = managerExParam;
+            _sourceManager = sourceManagerParam;
+            _categoryManager = categoryManagerParam;
+            _currencyManager = currencyManagerParam;
         }
 
         public JsonResult GetOperationsSumm()
@@ -54,6 +61,19 @@ namespace PAccountant.Model.View.Controllers
             extremumsList.ExtremumsList.Add(_managerEx.GetMaxProfitableCurrency());
             extremumsList.ExtremumsList.Add(_managerEx.GetMaxProfitableSource());
             return Json(extremumsList, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetMonthCategoriesFlow()
+        {
+            return Json(_categoryManager.GetMonthFlow(), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetMonthSourceFlow()
+        {
+            return Json(_sourceManager.GetMonthFlow(), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetMonthCurrenciesFlow()
+        {
+            return Json(_currencyManager.GetMonthFlow(), JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace BussinessLogic.ViewManagers.Concrete.PersonalAccountant
 {
+    //HACK: extremums names not got
     public class PersAccountExtremumsManager : ExtremumsManagerBase
     {
         public override ExtremumModel GetMaxOutcome()

@@ -11,6 +11,11 @@
     me.getDetailedSourceInfo = '/Statistic/GetDetailedSourceInfo';
     me.detailedSourceInfo = '/Statistic/DetailedSourceInfo';
     me.getExtremums = '/Statistic/GetMonthExtremums';
+    me.getMonthTotalFlow = '/Operation/GetMonthTotalFlow';
+    me.getToTalFlowByMonth = '/Operation/GetToTalFlowByMonth';
+    me.getMonthCategoriesFlow = '/Statistic/GetMonthCategoriesFlow';
+    me.getMonthSourceFlow = '/Statistic/GetMonthSourceFlow';
+    me.getMonthCurrenciesFlow = '/Statistic/GetMonthCurrenciesFlow';
 
     return me;
 }]);

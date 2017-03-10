@@ -232,6 +232,7 @@
     <Content Include="Scripts\Angular\Custom\Factory\pie-chart-factory.js" />
     <Content Include="Scripts\Angular\Custom\Factory\table-factory.js" />
     <Content Include="Scripts\Angular\Custom\Service\chain-of-responsibility-service.js" />
+    <Content Include="Scripts\Angular\Custom\Service\converter-service.js" />
     <Content Include="Scripts\Angular\Custom\Service\http-service.js" />
     <Content Include="Scripts\Angular\Custom\Service\modal_service.js" />
     <Content Include="Scripts\Angular\Custom\Service\site-mode-service.js" />
