@@ -1,7 +1,9 @@
 ﻿using BussinessLogic.DBModelManagers.Abstract;
 using BussinessLogic.Model;
 using BussinessLogic.ViewManagers.Abstract;
+using BussinessLogic.ViewManagers.Abstract.Debts;
 using BussinessLogic.ViewManagers.Concrete;
+using BussinessLogic.ViewManagers.Concrete.Debts;
 using BussinessLogic.ViewManagers.Concrete.PersonalAccountant;
 using Ninject;
 using PAccountant.BussinessLogic.Infrastructure.Abstract;
@@ -46,7 +48,11 @@ namespace PAccountant.Model.View.Util
             kernel.Bind<ExtremumsManagerBase>().To<PersAccountExtremumsManager>();
             kernel.Bind<StatisticManagerBase>().To<PersAccountStatisticManager>();
             kernel.Bind<IOperationManager>().To<OperationManager>();
-            kernel.Bind(typeof(IDBManager)).To<EFDBManager>();  
+            kernel.Bind(typeof(IDBManager)).To<EFDBManager>();
+
+
+            kernel.Bind(typeof(IAgentsManager)).To<AgentsManager>();
+
         }
     }
 }

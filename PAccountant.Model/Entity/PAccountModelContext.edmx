@@ -4,176 +4,299 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="PAccountantModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="PAccountantModelStoreContainer">
-    <EntitySet Name="Operations" EntityType="PAccountantModel.Store.Operations" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="OperationCategories" EntityType="PAccountantModel.Store.OperationCategories" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="OperationSources" EntityType="PAccountantModel.Store.OperationSources" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="OperationTypes" EntityType="PAccountantModel.Store.OperationTypes" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="sysdiagrams" EntityType="PAccountantModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Users" EntityType="PAccountantModel.Store.Users" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Currencies" EntityType="PAccountantModel.Store.Currencies" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="FK_Operation_OperationCategory" Association="PAccountantModel.Store.FK_Operation_OperationCategory">
-      <End Role="OperationCategory" EntitySet="OperationCategories" />
-      <End Role="Operation" EntitySet="Operations" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Operation_OperationSource" Association="PAccountantModel.Store.FK_Operation_OperationSource">
-      <End Role="OperationSource" EntitySet="OperationSources" />
-      <End Role="Operation" EntitySet="Operations" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Operation_OperationType" Association="PAccountantModel.Store.FK_Operation_OperationType">
-      <End Role="OperationType" EntitySet="OperationTypes" />
-      <End Role="Operation" EntitySet="Operations" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Operation_User" Association="PAccountantModel.Store.FK_Operation_User">
-      <End Role="User" EntitySet="Users" />
-      <End Role="Operation" EntitySet="Operations" />
-    </AssociationSet>
-    <AssociationSet Name="FK_OperationCategory_OperationType" Association="PAccountantModel.Store.FK_OperationCategory_OperationType">
-      <End Role="OperationType" EntitySet="OperationTypes" />
-      <End Role="OperationCategory" EntitySet="OperationCategories" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Operation_Currency" Association="PAccountantModel.Store.FK_Operation_Currency">
-      <End Role="Currency" EntitySet="Currencies" />
-      <End Role="Operation" EntitySet="Operations" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="Operations">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Date" Type="datetime" Nullable="false" />
-    <Property Name="Summ" Type="decimal" Nullable="false" Precision="19" Scale="4" />
-    <Property Name="Commentary" Type="varchar(max)" Nullable="true" />
-    <Property Name="UserId" Type="int" Nullable="false" />
-    <Property Name="SourceId" Type="int" Nullable="false" />
-    <Property Name="CategoryId" Type="int" Nullable="false" />
-    <Property Name="CurrencyId" Type="int" Nullable="false" />
-    <Property Name="OperationTypeId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="OperationCategories">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
-    <Property Name="OperationTypeId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="OperationSources">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="OperationTypes">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" Nullable="true" />
-    <Property Name="definition" Type="varbinary(max)" Nullable="true" />
-  </EntityType>
-  <EntityType Name="Users">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
-    <Property Name="Password" Type="varbinary" Nullable="false" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="Currencies">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Sale_Rate" Type="float" Nullable="false" />
-    <Property Name="Buy_Rate" Type="float" Nullable="false" />
-  </EntityType>
-  <Association Name="FK_Operation_OperationCategory">
-    <End Role="OperationCategory" Type="PAccountantModel.Store.OperationCategories" Multiplicity="1" />
-    <End Role="Operation" Type="PAccountantModel.Store.Operations" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="OperationCategory">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Operation">
-        <PropertyRef Name="CategoryId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Operation_OperationSource">
-    <End Role="OperationSource" Type="PAccountantModel.Store.OperationSources" Multiplicity="1" />
-    <End Role="Operation" Type="PAccountantModel.Store.Operations" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="OperationSource">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Operation">
-        <PropertyRef Name="SourceId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Operation_OperationType">
-    <End Role="OperationType" Type="PAccountantModel.Store.OperationTypes" Multiplicity="1" />
-    <End Role="Operation" Type="PAccountantModel.Store.Operations" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="OperationType">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Operation">
-        <PropertyRef Name="OperationTypeId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Operation_User">
-    <End Role="User" Type="PAccountantModel.Store.Users" Multiplicity="1" />
-    <End Role="Operation" Type="PAccountantModel.Store.Operations" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Operation">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_OperationCategory_OperationType">
-    <End Role="OperationType" Type="PAccountantModel.Store.OperationTypes" Multiplicity="1" />
-    <End Role="OperationCategory" Type="PAccountantModel.Store.OperationCategories" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="OperationType">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="OperationCategory">
-        <PropertyRef Name="OperationTypeId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Operation_Currency">
-    <End Role="Currency" Type="PAccountantModel.Store.Currencies" Multiplicity="1" />
-    <End Role="Operation" Type="PAccountantModel.Store.Operations" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Currency">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Operation">
-        <PropertyRef Name="CurrencyId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
+    <Schema Namespace="PAccountantModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Currencies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Sale_Rate" Type="float" Nullable="false" />
+          <Property Name="Buy_Rate" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="debt_DebtAgent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="debt_DebtOperations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AgentId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="DebtTypeId" Type="int" Nullable="false" />
+          <Property Name="StartSum" Type="float" Nullable="false" />
+          <Property Name="RewardSum" Type="float" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" Nullable="false" />
+          <Property Name="CurrencyId" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="varchar(max)" />
+          <Property Name="IsInProgress" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="debt_DebtType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="debt_Transactions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DebtOperationId" Type="int" Nullable="false" />
+          <Property Name="Sum" Type="float" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OperationCategories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OperationTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Operations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Summ" Type="decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Commentary" Type="varchar(max)" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="SourceId" Type="int" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="CurrencyId" Type="int" Nullable="false" />
+          <Property Name="OperationTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OperationSources">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OperationTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varbinary" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_debt_DebtOperations_Currencies">
+          <End Role="Currencies" Type="Self.Currencies" Multiplicity="1" />
+          <End Role="debt_DebtOperations" Type="Self.debt_DebtOperations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currencies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="debt_DebtOperations">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_debt_DebtOperations_debt_DebtAgent">
+          <End Role="debt_DebtAgent" Type="Self.debt_DebtAgent" Multiplicity="1" />
+          <End Role="debt_DebtOperations" Type="Self.debt_DebtOperations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="debt_DebtAgent">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="debt_DebtOperations">
+              <PropertyRef Name="AgentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_debt_DebtOperations_debt_DebtType">
+          <End Role="debt_DebtType" Type="Self.debt_DebtType" Multiplicity="1" />
+          <End Role="debt_DebtOperations" Type="Self.debt_DebtOperations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="debt_DebtType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="debt_DebtOperations">
+              <PropertyRef Name="DebtTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_debt_DebtOperations_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="debt_DebtOperations" Type="Self.debt_DebtOperations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="debt_DebtOperations">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_debt_Transactions_debt_DebtOperations">
+          <End Role="debt_DebtOperations" Type="Self.debt_DebtOperations" Multiplicity="1" />
+          <End Role="debt_Transactions" Type="Self.debt_Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="debt_DebtOperations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="debt_Transactions">
+              <PropertyRef Name="DebtOperationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operation_Currency">
+          <End Role="Currencies" Type="Self.Currencies" Multiplicity="1" />
+          <End Role="Operations" Type="Self.Operations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currencies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Operations">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operation_OperationCategory">
+          <End Role="OperationCategories" Type="Self.OperationCategories" Multiplicity="1" />
+          <End Role="Operations" Type="Self.Operations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Operations">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operation_OperationSource">
+          <End Role="OperationSources" Type="Self.OperationSources" Multiplicity="1" />
+          <End Role="Operations" Type="Self.Operations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationSources">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Operations">
+              <PropertyRef Name="SourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operation_OperationType">
+          <End Role="OperationTypes" Type="Self.OperationTypes" Multiplicity="1" />
+          <End Role="Operations" Type="Self.Operations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Operations">
+              <PropertyRef Name="OperationTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operation_User">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Operations" Type="Self.Operations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Operations">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperationCategory_OperationType">
+          <End Role="OperationTypes" Type="Self.OperationTypes" Multiplicity="1" />
+          <End Role="OperationCategories" Type="Self.OperationCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OperationCategories">
+              <PropertyRef Name="OperationTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PAccountantModelStoreContainer">
+          <EntitySet Name="Currencies" EntityType="Self.Currencies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="debt_DebtAgent" EntityType="Self.debt_DebtAgent" Schema="dbo" Table="debt.DebtAgent" store:Type="Tables" />
+          <EntitySet Name="debt_DebtOperations" EntityType="Self.debt_DebtOperations" Schema="dbo" Table="debt.DebtOperations" store:Type="Tables" />
+          <EntitySet Name="debt_DebtType" EntityType="Self.debt_DebtType" Schema="dbo" Table="debt.DebtType" store:Type="Tables" />
+          <EntitySet Name="debt_Transactions" EntityType="Self.debt_Transactions" Schema="dbo" Table="debt.Transactions" store:Type="Tables" />
+          <EntitySet Name="OperationCategories" EntityType="Self.OperationCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Operations" EntityType="Self.Operations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OperationSources" EntityType="Self.OperationSources" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OperationTypes" EntityType="Self.OperationTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_debt_DebtOperations_Currencies" Association="Self.FK_debt_DebtOperations_Currencies">
+            <End Role="Currencies" EntitySet="Currencies" />
+            <End Role="debt_DebtOperations" EntitySet="debt_DebtOperations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_debt_DebtOperations_debt_DebtAgent" Association="Self.FK_debt_DebtOperations_debt_DebtAgent">
+            <End Role="debt_DebtAgent" EntitySet="debt_DebtAgent" />
+            <End Role="debt_DebtOperations" EntitySet="debt_DebtOperations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_debt_DebtOperations_debt_DebtType" Association="Self.FK_debt_DebtOperations_debt_DebtType">
+            <End Role="debt_DebtType" EntitySet="debt_DebtType" />
+            <End Role="debt_DebtOperations" EntitySet="debt_DebtOperations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_debt_DebtOperations_Users" Association="Self.FK_debt_DebtOperations_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="debt_DebtOperations" EntitySet="debt_DebtOperations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_debt_Transactions_debt_DebtOperations" Association="Self.FK_debt_Transactions_debt_DebtOperations">
+            <End Role="debt_DebtOperations" EntitySet="debt_DebtOperations" />
+            <End Role="debt_Transactions" EntitySet="debt_Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operation_Currency" Association="Self.FK_Operation_Currency">
+            <End Role="Currencies" EntitySet="Currencies" />
+            <End Role="Operations" EntitySet="Operations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operation_OperationCategory" Association="Self.FK_Operation_OperationCategory">
+            <End Role="OperationCategories" EntitySet="OperationCategories" />
+            <End Role="Operations" EntitySet="Operations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operation_OperationSource" Association="Self.FK_Operation_OperationSource">
+            <End Role="OperationSources" EntitySet="OperationSources" />
+            <End Role="Operations" EntitySet="Operations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operation_OperationType" Association="Self.FK_Operation_OperationType">
+            <End Role="OperationTypes" EntitySet="OperationTypes" />
+            <End Role="Operations" EntitySet="Operations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operation_User" Association="Self.FK_Operation_User">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Operations" EntitySet="Operations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperationCategory_OperationType" Association="Self.FK_OperationCategory_OperationType">
+            <End Role="OperationTypes" EntitySet="OperationTypes" />
+            <End Role="OperationCategories" EntitySet="OperationCategories" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PAccountantModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -182,7 +305,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Summ" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="Commentary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
@@ -241,6 +364,7 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="Binary" MaxLength="50" FixedLength="false" Nullable="false" />
           <NavigationProperty Name="Operations" Relationship="Self.FK_Operation_User" FromRole="User" ToRole="Operation" />
+          <NavigationProperty Name="debt_DebtOperations" Relationship="PAccountantModel.FK_debt_DebtOperations_Users" FromRole="User" ToRole="debt_DebtOperations" />
         </EntityType>
         <Association Name="FK_Operation_OperationCategory">
           <End Role="OperationCategory" Type="Self.OperationCategory" Multiplicity="1" />
@@ -334,7 +458,31 @@
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Operation" EntitySet="Operations" />
           </AssociationSet>
-        </EntityContainer>
+          <EntitySet Name="debt_DebtAgent" EntityType="PAccountantModel.debt_DebtAgent" />
+          <EntitySet Name="debt_Transactions" EntityType="PAccountantModel.debt_Transactions" />
+          <EntitySet Name="debt_DebtOperations" EntityType="PAccountantModel.debt_DebtOperations" />
+          <EntitySet Name="debt_DebtType" EntityType="PAccountantModel.debt_DebtType" />
+          <AssociationSet Name="FK_debt_DebtOperations_Currencies" Association="PAccountantModel.FK_debt_DebtOperations_Currencies">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="debt_DebtOperations" EntitySet="debt_DebtOperations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_debt_DebtOperations_debt_DebtAgent" Association="PAccountantModel.FK_debt_DebtOperations_debt_DebtAgent">
+            <End Role="debt_DebtAgent" EntitySet="debt_DebtAgent" />
+            <End Role="debt_DebtOperations" EntitySet="debt_DebtOperations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_debt_DebtOperations_debt_DebtType" Association="PAccountantModel.FK_debt_DebtOperations_debt_DebtType">
+            <End Role="debt_DebtType" EntitySet="debt_DebtType" />
+            <End Role="debt_DebtOperations" EntitySet="debt_DebtOperations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_debt_DebtOperations_Users" Association="PAccountantModel.FK_debt_DebtOperations_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="debt_DebtOperations" EntitySet="debt_DebtOperations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_debt_Transactions_debt_DebtOperations" Association="PAccountantModel.FK_debt_Transactions_debt_DebtOperations">
+            <End Role="debt_DebtOperations" EntitySet="debt_DebtOperations" />
+            <End Role="debt_Transactions" EntitySet="debt_Transactions" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="Currency">
           <Key>
             <PropertyRef Name="Id" />
@@ -344,6 +492,7 @@
           <Property Name="Sale_Rate" Type="Double" Nullable="false" />
           <Property Name="Buy_Rate" Type="Double" Nullable="false" />
           <NavigationProperty Name="Operations" Relationship="PAccountantModel.FK_Operation_Currency" FromRole="Currency" ToRole="Operation" />
+          <NavigationProperty Name="debt_DebtOperations" Relationship="PAccountantModel.FK_debt_DebtOperations_Currencies" FromRole="Currency" ToRole="debt_DebtOperations" />
         </EntityType>
         <Association Name="FK_Operation_Currency">
           <End Type="PAccountantModel.Currency" Role="Currency" Multiplicity="1" />
@@ -357,7 +506,114 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <EntityType Name="debt_DebtAgent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="debt_DebtOperations" Relationship="PAccountantModel.FK_debt_DebtOperations_debt_DebtAgent" FromRole="debt_DebtAgent" ToRole="debt_DebtOperations" />
+        </EntityType>
+        <EntityType Name="debt_Transactions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="DebtOperationId" Type="Int32" Nullable="false" />
+          <Property Name="Sum" Type="Double" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="debt_DebtOperations" Relationship="PAccountantModel.FK_debt_Transactions_debt_DebtOperations" FromRole="debt_Transactions" ToRole="debt_DebtOperations" />
+        </EntityType>
+        <EntityType Name="debt_DebtOperations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AgentId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="DebtTypeId" Type="Int32" Nullable="false" />
+          <Property Name="StartSum" Type="Double" Nullable="false" />
+          <Property Name="RewardSum" Type="Double" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CurrencyId" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Currency" Relationship="PAccountantModel.FK_debt_DebtOperations_Currencies" FromRole="debt_DebtOperations" ToRole="Currency" />
+          <NavigationProperty Name="debt_DebtAgent" Relationship="PAccountantModel.FK_debt_DebtOperations_debt_DebtAgent" FromRole="debt_DebtOperations" ToRole="debt_DebtAgent" />
+          <NavigationProperty Name="debt_DebtType" Relationship="PAccountantModel.FK_debt_DebtOperations_debt_DebtType" FromRole="debt_DebtOperations" ToRole="debt_DebtType" />
+          <NavigationProperty Name="User" Relationship="PAccountantModel.FK_debt_DebtOperations_Users" FromRole="debt_DebtOperations" ToRole="User" />
+          <NavigationProperty Name="debt_Transactions" Relationship="PAccountantModel.FK_debt_Transactions_debt_DebtOperations" FromRole="debt_DebtOperations" ToRole="debt_Transactions" />
+          <Property Name="IsInProgress" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="debt_DebtType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="debt_DebtOperations" Relationship="PAccountantModel.FK_debt_DebtOperations_debt_DebtType" FromRole="debt_DebtType" ToRole="debt_DebtOperations" />
+        </EntityType>
+        <Association Name="FK_debt_DebtOperations_Currencies">
+          <End Type="PAccountantModel.Currency" Role="Currency" Multiplicity="1" />
+          <End Type="PAccountantModel.debt_DebtOperations" Role="debt_DebtOperations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="debt_DebtOperations">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_debt_DebtOperations_debt_DebtAgent">
+          <End Type="PAccountantModel.debt_DebtAgent" Role="debt_DebtAgent" Multiplicity="1" />
+          <End Type="PAccountantModel.debt_DebtOperations" Role="debt_DebtOperations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="debt_DebtAgent">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="debt_DebtOperations">
+              <PropertyRef Name="AgentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_debt_DebtOperations_debt_DebtType">
+          <End Type="PAccountantModel.debt_DebtType" Role="debt_DebtType" Multiplicity="1" />
+          <End Type="PAccountantModel.debt_DebtOperations" Role="debt_DebtOperations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="debt_DebtType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="debt_DebtOperations">
+              <PropertyRef Name="DebtTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_debt_DebtOperations_Users">
+          <End Type="PAccountantModel.User" Role="User" Multiplicity="1" />
+          <End Type="PAccountantModel.debt_DebtOperations" Role="debt_DebtOperations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="debt_DebtOperations">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_debt_Transactions_debt_DebtOperations">
+          <End Type="PAccountantModel.debt_DebtOperations" Role="debt_DebtOperations" Multiplicity="1" />
+          <End Type="PAccountantModel.debt_Transactions" Role="debt_Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="debt_DebtOperations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="debt_Transactions">
+              <PropertyRef Name="DebtOperationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -433,6 +689,49 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+          <EntitySetMapping Name="debt_DebtAgent">
+            <EntityTypeMapping TypeName="PAccountantModel.debt_DebtAgent">
+              <MappingFragment StoreEntitySet="debt_DebtAgent">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="debt_Transactions">
+            <EntityTypeMapping TypeName="PAccountantModel.debt_Transactions">
+              <MappingFragment StoreEntitySet="debt_Transactions">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Sum" ColumnName="Sum" />
+                <ScalarProperty Name="DebtOperationId" ColumnName="DebtOperationId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="debt_DebtOperations">
+            <EntityTypeMapping TypeName="PAccountantModel.debt_DebtOperations">
+              <MappingFragment StoreEntitySet="debt_DebtOperations">
+                <ScalarProperty Name="IsInProgress" ColumnName="IsInProgress" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="RewardSum" ColumnName="RewardSum" />
+                <ScalarProperty Name="StartSum" ColumnName="StartSum" />
+                <ScalarProperty Name="DebtTypeId" ColumnName="DebtTypeId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="debt_DebtType">
+            <EntityTypeMapping TypeName="PAccountantModel.debt_DebtType">
+              <MappingFragment StoreEntitySet="debt_DebtType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

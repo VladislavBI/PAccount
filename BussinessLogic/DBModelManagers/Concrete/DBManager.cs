@@ -22,20 +22,6 @@ namespace BussinessLogic.DBModelManagers.Abstract
             _mapperManager = DIManager.MapperHelper;
         }
 
-        public void CreateEntityFromModelForInvestment<TModel, TEntity>(TModel modelParam) where TEntity : class, new()
-        {
-            TEntity newEntity = _mapperManager.MapModel<TModel, TEntity>(modelParam);
-            if (newEntity != null)
-            {
-                using (_unitOfWork = DIManager.UnitOfWork)
-                {
-                    _unitOfWork.InvestmentContext.Set<TEntity>().Add(newEntity);
-                    _unitOfWork.Save();
-                }
-            }
-        }
-
-
 
 
         /// <summary>

@@ -18,6 +18,7 @@ namespace PAccountant.DataLayer.Entity
         public Currency()
         {
             this.Operations = new HashSet<Operation>();
+            this.debt_DebtOperations = new HashSet<debt_DebtOperations>();
         }
     
         public int Id { get; set; }
@@ -27,5 +28,7 @@ namespace PAccountant.DataLayer.Entity
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Operation> Operations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<debt_DebtOperations> debt_DebtOperations { get; set; }
     }
 }

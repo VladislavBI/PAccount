@@ -54,6 +54,18 @@
     <Compile Include="Entity\Currency.cs">
       <DependentUpon>PAccountModelContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\debt_DebtAgent.cs">
+      <DependentUpon>PAccountModelContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\debt_DebtOperations.cs">
+      <DependentUpon>PAccountModelContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\debt_DebtType.cs">
+      <DependentUpon>PAccountModelContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\debt_Transactions.cs">
+      <DependentUpon>PAccountModelContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entity\Operation.cs">
       <DependentUpon>PAccountModelContext.tt</DependentUpon>
     </Compile>

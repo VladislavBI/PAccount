@@ -1,0 +1,85 @@
+﻿<script type="text/ng-template" id="addDebtOperationPopup.html">
+    <div class="modal-header" ng-init="init()">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div ng-show="isAddOperation">
+            <h4>Debit operation</h4>
+        </div>
+        <div ng-show="!isAddOperation">
+            <h4>Credit operation</h4>
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-lg-3">
+                Current date
+            </div>
+            <div class="col-lg-9">
+                <input type="date" ng-model="popUpArguments.startDate" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                Return date
+            </div>
+            <div class="col-lg-9">
+                <input type="date" ng-model="popUpArguments.endDate" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                Agent
+            </div>
+            <div class="col-lg-5">
+                <select ng-model="popUpArguments.agent" ng-options="dataRepeat.Name for dataRepeat in popUpArguments.availableAgents track by dataRepeat.Id"></select>
+            </div>
+            <div class="col-lg-4">
+                <label><input type="checkbox" name="name" ng-model="popUpArguments.newAgentCheckBox" />New</label>
+            </div>
+        </div>
+        <div class="row" ng-show="validation.variableIsTrue(popUpArguments.newAgentCheckBox)">
+            <div class="col-lg-3">
+                New Agent
+            </div>
+            <div class="col-lg-9">
+                <input type="text" ng-model="popUpArguments.newAgentText" />
+            </div>
+        </div>
+        @* Currency are preinstalled now *@
+        <div class="row">
+            <div class="col-lg-3">
+                Currency
+            </div>
+            <div class="col-lg-5">
+                <select name="mySelect" id="mySelect" ng-model="popUpArguments.currency" ng-options="option.Name for option in popUpArguments.availableCurrency track by option.Id"></select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                Start summ
+            </div>
+            <div class="col-lg-9">
+                <input type="number" ng-model="popUpArguments.summ" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                Reward summ
+            </div>
+            <div class="col-lg-9">
+                <input type="number" ng-model="popUpArguments.rewardSumm" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                Commentary
+            </div>
+            <div class="col-lg-9">
+                <textarea rows="4" ng-model="popUpArguments.commentary" />
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="ok()">Ok</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel();">Close</button>
+    </div>
+</script>

@@ -1,0 +1,32 @@
+﻿<script type="text/ng-template" id="addDebtTransactionPopup.html">
+    <div class="modal-header" ng-init="init()">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div>
+            Add transaction
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-lg-3">
+                Transaction date
+            </div>
+            <div class="col-lg-9">
+                <input type="date" ng-model="popUpArguments.date" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3">
+                transaction sum
+            </div>
+            <div class="col-lg-9">
+                <input type="number" ng-model="popUpArguments.summ" />
+            </div>
+        </div>
+        
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="ok()">Ok</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel();">Close</button>
+    </div>
+</script>

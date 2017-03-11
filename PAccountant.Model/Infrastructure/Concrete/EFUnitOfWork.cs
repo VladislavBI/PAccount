@@ -9,14 +9,12 @@ namespace PAccountant.Model.Infrastructure.Concrete
     public class EFUnitOfWork : IUnitOfWork
     {
 
-        private DbContext _investmentContext;
-        private DbContext _personalAccountantContext;
+        private PAccountantEntities _personalAccountantContext;
         private bool _disposed = false;
 
         public EFUnitOfWork()
         {
                 _personalAccountantContext = new PAccountantEntities();
-                _investmentContext = new PAccountantEntities();
         }
 
         
@@ -50,14 +48,6 @@ namespace PAccountant.Model.Infrastructure.Concrete
                 {
                     try
                     {
-                        _investmentContext.Dispose();
-                    }
-                    catch (Exception ex)
-                    {
-                       
-                    }
-                    try
-                    {
                         _personalAccountantContext.Dispose();
                     }
                     catch (Exception ex)
@@ -71,24 +61,6 @@ namespace PAccountant.Model.Infrastructure.Concrete
 
         public void Save()
         {
-            try
-            {
-                _investmentContext.SaveChanges();
-            }
-            catch (DbEntityValidationException ex)
-            {
-                foreach (var eve in ex.EntityValidationErrors)
-                {
-                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage);
-                    }
-                }
-                throw;
-            }
             try
             {
                 _personalAccountantContext.SaveChanges();

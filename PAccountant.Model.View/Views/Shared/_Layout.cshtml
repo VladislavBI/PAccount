@@ -20,9 +20,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Personal account", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Investment", "About", "Home")</li>
-                    <li>@Html.ActionLink("Debts", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Personal account", "Index", "Home", new { Area = "" }, new { })</li>
+                    <li>@Html.ActionLink("Investment", "Index", "Main", new { Area = "Investment" }, new { })</li>
+                    <li>@Html.ActionLink("Debts", "Index", "Main", new { Area = "Debts" }, new { })</li>
                     <li>@Html.ActionLink("Settings", "Contact", "Home")</li>
 
                 </ul>
@@ -45,7 +45,8 @@
     @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/accountant")
-
+    @Scripts.Render("~/bundles/personalJS")
+    @Scripts.Render("~/bundles/debtJS")
     @RenderSection("scripts", required: false)
 </body>
 </html>

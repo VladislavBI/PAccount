@@ -1,0 +1,29 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Detailed Transaction List</title>
+    @Styles.Render("~/Content/jsgridCss")
+</head>
+<body>
+    <div ng-controller="debtTransactionController"> 
+        <div id="fullDebtTransactionStatistic">
+
+        </div>
+    </div>
+</body>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jsgrid")
+@Scripts.Render("~/bundles/modernizr")
+@Scripts.Render("~/bundles/angular")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/accountant")
+@Scripts.Render("~/bundles/debtJS")
+
+</html>

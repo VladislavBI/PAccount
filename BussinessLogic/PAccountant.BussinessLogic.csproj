@@ -65,7 +65,14 @@
     <Compile Include="DBModelManagers\Abstract\IMapperManager.cs" />
     <Compile Include="DBModelManagers\Abstract\ISourcesDBManager.cs" />
     <Compile Include="Helpers\Concrete\ResponseHelper.cs" />
+    <Compile Include="Model\AddDebtModel.cs" />
+    <Compile Include="Model\DebtsTotalsModel.cs" />
+    <Compile Include="Model\DebtTransactionDetailedModel.cs" />
+    <Compile Include="Model\DebtTransactionModel.cs" />
+    <Compile Include="Model\ModelsForOperationModel.cs" />
     <Compile Include="Model\AddOperationModel.cs" />
+    <Compile Include="Model\ForeignKeyForSetModels.cs" />
+    <Compile Include="Model\DebtFullStatisticModel.cs" />
     <Compile Include="Model\TotalFlowModel.cs" />
     <Compile Include="StaticClasses\ReflectionManager.cs" />
     <Compile Include="StaticClasses\ValidationManager.cs" />
@@ -76,6 +83,7 @@
     <Compile Include="ViewManagers\Abstract\AddOperationProcessorBase.cs" />
     <Compile Include="ViewManagers\Abstract\AuthorizationManagerBase.cs" />
     <Compile Include="Helpers\Abstract\CryptographyHelper.cs" />
+    <Compile Include="ViewManagers\Abstract\Debts\IAgentsManager.cs" />
     <Compile Include="ViewManagers\Abstract\ICategoryManager.cs" />
     <Compile Include="ViewManagers\Abstract\ICurrencyManager.cs" />
     <Compile Include="LogicManagers\IListGetter.cs" />
@@ -89,6 +97,10 @@
     <Compile Include="Helpers\Abstract\IMapperHelper.cs" />
     <Compile Include="Helpers\Concrete\AutoMapperHelper.cs" />
     <Compile Include="Model\OperationsSumModel.cs" />
+    <Compile Include="ViewManagers\Concrete\Debts\AddDebtOperationProcessor.cs" />
+    <Compile Include="ViewManagers\Concrete\Debts\AgentsManager.cs" />
+    <Compile Include="ViewManagers\Concrete\Debts\DebtStatisticManager.cs" />
+    <Compile Include="ViewManagers\Concrete\Debts\DebtTransactionManager.cs" />
     <Compile Include="ViewManagers\Concrete\PersonalAccountant\OperationManager.cs" />
     <Compile Include="ViewManagers\Concrete\PersonalAccountant\PersAccountExtremumsManager.cs" />
     <Compile Include="ViewManagers\Concrete\PersonalAccountant\PersAccountSourceManager.cs" />

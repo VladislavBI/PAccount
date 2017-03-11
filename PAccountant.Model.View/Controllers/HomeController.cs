@@ -11,7 +11,7 @@ namespace PAccountant.Model.View.Controllers
     {
         public ActionResult Index()
         {
-       
+            Session["pageType"] = "pa";
             return View();
         }
 

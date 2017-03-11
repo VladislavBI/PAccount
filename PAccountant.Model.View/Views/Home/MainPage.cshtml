@@ -1,0 +1,20 @@
+﻿<div ng-app="app" ng-controller="accountantMainController">
+    <h3>{{msg}}</h3>
+    <div class="row">
+        <div class="col-md-3">
+            @Html.Partial("~/Views/Statistic/MainInfo.cshtml")
+        </div>
+        <div class="col-md-9">
+            @Html.Partial("~/Views/Statistic/OperationsExtremums.cshtml")
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            @Html.Partial("~/Views/Operation/OperationChoose.cshtml")
+        </div>
+        <div class="col-md-9">
+            @Html.Partial("~/Views/Statistic/monthFullStatistic.cshtml")
+        </div>
+    </div>
+</div>
+

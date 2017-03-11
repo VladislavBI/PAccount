@@ -71,6 +71,15 @@ namespace PAccountant.Model.View
                 "~/Scripts/Angular/Custom/Factory/line-chart-factory.js",
                 "~/Scripts/Angular/Custom/Factory/bar-chart-factory.js",
                 "~/Scripts/Angular/Custom/Factory/pie-chart-factory.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/personalJS").Include(
+                    "~/Scripts/Angular/PersonalAccountant/Factory/add-personal-operation-factory.js"));
+            bundles.Add(new ScriptBundle("~/bundles/debtJS").Include(
+                    "~/Scripts/Angular/Debts/Factory/add-debt-operation-factory.js",
+                    "~/Scripts/Angular/Debts/Controller/add-debt-transaction-controller.js",
+                    "~/Scripts/Angular/Debts/Controller/debt-transaction-controller.js",
+                    "~/Scripts/Angular/Debts/Controller/statistic-debt-controller.js",
+                    "~/Scripts/Angular/Debts/Controller/debt-operations-table.js"));
         }
     }
 }

@@ -15,7 +15,7 @@ namespace BussinessLogic.DBModelManagers.Abstract
     {
 
         void CreateEntityFromModelForPersAccount<TModel, TEntity>(TModel modelParam) where TEntity : class, new();
-        void CreateEntityFromModelForInvestment<TModel, TEntity>(TModel modelParam) where TEntity : class, new();
+       
     }
 
 }

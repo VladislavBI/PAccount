@@ -16,6 +16,13 @@
     me.getMonthCategoriesFlow = '/Statistic/GetMonthCategoriesFlow';
     me.getMonthSourceFlow = '/Statistic/GetMonthSourceFlow';
     me.getMonthCurrenciesFlow = '/Statistic/GetMonthCurrenciesFlow';
+    me.getCurrentPageType = '/Accountant/GetCurrentPageType';
+
+    me.getDebtAgents = '/Debts/Agent/GetAgentsList';
+    me.addNewDebtOperation = '/Debts/DebtOperation/AddOperation';
+    me.getDebtsTotal = '/Debts/DebtOperation/GetDebtsTotal';
+    me.addDebtTransction = '/Debts/DebtTransaction/AddTransction';
+    me.getDebtTransctionDetailed = '/Debts/DebtTransaction/DetailedTransactionList';
 
     return me;
 }]);

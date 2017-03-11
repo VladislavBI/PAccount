@@ -23,7 +23,7 @@ namespace PAccountant.DataLayer.Entity
         public int CategoryId { get; set; }
         public int CurrencyId { get; set; }
         public int OperationTypeId { get; set; }
-
+    
         public virtual OperationCategory OperationCategory { get; set; }
         public virtual OperationSource OperationSource { get; set; }
         public virtual OperationType OperationType { get; set; }

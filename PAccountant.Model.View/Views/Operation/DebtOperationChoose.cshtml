@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<div class="row">
+    <div class="col-xs-6 col-centered">
+        <h2>Add operation</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <button type="button" class="btn btn-info btn-lg btn-with-image" ng-click="openDebtOperationModal(true)">
+            <img src="~/Images/plus-icon.png" alt="income operation" />
+        </button>
+    </div>
+    <div class="col-md-6" style="font-size: 25px">
+        Add debit
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <button type="button" class="btn btn-info btn-lg btn-with-image" ng-click="openDebtOperationModal(false)">
+            <img src="~/Images/minus-icon.png" alt="outcome operation" />
+        </button>
+
+    </div>
+    <div class="col-md-6" style="font-size: 25px">
+        Add credit
+    </div>
+</div>
+
+@Html.Partial("~/Views/popUp/DebtOperationPopup.cshtml")

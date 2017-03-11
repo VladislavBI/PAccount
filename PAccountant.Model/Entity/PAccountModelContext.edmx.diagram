@@ -18,7 +18,16 @@
         <AssociationConnector Association="PAccountantModel.FK_OperationCategory_OperationType" ManuallyRouted="false" />
         <EntityTypeShape EntityType="PAccountantModel.Currency" Width="1.5" PointX="7.25" PointY="3.875" />
         <AssociationConnector Association="PAccountantModel.FK_Operation_Currency" />
-      </Diagram>
+        <EntityTypeShape EntityType="PAccountantModel.debt_DebtAgent" Width="1.5" PointX="7.25" PointY="9.375" />
+        <EntityTypeShape EntityType="PAccountantModel.debt_Transactions" Width="1.5" PointX="11.75" PointY="7.625" />
+        <EntityTypeShape EntityType="PAccountantModel.debt_DebtOperations" Width="1.5" PointX="9.5" PointY="6.625" />
+        <EntityTypeShape EntityType="PAccountantModel.debt_DebtType" Width="1.5" PointX="7.25" PointY="11.75" />
+        <AssociationConnector Association="PAccountantModel.FK_debt_DebtOperations_Currencies" />
+        <AssociationConnector Association="PAccountantModel.FK_debt_DebtOperations_debt_DebtAgent" />
+        <AssociationConnector Association="PAccountantModel.FK_debt_DebtOperations_debt_DebtType" />
+        <AssociationConnector Association="PAccountantModel.FK_debt_DebtOperations_Users" />
+        <AssociationConnector Association="PAccountantModel.FK_debt_Transactions_debt_DebtOperations" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

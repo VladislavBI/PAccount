@@ -32,5 +32,9 @@ namespace PAccountant.DataLayer.Entity
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Currency> Currencies { get; set; }
+        public virtual DbSet<debt_DebtAgent> debt_DebtAgent { get; set; }
+        public virtual DbSet<debt_Transactions> debt_Transactions { get; set; }
+        public virtual DbSet<debt_DebtOperations> debt_DebtOperations { get; set; }
+        public virtual DbSet<debt_DebtType> debt_DebtType { get; set; }
     }
 }

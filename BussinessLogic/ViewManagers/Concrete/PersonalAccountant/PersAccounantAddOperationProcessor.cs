@@ -12,16 +12,23 @@ namespace BussinessLogic.ViewManagers.Concrete
 {
     public class PersAccounantAddOperationProcessor : AddOperationProcessorBase
     {
+        protected ICategoryManager _categoryManager;
+        protected ISourceManager _sourceManager;
+        protected ICurrencyManager _currencyManager;
+        protected IUnitOfWork _unitOfWork;
         public PersAccounantAddOperationProcessor(ICategoryManager categoryManagerParam, ISourceManager sourceManagerParam,
                                 ICurrencyManager currencyManagerParam,
                                 IDBManager dbManagerParam)
-            : base(categoryManagerParam, sourceManagerParam, currencyManagerParam, dbManagerParam)
+            : base(dbManagerParam)
         {
+            _categoryManager = categoryManagerParam;
+            _sourceManager = sourceManagerParam;
+            _currencyManager = currencyManagerParam;
         }
 
         public override bool AddOperationToDB<TOPerationModel>(TOPerationModel operationToAdd)
         {
-            {
+            
                 try
                 {
                     //if we have different types of  operationToAddand operation
@@ -43,7 +50,7 @@ namespace BussinessLogic.ViewManagers.Concrete
                 {
                     return false;
                 }
-            }
+            
         }
 
         public override bool addNewOperation<TObject>(TObject modelParam, string userName)
@@ -54,9 +61,14 @@ namespace BussinessLogic.ViewManagers.Concrete
                 DBModelManagers.Abstract.OperationType operationType = model.IsAddOperation ?
                     DBModelManagers.Abstract.OperationType.Income : DBModelManagers.Abstract.OperationType.Outcome;
 
-                CurrencyNameIdRateClass currencyModel = new CurrencyNameIdRateClass();
-                NameIdClassModel categoryModel = new NameIdClassModel(), sourceModel = new NameIdClassModel();
-                GetModelsForOperationOptions(operationType, ref model, ref currencyModel, ref categoryModel, ref sourceModel);
+                ModelsForPersonalOperationModel modelForOperation = new ModelsForPersonalOperationModel
+                {
+                    CategoryModel = new NameIdClassModel(),
+                    CurrencyModel = new CurrencyNameIdRateClass(),
+                    OperationType = operationType,
+                    SourceModel = new NameIdClassModel()
+                };
+                GetModelsForOperationOptions(ref model, modelForOperation);
 
                 Operation newOperation = new Operation()
                 {
@@ -64,7 +76,15 @@ namespace BussinessLogic.ViewManagers.Concrete
                     Date = model.Date,
                     Commentary = model.Commentary
                 };
-                SetIdForForeignKeys(currencyModel, categoryModel, sourceModel, userName, DIManager.UnitOfWork, operationType, ref newOperation);
+                PersonalAccountForeignKeyForSetModels fKModel = new PersonalAccountForeignKeyForSetModels
+                {
+                    CurrencyModel = modelForOperation.CurrencyModel,
+                    CategoryModel = modelForOperation.CategoryModel,
+                    SourceModel = modelForOperation.SourceModel,
+                    UserName = userName,
+                    OperationType = operationType
+                };
+                SetIdForForeignKeys(fKModel, DIManager.UnitOfWork, ref newOperation);
 
 
                 return AddOperationToDB(newOperation);
@@ -72,15 +92,16 @@ namespace BussinessLogic.ViewManagers.Concrete
             return false;
         }
 
-        protected override void GetModelsForOperationOptions<TObject>(DBModelManagers.Abstract.OperationType operationType, ref TObject modelParam, ref CurrencyNameIdRateClass currencyModel, ref NameIdClassModel categoryModel, ref NameIdClassModel sourceModel)
+        protected override void GetModelsForOperationOptions<TObject, TModelForGet>(ref TObject modelParam, TModelForGet modelForGet)
         {
             AddOperationModel model = modelParam as AddOperationModel;
-            if (model != null)
+            ModelsForPersonalOperationModel operModel = modelForGet as ModelsForPersonalOperationModel;
+            if (model != null && operModel != null)
             {
-                currencyModel = _currencyManager.GetCurrencyWithCurrentName(model.Currency);
-                categoryModel = _categoryManager.GetCategoryWithCurrentName(model.Category,
-    operationType);
-                sourceModel = _sourceManager.GetCategoryWithCurrentName(model.Source);
+                operModel.CurrencyModel = _currencyManager.GetCurrencyWithCurrentName(model.Currency);
+                operModel.CategoryModel = _categoryManager.GetCategoryWithCurrentName(model.Category,
+    operModel.OperationType);
+                operModel.SourceModel = _sourceManager.GetCategoryWithCurrentName(model.Source);
             }
         }
 
@@ -91,27 +112,28 @@ namespace BussinessLogic.ViewManagers.Concrete
         /// <param name="categoryModel"></param>
         /// <param name="sourceModel"></param>
         /// <param name="modelForDb"></param>
-        protected override void SetIdForForeignKeys<TObject>(CurrencyNameIdRateClass currencyModel, NameIdClassModel categoryModel, NameIdClassModel sourceModel, string userName, IUnitOfWork unitOfWork, DBModelManagers.Abstract.OperationType operationType, ref TObject operationParam)
-        {
+        protected override void SetIdForForeignKeys<TObject, TModelForSet>( TModelForSet modelsForSet, IUnitOfWork unitOfWork, ref TObject operationParam){
             Operation operation = operationParam as Operation;
-            if (operation != null)
+            PersonalAccountForeignKeyForSetModels fKModel = modelsForSet as PersonalAccountForeignKeyForSetModels;
+            if (operation != null && fKModel != null)
             {
-                if (currencyModel != null)
+                if (fKModel.CurrencyModel != null)
                 {
-                    operation.CurrencyId = currencyModel.Id;
+                    operation.CurrencyId = fKModel.CurrencyModel.Id;
                 }
-                if (categoryModel != null)
+                if (fKModel.CategoryModel != null)
                 {
-                    operation.CategoryId = categoryModel.Id;
+                    operation.CategoryId = fKModel.CategoryModel.Id;
                 }
-                if (sourceModel != null)
+                if (fKModel.SourceModel != null)
                 {
-                    operation.SourceId = sourceModel.Id;
+                    operation.SourceId = fKModel.SourceModel.Id;
                 }
-                operation.UserId = unitOfWork.PersonalAccountantContext.Set<User>().FirstOrDefault(x => x.Name == userName).Id;
+                operation.UserId = unitOfWork.PersonalAccountantContext.Set<User>().FirstOrDefault(x => x.Name == fKModel.UserName).Id;
 
-                operation.OperationTypeId = Convert.ToInt32(operationType);
+                operation.OperationTypeId = Convert.ToInt32(fKModel.OperationType);
             }
+
         }
     }
 }
