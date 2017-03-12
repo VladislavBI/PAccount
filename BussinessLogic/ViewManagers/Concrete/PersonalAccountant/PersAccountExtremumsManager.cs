@@ -2,6 +2,7 @@
 using BussinessLogic.ViewManagers.Abstract;
 using PAccountant.BussinessLogic.StaticClasses;
 using PAccountant.DataLayer.Entity;
+using RateScriptorLibrary;
 using RateScriptorLibrary.ProgrammModel;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace BussinessLogic.ViewManagers.Concrete.PersonalAccountant
 {
-    //HACK: extremums names not got
+    //HACK: sum is got for operation currency not main
     public class PersAccountExtremumsManager : ExtremumsManagerBase
     {
         public override ExtremumModel GetMaxOutcome()

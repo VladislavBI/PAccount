@@ -31,5 +31,6 @@ namespace PAccountant.Model.View.Areas.Debts.Controllers
         {
            return Json(_statisticManager.GetTotals(), JsonRequestBehavior.AllowGet);
         }
+
     }
 }

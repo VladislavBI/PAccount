@@ -182,6 +182,7 @@
     <Compile Include="Areas\Debts\Controllers\DebtTransactionController.cs" />
     <Compile Include="Areas\Debts\Controllers\MainController.cs" />
     <Compile Include="Areas\Debts\Controllers\DebtStatisticController.cs" />
+    <Compile Include="Areas\Debts\Controllers\NotificationController.cs" />
     <Compile Include="Areas\Debts\DebtsAreaRegistration.cs" />
     <Compile Include="Areas\Investment\Controllers\MainController.cs" />
     <Compile Include="Areas\Investment\InvestmentAreaRegistration.cs" />
@@ -248,6 +249,7 @@
     <Content Include="Scripts\Angular\Debts\Controller\add-debt-transaction-controller.js" />
     <Content Include="Scripts\Angular\Debts\Controller\debt-operations-table.js" />
     <Content Include="Scripts\Angular\Debts\Controller\debt-transaction-controller.js" />
+    <Content Include="Scripts\Angular\Custom\Controller\notifications-controller.js" />
     <Content Include="Scripts\Angular\Debts\Controller\statistic-debt-controller.js" />
     <Content Include="Scripts\Angular\Debts\Factory\add-debt-operation-factory.js" />
     <Content Include="Scripts\Angular\PersonalAccountant\Factory\add-personal-operation-factory.js" />
@@ -266,6 +268,7 @@
     <Content Include="Areas\Debts\Views\Statistic\TotalDebts.cshtml" />
     <Content Include="Areas\Debts\Views\Statistic\OperationsListTable.cshtml" />
     <Content Include="Areas\Debts\Views\DebtTransaction\DetailedTransactionList.cshtml" />
+    <Content Include="Areas\Debts\Views\DebtOperation\Notifications.cshtml" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
@@ -344,7 +347,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Debts\Models\" />
     <Folder Include="Areas\Debts\Views\Agent\" />
-    <Folder Include="Areas\Debts\Views\DebtOpeartion\" />
+    <Folder Include="Areas\Debts\Views\Notification\" />
     <Folder Include="Areas\Debts\Views\Shared\" />
     <Folder Include="Areas\Investment\Models\" />
     <Folder Include="Areas\Investment\Views\Shared\" />

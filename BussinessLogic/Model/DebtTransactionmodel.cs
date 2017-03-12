@@ -7,5 +7,6 @@ namespace BussinessLogic.Model
         public int OperationId { get; set; }
         public double Sum { get; set; }
         public DateTime Date { get; set; }
+        public string CurrencyName { get; set; }
     }
 }

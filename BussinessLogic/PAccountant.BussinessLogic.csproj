@@ -99,6 +99,7 @@
     <Compile Include="Model\OperationsSumModel.cs" />
     <Compile Include="ViewManagers\Concrete\Debts\AddDebtOperationProcessor.cs" />
     <Compile Include="ViewManagers\Concrete\Debts\AgentsManager.cs" />
+    <Compile Include="ViewManagers\Concrete\Debts\DebtsNotificationsManager.cs" />
     <Compile Include="ViewManagers\Concrete\Debts\DebtStatisticManager.cs" />
     <Compile Include="ViewManagers\Concrete\Debts\DebtTransactionManager.cs" />
     <Compile Include="ViewManagers\Concrete\PersonalAccountant\OperationManager.cs" />

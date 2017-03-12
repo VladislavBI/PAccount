@@ -9,11 +9,16 @@ function ($scope, $uibModalInstance, items, httpService, validationService, apiU
     $scope.popUpArguments = {
         date: new Date(),
         summ: 0,
+        currency:0,
         exception: ""
     };
 
     $scope.init = function () {
         $scope.operationId = items;
+        $scope.http.get(apiUrlFactory.GetCurrencies).then(function (response) {
+            $scope.popUpArguments.availableCurrency = response.data;
+            $scope.popUpArguments.currency = (response.data) ? response.data[0] : null;
+        });
     };
 
     $scope.NullifyArguments = function () {
@@ -54,6 +59,7 @@ function ($scope, $uibModalInstance, items, httpService, validationService, apiU
         var postData = {};
         postData.Date = $scope.popUpArguments.date;
         postData.Sum = $scope.popUpArguments.summ;
+        postData.CurrencyName = $scope.popUpArguments.currency.Name;
         postData.OperationId = $scope.operationId;
         return postData;
     };

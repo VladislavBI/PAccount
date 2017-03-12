@@ -49,18 +49,18 @@ namespace BussinessLogic.ViewManagers.Concrete.Debts
         {
             using (_unitofWork = DIManager.UnitOfWork)
             {
-                List<DebtFullStatisticModel> model = _unitofWork.PersonalAccountantContext.Set<debt_DebtOperations>().Where(x => x.IsInProgress)
-                    .Select(x => new DebtFullStatisticModel
+                var model = _unitofWork.PersonalAccountantContext.Set<debt_DebtOperations>().Where(x => x.IsInProgress).ToList();
+                return model.Select(x => new DebtFullStatisticModel
                     {
                         Name = x.debt_DebtAgent.Name,
                         DebtType = x.DebtTypeId == 1 ? "Debit" : "Credit",
-                        AllSum = x.RewardSum + x.StartSum,
+                        AllSum = _rateScriptor.ChangeBuyRateForCurrency(x.RewardSum + x.StartSum, x.Currency.Name, "usd"),
                         EndDateFull = x.EndDate,
-                        LeftToReturn = x.RewardSum + x.StartSum - (x.debt_Transactions.Any() ? x.debt_Transactions.Sum(y => y.Sum) : 0),
+                        LeftToReturn = _rateScriptor.ChangeBuyRateForCurrency(x.RewardSum + x.StartSum - (x.debt_Transactions.Any() ? x.debt_Transactions.Sum(y => y.Sum) : 0), x.Currency.Name, "usd"),
                         Comment = x.Comment,
                         Detailed=x.Id
                     }).ToList();
-                return model;
+                
             }
 
         }

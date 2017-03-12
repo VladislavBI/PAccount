@@ -23,6 +23,7 @@
     me.getDebtsTotal = '/Debts/DebtOperation/GetDebtsTotal';
     me.addDebtTransction = '/Debts/DebtTransaction/AddTransction';
     me.getDebtTransctionDetailed = '/Debts/DebtTransaction/DetailedTransactionList';
+    me.getDebtsNotifications = '/Debts/Notification/GetNotifications';
 
     return me;
 }]);

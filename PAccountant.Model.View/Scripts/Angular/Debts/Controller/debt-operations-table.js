@@ -36,8 +36,16 @@ function ($scope, httpService, apiUrlFactory, $compile, modalService, $uibModal)
                 { name: "Name", type: "text" },
                 { name: "EndDate", type: "text", width: 150 },
                 { name: "DebtType", type: "text", width: 150 },
-                { name: "AllSum", type: "number", width: 150 },
-                { name: "LeftToReturn", type: "number", width: 150 },
+                {
+                    name: "AllSum", type: "number", width: 150, itemTemplate: function (value) {
+                        return value.toFixed(2) + "$"
+                    }
+                },
+                {
+                    name: "LeftToReturn", type: "number", width: 150, itemTemplate: function (value) {
+                        return value.toFixed(2) + "$"
+                    }
+                },
                 { name: "EndDate", type: "text", width: 100 },
                 { name: "Comment", type: "text", width: 150 },
                 {

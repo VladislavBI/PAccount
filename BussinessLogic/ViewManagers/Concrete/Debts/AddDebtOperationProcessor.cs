@@ -45,7 +45,8 @@ namespace BussinessLogic.ViewManagers.Concrete.Debts
                     StartSum = model.StartSum,
                     RewardSum = model.RewardSum,
                     Comment = model.Commentary,
-                    CurrencyId = model.CurrencyId
+                    CurrencyId = model.CurrencyId,
+                    IsInProgress=true
                 };
                 DebtForeignKeyForSetModels fKModel = new DebtForeignKeyForSetModels
                 {

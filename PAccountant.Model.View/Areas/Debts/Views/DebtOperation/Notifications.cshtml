@@ -1,0 +1,8 @@
+﻿<div ng-controller="notificationsController as notifications" ng-init="notifications.init()">
+    <h2 style="text-align:center">Debts notifications</h2>
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="notification in notifications.notificationsList">
+            <span ng-bind="notification"></span>
+        </li>
+    </ul>
+</div>

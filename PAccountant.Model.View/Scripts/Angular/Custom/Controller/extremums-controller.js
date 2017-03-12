@@ -10,6 +10,9 @@
         var loadExtremums = function () {
             httpService.get(apiUrlFactory.getExtremums).then(function (response) {
                 self.operationsExtremums = response.data;
+                self.operationsExtremums.ExtremumsList.forEach(function (element, index, array) {
+                    array[index].Summ = element.Summ.toFixed(2) + "$"
+                })
             });
         };
         
