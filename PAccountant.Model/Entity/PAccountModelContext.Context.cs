@@ -36,5 +36,6 @@ namespace PAccountant.DataLayer.Entity
         public virtual DbSet<debt_Transactions> debt_Transactions { get; set; }
         public virtual DbSet<debt_DebtOperations> debt_DebtOperations { get; set; }
         public virtual DbSet<debt_DebtType> debt_DebtType { get; set; }
+        public virtual DbSet<template_Operations> template_Operations { get; set; }
     }
 }

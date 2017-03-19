@@ -62,31 +62,6 @@ namespace BussinessLogic.ViewManagers.Concrete.Debts
             return false;
         }
 
-        public override bool AddOperationToDB<TOPerationModel>(TOPerationModel operationToAdd)
-        {
-            try
-            {
-                //if we have different types of  operationToAddand operation
-                if (typeof(TOPerationModel) != typeof(debt_DebtOperations))
-                {
-                    _dbManager.CreateEntityFromModelForPersAccount<TOPerationModel, debt_DebtOperations>(operationToAdd);
-                }
-                else
-                {
-                    using (_unitOfWork = DIManager.UnitOfWork)
-                    {
-                        _unitOfWork.PersonalAccountantContext.Set<debt_DebtOperations>().Add(operationToAdd as debt_DebtOperations);
-                        _unitOfWork.Save();
-                    }
-                }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
-
         protected override void GetModelsForOperationOptions<TObject, TModelForGet>(ref TObject modelParam, TModelForGet modelForGet)
         {
             AddDebtModel model = modelParam as AddDebtModel;
@@ -109,6 +84,31 @@ namespace BussinessLogic.ViewManagers.Concrete.Debts
                 }             
                 operation.UserId = unitOfWork.PersonalAccountantContext.Set<User>().FirstOrDefault(x => x.Name == fKModel.UserName).Id;
                 operation.DebtTypeId = Convert.ToInt32(fKModel.DebtType);
+            }
+        }
+
+        public override bool AddOperationToDB<TOPerationModel>(TOPerationModel operationToAdd, TemplateModel templateParam=null)
+        {
+            try
+            {
+                //if we have different types of  operationToAddand operation
+                if (typeof(TOPerationModel) != typeof(debt_DebtOperations))
+                {
+                    _dbManager.CreateEntityFromModelForPersAccount<TOPerationModel, debt_DebtOperations>(operationToAdd);
+                }
+                else
+                {
+                    using (_unitOfWork = DIManager.UnitOfWork)
+                    {
+                        _unitOfWork.PersonalAccountantContext.Set<debt_DebtOperations>().Add(operationToAdd as debt_DebtOperations);
+                        _unitOfWork.Save();
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
             }
         }
     }

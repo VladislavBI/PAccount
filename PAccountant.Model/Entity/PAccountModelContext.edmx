@@ -99,6 +99,14 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="template_Operations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="OperationId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="Id" />
@@ -239,6 +247,78 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_template_Operations_Operations">
+          <End Role="Operations" Type="Self.Operations" Multiplicity="1" />
+          <End Role="template_Operations" Type="Self.template_Operations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Operations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="template_Operations">
+              <PropertyRef Name="OperationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="template_FK_Operation_Currency">
+          <End Role="Currencies" Type="Self.Currencies" Multiplicity="1" />
+          <End Role="Operations" Type="Self.Operations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currencies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Operations">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="template_FK_Operation_OperationCategory">
+          <End Role="OperationCategories" Type="Self.OperationCategories" Multiplicity="1" />
+          <End Role="Operations" Type="Self.Operations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Operations">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="template_FK_Operation_OperationSource">
+          <End Role="OperationSources" Type="Self.OperationSources" Multiplicity="1" />
+          <End Role="Operations" Type="Self.Operations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationSources">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Operations">
+              <PropertyRef Name="SourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="template_FK_Operation_OperationType">
+          <End Role="OperationTypes" Type="Self.OperationTypes" Multiplicity="1" />
+          <End Role="Operations" Type="Self.Operations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Operations">
+              <PropertyRef Name="OperationTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="template_FK_Operation_User">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Operations" Type="Self.Operations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Operations">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="PAccountantModelStoreContainer">
           <EntitySet Name="Currencies" EntityType="Self.Currencies" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="debt_DebtAgent" EntityType="Self.debt_DebtAgent" Schema="dbo" Table="debt.DebtAgent" store:Type="Tables" />
@@ -250,6 +330,7 @@
           <EntitySet Name="OperationSources" EntityType="Self.OperationSources" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OperationTypes" EntityType="Self.OperationTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="template_Operations" EntityType="Self.template_Operations" Schema="dbo" Table="template.Operations" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_debt_DebtOperations_Currencies" Association="Self.FK_debt_DebtOperations_Currencies">
             <End Role="Currencies" EntitySet="Currencies" />
@@ -295,6 +376,30 @@
             <End Role="OperationTypes" EntitySet="OperationTypes" />
             <End Role="OperationCategories" EntitySet="OperationCategories" />
           </AssociationSet>
+          <AssociationSet Name="FK_template_Operations_Operations" Association="Self.FK_template_Operations_Operations">
+            <End Role="Operations" EntitySet="Operations" />
+            <End Role="template_Operations" EntitySet="template_Operations" />
+          </AssociationSet>
+          <AssociationSet Name="template_FK_Operation_Currency" Association="Self.template_FK_Operation_Currency">
+            <End Role="Currencies" EntitySet="Currencies" />
+            <End Role="Operations" EntitySet="Operations" />
+          </AssociationSet>
+          <AssociationSet Name="template_FK_Operation_OperationCategory" Association="Self.template_FK_Operation_OperationCategory">
+            <End Role="OperationCategories" EntitySet="OperationCategories" />
+            <End Role="Operations" EntitySet="Operations" />
+          </AssociationSet>
+          <AssociationSet Name="template_FK_Operation_OperationSource" Association="Self.template_FK_Operation_OperationSource">
+            <End Role="OperationSources" EntitySet="OperationSources" />
+            <End Role="Operations" EntitySet="Operations" />
+          </AssociationSet>
+          <AssociationSet Name="template_FK_Operation_OperationType" Association="Self.template_FK_Operation_OperationType">
+            <End Role="OperationTypes" EntitySet="OperationTypes" />
+            <End Role="Operations" EntitySet="Operations" />
+          </AssociationSet>
+          <AssociationSet Name="template_FK_Operation_User" Association="Self.template_FK_Operation_User">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Operations" EntitySet="Operations" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -318,6 +423,7 @@
           <NavigationProperty Name="OperationType" Relationship="Self.FK_Operation_OperationType" FromRole="Operation" ToRole="OperationType" />
           <NavigationProperty Name="User" Relationship="Self.FK_Operation_User" FromRole="Operation" ToRole="User" />
           <NavigationProperty Name="Currency" Relationship="PAccountantModel.FK_Operation_Currency" FromRole="Operation" ToRole="Currency" />
+          <NavigationProperty Name="template_Operations" Relationship="PAccountantModel.FK_template_Operations_Operations" FromRole="Operation" ToRole="template_Operations" />
         </EntityType>
         <EntityType Name="OperationCategory">
           <Key>
@@ -482,6 +588,11 @@
             <End Role="debt_DebtOperations" EntitySet="debt_DebtOperations" />
             <End Role="debt_Transactions" EntitySet="debt_Transactions" />
           </AssociationSet>
+          <EntitySet Name="template_Operations" EntityType="PAccountantModel.template_Operations" />
+          <AssociationSet Name="FK_template_Operations_Operations" Association="PAccountantModel.FK_template_Operations_Operations">
+            <End Role="Operation" EntitySet="Operations" />
+            <End Role="template_Operations" EntitySet="template_Operations" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Currency">
           <Key>
@@ -613,6 +724,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="template_Operations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OperationId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Operation" Relationship="PAccountantModel.FK_template_Operations_Operations" FromRole="template_Operations" ToRole="Operation" />
+        </EntityType>
+        <Association Name="FK_template_Operations_Operations">
+          <End Type="PAccountantModel.Operation" Role="Operation" Multiplicity="1" />
+          <End Type="PAccountantModel.template_Operations" Role="template_Operations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Operation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="template_Operations">
+              <PropertyRef Name="OperationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -727,6 +859,15 @@
           <EntitySetMapping Name="debt_DebtType">
             <EntityTypeMapping TypeName="PAccountantModel.debt_DebtType">
               <MappingFragment StoreEntitySet="debt_DebtType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="template_Operations">
+            <EntityTypeMapping TypeName="PAccountantModel.template_Operations">
+              <MappingFragment StoreEntitySet="template_Operations">
+                <ScalarProperty Name="OperationId" ColumnName="OperationId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

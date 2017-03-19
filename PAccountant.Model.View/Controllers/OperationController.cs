@@ -2,6 +2,7 @@
 using BussinessLogic.Model;
 using BussinessLogic.ViewManagers.Abstract;
 using BussinessLogic.ViewManagers.Concrete;
+using BussinessLogic.ViewManagers.Concrete.PersonalAccountant;
 using System.Web.Mvc;
 
 namespace PAccountant.Model.View.Controllers
@@ -13,7 +14,7 @@ namespace PAccountant.Model.View.Controllers
         ICurrencyManager _currencyManager;
         ICategoryManager _categoryManager;
         IOperationManager _operationManager;
-
+        TemplateManagerBase _templateManager;
         public OperationController(AddOperationProcessorBase operatorProcessorParam, ISourceManager sourceManagerParam,
             ICurrencyManager currencyManagerParam, ICategoryManager categoryManagerParam, IOperationManager operationManagerParam)
         {
@@ -59,6 +60,23 @@ namespace PAccountant.Model.View.Controllers
         {
             var totalFlowList = _operationManager.GetToTalFlowByMonth();
             return Json(totalFlowList, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetTemplatesForOperations(TemplatesType template)
+        {
+            switch (template)
+            {
+                case TemplatesType.PersAccount:
+                    _templateManager = new PersAccTemplateManager();
+                    break;
+                case TemplatesType.Debts:
+                    break;
+                case TemplatesType.Invest:
+                    break;
+                default:
+                    break;
+            }
+            return Json(_templateManager.ReturnAddOpeartionTemplates(), JsonRequestBehavior.AllowGet);
         }
     }
 }

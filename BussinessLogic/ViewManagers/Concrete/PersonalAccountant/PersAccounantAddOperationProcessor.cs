@@ -26,31 +26,40 @@ namespace BussinessLogic.ViewManagers.Concrete
             _currencyManager = currencyManagerParam;
         }
 
-        public override bool AddOperationToDB<TOPerationModel>(TOPerationModel operationToAdd)
+        public override bool AddOperationToDB<TOPerationModel>(TOPerationModel operationToAdd, TemplateModel templateParam = null)
         {
-            
-                try
+
+            try
+            {
+                //if we have different types of  operationToAddand operation
+                if (typeof(TOPerationModel) != typeof(Operation))
                 {
-                    //if we have different types of  operationToAddand operation
-                    if (typeof(TOPerationModel) != typeof(Operation))
+                    _dbManager.CreateEntityFromModelForPersAccount<TOPerationModel, Operation>(operationToAdd);
+                }
+                else
+                {
+                    using (_unitOfWork = DIManager.UnitOfWork)
                     {
-                        _dbManager.CreateEntityFromModelForPersAccount<TOPerationModel, Operation>(operationToAdd);
-                    }
-                    else
-                    {
-                        using (_unitOfWork = DIManager.UnitOfWork)
+
+                        var operationId = _unitOfWork.PersonalAccountantContext.Set<Operation>().Add(operationToAdd as Operation).Id;
+                        if (templateParam != null && templateParam.IsTemplateCreated)
                         {
-                            _unitOfWork.PersonalAccountantContext.Set<Operation>().Add(operationToAdd as Operation);
-                            _unitOfWork.Save();
+                            _unitOfWork.PersonalAccountantContext.Set<template_Operations>().Add(new template_Operations
+                            {
+                                OperationId = operationId,
+                                Name = templateParam.Name
+                            });
                         }
+                        _unitOfWork.Save();
                     }
-                    return true;
                 }
-                catch (Exception ex)
-                {
-                    return false;
-                }
-            
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
         }
 
         public override bool addNewOperation<TObject>(TObject modelParam, string userName)
@@ -87,7 +96,7 @@ namespace BussinessLogic.ViewManagers.Concrete
                 SetIdForForeignKeys(fKModel, DIManager.UnitOfWork, ref newOperation);
 
 
-                return AddOperationToDB(newOperation);
+                return AddOperationToDB(newOperation, model.Template);
             }
             return false;
         }
@@ -112,7 +121,8 @@ namespace BussinessLogic.ViewManagers.Concrete
         /// <param name="categoryModel"></param>
         /// <param name="sourceModel"></param>
         /// <param name="modelForDb"></param>
-        protected override void SetIdForForeignKeys<TObject, TModelForSet>( TModelForSet modelsForSet, IUnitOfWork unitOfWork, ref TObject operationParam){
+        protected override void SetIdForForeignKeys<TObject, TModelForSet>(TModelForSet modelsForSet, IUnitOfWork unitOfWork, ref TObject operationParam)
+        {
             Operation operation = operationParam as Operation;
             PersonalAccountForeignKeyForSetModels fKModel = modelsForSet as PersonalAccountForeignKeyForSetModels;
             if (operation != null && fKModel != null)

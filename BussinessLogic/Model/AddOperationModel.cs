@@ -22,6 +22,7 @@ namespace BussinessLogic.Model
         [Range(0.0, double.MaxValue)]
         public double Summ { get; set; }
         public string Commentary { get; set; }
+        public TemplateModel Template { get; set; }
 
     }
 }

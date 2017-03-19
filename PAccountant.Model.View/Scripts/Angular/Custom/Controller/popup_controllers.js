@@ -23,7 +23,7 @@ function ($scope, $uibModalInstance, items, httpService, validationService, apiU
         chooseFactoryType(items.type);
         $scope.addFactory.init(items.isAdd);
         $scope.popUpArguments = $scope.addFactory.popUpArguments;
-
+        $scope.templates = $scope.addFactory.templates;
     };
 
     $scope.NullifyArguments = function () {
@@ -74,6 +74,9 @@ function ($scope, $uibModalInstance, items, httpService, validationService, apiU
         }
     };
 
+    $scope.appendTemplate = function () {
+        $scope.addFactory.mapTemplate();
+    }
 
     $scope.cancel = function () {
         $scope.NullifyArguments();

@@ -96,6 +96,9 @@
     <Compile Include="Entity\sysdiagram.cs">
       <DependentUpon>PAccountModelContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\template_Operations.cs">
+      <DependentUpon>PAccountModelContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entity\User.cs">
       <DependentUpon>PAccountModelContext.tt</DependentUpon>
     </Compile>

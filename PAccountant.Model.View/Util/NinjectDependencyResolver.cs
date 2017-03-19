@@ -49,7 +49,9 @@ namespace PAccountant.Model.View.Util
             kernel.Bind<StatisticManagerBase>().To<PersAccountStatisticManager>();
             kernel.Bind<IOperationManager>().To<OperationManager>();
             kernel.Bind(typeof(IDBManager)).To<EFDBManager>();
+            kernel.Bind(typeof(TemplateManagerBase)).To<PersAccTemplateManager>();
 
+            
 
             kernel.Bind(typeof(IAgentsManager)).To<AgentsManager>();
 

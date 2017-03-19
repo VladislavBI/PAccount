@@ -36,8 +36,12 @@ $("#fullDebtTransactionStatistic").jsGrid({
     fields: [
             { name: "DateString", type: "text" },
             { name: "Sum", type: "number", itemTemplate: function (value) {
-                return value.toFixed(2) + "$" },
-            { name: "Left", type: "number", itemTemplate: function (value) {
                 return value.toFixed(2) + "$" }
+            },
+            {
+                name: "Left", type: "number", itemTemplate: function (value) {
+                    return value.toFixed(2) + "$"
+                }
+            }
     ]
 });

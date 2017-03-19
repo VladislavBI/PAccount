@@ -14,6 +14,12 @@ namespace PAccountant.DataLayer.Entity
     
     public partial class Operation
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Operation()
+        {
+            this.template_Operations = new HashSet<template_Operations>();
+        }
+    
         public int Id { get; set; }
         public System.DateTime Date { get; set; }
         public decimal Summ { get; set; }
@@ -29,5 +35,7 @@ namespace PAccountant.DataLayer.Entity
         public virtual OperationType OperationType { get; set; }
         public virtual User User { get; set; }
         public virtual Currency Currency { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<template_Operations> template_Operations { get; set; }
     }
 }

@@ -34,7 +34,7 @@ namespace BussinessLogic.ViewManagers.Abstract
             IUnitOfWork unitOfWork,
             ref TObject operationParam) where TObject : class;
 
-        public abstract bool AddOperationToDB<TOPerationModel>(TOPerationModel operationToAdd) where TOPerationModel : class, new();
+        public abstract bool AddOperationToDB<TOPerationModel>(TOPerationModel operationToAdd, TemplateModel templateParam) where TOPerationModel : class, new();
         
     }
 }

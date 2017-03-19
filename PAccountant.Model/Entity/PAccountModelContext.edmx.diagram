@@ -27,6 +27,8 @@
         <AssociationConnector Association="PAccountantModel.FK_debt_DebtOperations_debt_DebtType" />
         <AssociationConnector Association="PAccountantModel.FK_debt_DebtOperations_Users" />
         <AssociationConnector Association="PAccountantModel.FK_debt_Transactions_debt_DebtOperations" />
+        <EntityTypeShape EntityType="PAccountantModel.template_Operations" Width="1.5" PointX="9.375" PointY="0.75" />
+        <AssociationConnector Association="PAccountantModel.FK_template_Operations_Operations" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

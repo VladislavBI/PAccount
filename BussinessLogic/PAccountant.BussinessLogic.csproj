@@ -73,6 +73,8 @@
     <Compile Include="Model\AddOperationModel.cs" />
     <Compile Include="Model\ForeignKeyForSetModels.cs" />
     <Compile Include="Model\DebtFullStatisticModel.cs" />
+    <Compile Include="Model\PersAccTemplateModel.cs" />
+    <Compile Include="Model\TemplateModel.cs" />
     <Compile Include="Model\TotalFlowModel.cs" />
     <Compile Include="StaticClasses\ReflectionManager.cs" />
     <Compile Include="StaticClasses\ValidationManager.cs" />
@@ -90,6 +92,7 @@
     <Compile Include="ViewManagers\Abstract\IOperationManager.cs" />
     <Compile Include="ViewManagers\Abstract\ISourceManager.cs" />
     <Compile Include="ViewManagers\Abstract\IUserManager.cs" />
+    <Compile Include="ViewManagers\Abstract\TemplateManagerBase.cs" />
     <Compile Include="ViewManagers\Concrete\CurrencyManager.cs" />
     <Compile Include="ViewManagers\Abstract\ExtremumsManagerBase.cs" />
     <Compile Include="ViewManagers\Abstract\IAccountManager.cs" />
@@ -116,6 +119,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewManagers\Concrete\PersonalAccountant\PersAccountStatisticManager.cs" />
+    <Compile Include="ViewManagers\Concrete\PersonalAccountant\PersAccTemplateManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

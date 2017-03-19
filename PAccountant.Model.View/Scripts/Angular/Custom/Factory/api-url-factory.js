@@ -17,6 +17,7 @@
     me.getMonthSourceFlow = '/Statistic/GetMonthSourceFlow';
     me.getMonthCurrenciesFlow = '/Statistic/GetMonthCurrenciesFlow';
     me.getCurrentPageType = '/Accountant/GetCurrentPageType';
+    me.getAllTemplates = '/Operation/GetTemplatesForOperations'
 
     me.getDebtAgents = '/Debts/Agent/GetAgentsList';
     me.addNewDebtOperation = '/Debts/DebtOperation/AddOperation';

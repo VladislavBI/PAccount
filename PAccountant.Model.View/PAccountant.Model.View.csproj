@@ -269,6 +269,7 @@
     <Content Include="Areas\Debts\Views\Statistic\OperationsListTable.cshtml" />
     <Content Include="Areas\Debts\Views\DebtTransaction\DetailedTransactionList.cshtml" />
     <Content Include="Areas\Debts\Views\DebtOperation\Notifications.cshtml" />
+    <None Include="Properties\PublishProfiles\test.pubxml" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
@@ -342,6 +343,7 @@
     <Content Include="Views\popUp\DebtOperationPopUp.cshtml" />
     <Content Include="Views\Operation\DebtOperationChoose.cshtml" />
     <Content Include="Views\popUp\DebtTransactionPopup.cshtml" />
+    <Content Include="Views\popUp\NewTemplate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

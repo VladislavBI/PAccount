@@ -45,7 +45,7 @@ $("#monthOperationStatistic").jsGrid({
             {
                 name: "Summ", type: "number", width: 100,
                 itemTemplate: function (value) {
-                    return value.toFixed(2) + "$";
+                    return value.toFixed(2);
                 }
             },
             { name: "Comment", type: "text", width: 150 },
