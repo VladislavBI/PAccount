@@ -1,0 +1,23 @@
+﻿<div class="row">
+    <div class="col-lg-3">
+        Template name
+    </div>
+    <div class="col-lg-3">
+        <label><input type="checkbox" name="name" ng-model="templates.IsTemplateCreated" />New template</label>
+    </div>
+    <div class="col-lg-6">
+        <input type="text" ng-model="templates.Name" ng-show="templates.IsTemplateCreated"/>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-3">
+        Get from template
+    </div>
+    <div class="col-lg-3">
+        <label><input type="checkbox" name="name" ng-model="templates.useTemplateCheckBox" />Use tempate</label>
+    </div>
+    <div class="col-lg-6">
+        <select ng-model="templates.templates" ng-options="dataRepeat.Name for dataRepeat in templates.availableTemplate track by dataRepeat.Id" ng-show="templates.useTemplateCheckBox" ng-change="appendTemplate()"></select>
+        <input type="text" ng-model="popUpArguments.templateName"  />
+    </div>
+</div>
