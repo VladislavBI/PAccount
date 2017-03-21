@@ -72,11 +72,23 @@ namespace BussinessLogic.ViewManagers.Concrete
             }
         }
 
-        public List<TotalFlowWithDateModel> GetMonthFlow()
+        public List<TotalFlowWithDateModel> GetPeriodFlow(PeriodModel periodParam=null)
         {
             using (_unitOfWork = DIManager.UnitOfWork)
             {
-                var financeOperationModel = _unitOfWork.PersonalAccountantContext.Set<Operation>().Select(x => new FinanceOperationModel
+                bool hasPeriodParam = periodParam != null && periodParam.StartDate != new DateTime(1, 1, 1);
+                DateTime? startPeriod = null;
+                DateTime? endPeriod = null;
+                if (hasPeriodParam)
+                {
+                    startPeriod = periodParam.StartDate;
+                    endPeriod = periodParam.EndDate;
+                }
+                var financeOperationModel = _unitOfWork.PersonalAccountantContext.Set<Operation>().
+                    Where(x => hasPeriodParam ?
+                    x.Date >= startPeriod.Value && x.Date <= endPeriod.Value :
+                    true)
+                    .Select(x => new FinanceOperationModel
                 {
                     OperationId = x.OperationCategory.Name,
                     CurrencyName = x.Currency.Name,

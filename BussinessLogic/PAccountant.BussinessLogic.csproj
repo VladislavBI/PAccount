@@ -73,6 +73,7 @@
     <Compile Include="Model\AddOperationModel.cs" />
     <Compile Include="Model\ForeignKeyForSetModels.cs" />
     <Compile Include="Model\DebtFullStatisticModel.cs" />
+    <Compile Include="Model\PeriodModel.cs" />
     <Compile Include="Model\PersAccTemplateModel.cs" />
     <Compile Include="Model\TemplateModel.cs" />
     <Compile Include="Model\TotalFlowModel.cs" />

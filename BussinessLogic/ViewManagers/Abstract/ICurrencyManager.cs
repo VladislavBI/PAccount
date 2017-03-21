@@ -11,6 +11,6 @@ namespace BussinessLogic.ViewManagers.Abstract
     public interface ICurrencyManager:IListGetter
     {
         CurrencyNameIdRateClass GetCurrencyWithCurrentName(string nameParam);
-        List<TotalFlowWithDateModel> GetMonthFlow();
+        List<TotalFlowWithDateModel> GetPeriodFlow(PeriodModel periodParam=null);
     }
 }

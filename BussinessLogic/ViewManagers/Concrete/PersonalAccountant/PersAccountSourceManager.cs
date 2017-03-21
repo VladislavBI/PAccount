@@ -52,24 +52,37 @@ namespace BussinessLogic.ViewManagers.Concrete.PersonalAccountant
         {
             using (_unitOfWork = DIManager.UnitOfWork)
             {
-                return _unitOfWork.PersonalAccountantContext.Set<OperationSource>().Select(x=>new {
-                    id=x.Id,
-                    Name=x.Name
+                return _unitOfWork.PersonalAccountantContext.Set<OperationSource>().Select(x => new
+                {
+                    id = x.Id,
+                    Name = x.Name
                 }).ToList();
-                 
+
             }
         }
 
-        public List<TotalFlowWithDateModel> GetMonthFlow()
+        public List<TotalFlowWithDateModel> GetPeriodFlow(PeriodModel periodParam = null)
         {
             using (_unitOfWork = DIManager.UnitOfWork)
             {
-                var financeOperationModel = _unitOfWork.PersonalAccountantContext.Set<Operation>().Select(x => new FinanceOperationModel
+                bool hasPeriodParam = periodParam != null && periodParam.StartDate != new DateTime(1, 1, 1);
+                DateTime? startPeriod = null;
+                DateTime? endPeriod = null;
+                if (hasPeriodParam)
                 {
-                    OperationId = x.OperationSource.Name,
-                    CurrencyName = x.Currency.Name,
-                    SummDecimal = x.OperationTypeId == 1 ? x.Summ : -1 * x.Summ
-                }).ToList();
+                    startPeriod = periodParam.StartDate;
+                    endPeriod = periodParam.EndDate;
+                }
+                var financeOperationModel = _unitOfWork.PersonalAccountantContext.Set<Operation>().
+                    Where(x => hasPeriodParam ?
+                    x.Date >= startPeriod.Value && x.Date <= endPeriod.Value :
+                    true)
+                    .Select(x => new FinanceOperationModel
+                    {
+                        OperationId = x.OperationSource.Name,
+                        CurrencyName = x.Currency.Name,
+                        SummDecimal = x.OperationTypeId == 1 ? x.Summ : -1 * x.Summ
+                    }).ToList();
                 var on = _scriptor.SetOneCurrencyForAllOperations(financeOperationModel, "USD").Select(x => new TotalFlowWithDateModel
                 {
                     IdentifyData = x.OperationId,

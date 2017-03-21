@@ -49,16 +49,28 @@ namespace BussinessLogic.ViewManagers.Concrete
             }
         }
 
-        public List<TotalFlowWithDateModel> GetMonthFlow()
+        public List<TotalFlowWithDateModel> GetPeriodFlow(PeriodModel periodParam = null)
         {
             using (_unitOfWork = DIManager.UnitOfWork)
             {
-                var financeOperationModel = _unitOfWork.PersonalAccountantContext.Set<Operation>().Select(x => new FinanceOperationModel
+                bool hasPeriodParam = periodParam != null && periodParam.StartDate != new DateTime(1,1,1);
+                DateTime? startPeriod = null;
+                DateTime? endPeriod = null;
+                if (hasPeriodParam)
                 {
-                    OperationId = x.Currency.Name,
-                    CurrencyName = x.Currency.Name,
-                    SummDecimal = x.OperationTypeId == 1 ? x.Summ : -1 * x.Summ
-                }).ToList();
+                    startPeriod = periodParam.StartDate;
+                    endPeriod = periodParam.EndDate;
+                }
+                var financeOperationModel = _unitOfWork.PersonalAccountantContext.Set<Operation>().
+                    Where(x => hasPeriodParam ?
+                    x.Date >= startPeriod.Value && x.Date <= endPeriod.Value :
+                    true)
+                    .Select(x => new FinanceOperationModel
+                    {
+                        OperationId = x.Currency.Name,
+                        CurrencyName = x.Currency.Name,
+                        SummDecimal = x.OperationTypeId == 1 ? x.Summ : -1 * x.Summ
+                    }).ToList();
                 var on = _scriptor.SetOneCurrencyForAllOperations(financeOperationModel, "USD").Select(x => new TotalFlowWithDateModel
                 {
                     IdentifyData = x.OperationId,
@@ -69,7 +81,7 @@ namespace BussinessLogic.ViewManagers.Concrete
                     IdentifyData = y.Key,
                     IncomeSum = y.Sum(z => z.IncomeSum),
                     OutcomeSum = y.Sum(z => z.OutcomeSum) * -1
-                }).Where(x=>x.IncomeSum>0||x.OutcomeSum>0).ToList();
+                }).Where(x => x.IncomeSum > 0 || x.OutcomeSum > 0).ToList();
                 return on;
             }
         }

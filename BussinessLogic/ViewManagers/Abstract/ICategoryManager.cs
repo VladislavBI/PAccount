@@ -31,6 +31,6 @@ namespace BussinessLogic.ViewManagers.Abstract
         /// <param name="operationType">type of the operation
         /// <returns>list in dynamic</returns>
         dynamic GetAllInList(OperationType operationType);
-        List<TotalFlowWithDateModel> GetMonthFlow();
+        List<TotalFlowWithDateModel> GetPeriodFlow(PeriodModel periodParam=null);
     }
 }

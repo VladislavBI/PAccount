@@ -63,17 +63,19 @@ namespace PAccountant.Model.View.Controllers
             return Json(extremumsList, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetMonthCategoriesFlow()
+
+
+        public JsonResult GetMonthCategoriesFlow(PeriodModel periodModel)
         {
-            return Json(_categoryManager.GetMonthFlow(), JsonRequestBehavior.AllowGet);
+            return Json(_categoryManager.GetPeriodFlow(periodModel), JsonRequestBehavior.AllowGet);
         }
-        public JsonResult GetMonthSourceFlow()
+        public JsonResult GetMonthSourceFlow(PeriodModel periodModel)
         {
-            return Json(_sourceManager.GetMonthFlow(), JsonRequestBehavior.AllowGet);
+            return Json(_sourceManager.GetPeriodFlow(periodModel), JsonRequestBehavior.AllowGet);
         }
-        public JsonResult GetMonthCurrenciesFlow()
+        public JsonResult GetMonthCurrenciesFlow(PeriodModel periodModel)
         {
-            return Json(_currencyManager.GetMonthFlow(), JsonRequestBehavior.AllowGet);
+            return Json(_currencyManager.GetPeriodFlow(periodModel), JsonRequestBehavior.AllowGet);
         }
     }
 }
