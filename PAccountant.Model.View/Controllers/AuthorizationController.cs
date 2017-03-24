@@ -36,33 +36,33 @@ namespace PAccountant.Model.View.Controllers
         public ActionResult LogIn(LoginModel model)
         {
             byte[] userPassword = _cryptoManager.EncodingString(model.Password);
-            if (ValidationManager.modelIsValid(model)&& _accountManager.userExists(model.Name, userPassword)
-                && _authorizationManager.Login(model.Name, userPassword))
+            if (ValidationManager.modelIsValid(model) && _accountManager.userExists(model.Name, userPassword) && _authorizationManager.Login(model.Name, userPassword))
             {
-                return RedirectToAction("Index", "Home");
+                string i = _accountManager.ReturnUserId(model.Name);
+                if (i != null)
+                {
+                    Session["UserId"] = i;
+                    return RedirectToAction("Index", "Home");
+                }
             }
-            else
-            {
-                ModelState.AddModelError("", "The user name or password provided is incorrect.");
-                return View();
-            }
-            
+            ModelState.AddModelError("", "The user name or password provided is incorrect.");
+            return View();
         }
         [HttpPost]
         public ActionResult Registration(RegisterModel model)
         {
-
             byte[] userPassword = _cryptoManager.EncodingString(model.Password);
-            if (ValidationManager.modelIsValid(model) && !_accountManager.userExists(model.Name, userPassword)
-                && _authorizationManager.Registration(model.Name, userPassword))
+            if (ValidationManager.modelIsValid(model) && !_accountManager.userExists(model.Name, userPassword) && _authorizationManager.Login(model.Name, userPassword))
             {
-                return RedirectToAction("Index", "Home");
+                string i = _accountManager.ReturnUserId(model.Name);
+                if (i != null)
+                {
+                    Session["UserId"] = i;
+                    return RedirectToAction("Index", "Home");
+                }
             }
-            else
-            {
-                ModelState.AddModelError("", "User is already exists or not all data is inputed");
-                return View();
-            }
+            ModelState.AddModelError("", "User is already exists or not all data is inputed");
+            return View();
         }
 
         public ActionResult SignOut()

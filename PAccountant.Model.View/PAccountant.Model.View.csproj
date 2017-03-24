@@ -183,8 +183,10 @@
     <Compile Include="Areas\Debts\Controllers\MainController.cs" />
     <Compile Include="Areas\Debts\Controllers\DebtStatisticController.cs" />
     <Compile Include="Areas\Debts\Controllers\NotificationController.cs" />
+    <Compile Include="Areas\Investment\Controllers\PlanController.cs" />
     <Compile Include="Areas\Debts\DebtsAreaRegistration.cs" />
     <Compile Include="Areas\Investment\Controllers\MainController.cs" />
+    <Compile Include="Areas\Investment\Controllers\ProjectController.cs" />
     <Compile Include="Areas\Investment\InvestmentAreaRegistration.cs" />
     <Compile Include="Controllers\AccountantController.cs" />
     <Compile Include="Controllers\AuthorizationController.cs" />
@@ -252,6 +254,9 @@
     <Content Include="Scripts\Angular\Custom\Controller\notifications-controller.js" />
     <Content Include="Scripts\Angular\Debts\Controller\statistic-debt-controller.js" />
     <Content Include="Scripts\Angular\Debts\Factory\add-debt-operation-factory.js" />
+    <Content Include="Scripts\Angular\Other\Controller\freelance-controller.js" />
+    <Content Include="Scripts\Angular\Other\Controller\freelance-popup-controllers.js" />
+    <Content Include="Scripts\Angular\Other\Controller\planed-buy-controller.js" />
     <Content Include="Scripts\Angular\PersonalAccountant\Factory\add-personal-operation-factory.js" />
     <Content Include="Scripts\Bootstrap\bootstrap.js" />
     <Content Include="Scripts\Bootstrap\bootstrap.min.js" />
@@ -269,6 +274,11 @@
     <Content Include="Areas\Debts\Views\Statistic\OperationsListTable.cshtml" />
     <Content Include="Areas\Debts\Views\DebtTransaction\DetailedTransactionList.cshtml" />
     <Content Include="Areas\Debts\Views\DebtOperation\Notifications.cshtml" />
+    <Content Include="Areas\Investment\Views\Plan\WishToBuyView.cshtml" />
+    <Content Include="Areas\Investment\Views\Plan\StoreMoneyView.cshtml" />
+    <Content Include="Areas\Investment\Views\Plan\WishListView.cshtml" />
+    <Content Include="Areas\Investment\Views\Project\AddFreelanceProject.cshtml" />
+    <Content Include="Areas\Investment\Views\Project\FreelanceProjectsList.cshtml" />
     <None Include="Properties\PublishProfiles\test.pubxml" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
@@ -344,6 +354,10 @@
     <Content Include="Views\Operation\DebtOperationChoose.cshtml" />
     <Content Include="Views\popUp\DebtTransactionPopup.cshtml" />
     <Content Include="Views\popUp\NewTemplate.cshtml" />
+    <Content Include="Views\popUp\EditFreelanceData.cshtml" />
+    <Content Include="Views\popUp\AddSpendedHours.cshtml" />
+    <Content Include="Views\popUp\AddFreelancePayment.cshtml" />
+    <Content Include="Views\popUp\ChangeFreelanceProjectData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

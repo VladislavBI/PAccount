@@ -1,0 +1,13 @@
+﻿<div class="row" >
+    <div class="col-lg-6">Name</div>
+    <div class="col-lg-2">Full sum</div>
+    <div class="col-lg-2">Sum left</div>
+    <div class="col-lg-2">Can buy</div>
+</div>
+<div class="row" ng-repeat="wish in plan.wishList">
+    <div class="col-lg-6" ng-bind="wish.Name"></div>
+    <div class="col-lg-2" ng-bind="wish.Sum"></div>
+    <div class="col-lg-2" ng-bind="wish.Sum-plan.sumStored"></div>
+    <div class="col-lg-2"><input type="checkbox" ng-checked="wish.Sum<=plan.sumStored"/></div>
+</div>
+<br />

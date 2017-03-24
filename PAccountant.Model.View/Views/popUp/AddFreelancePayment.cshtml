@@ -1,0 +1,39 @@
+﻿<script type="text/ng-template" id="freelancePaymentPopup.html">
+    <div class="modal-header" ng-init="init()">
+        <h3>Add paymant</h3>
+        <div class="row">
+            <div class="col-lg-4">Unpayed hours</div>
+            <div class="col-lg-8">
+                <input type="text" ng-model="newPayment.UnpayedHours" readonly/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">Payed hours</div>
+            <div class="col-lg-8">
+                <input type="number" ng-model="newPayment.PayedHours" ng-change="hourChanged()" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">Payed sum</div>
+            <div class="col-lg-8">
+                <input type="number" ng-model="newPayment.PayedSum" ng-change="sumChanged()" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">Payement currency</div>
+            <div class="col-lg-8">
+                <select name="mySelect" id="mySelect" ng-model="newPayment.currency" ng-options="option.Name for option in availableCurrency track by option.Id"></select>
+            </div>
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <button ng-click="ok()">Add hours</button>
+        </div>
+        <div class="col-lg-6">
+            <button ng-click="cancel()">Close</button>
+        </div>
+    </div>
+</script>
+

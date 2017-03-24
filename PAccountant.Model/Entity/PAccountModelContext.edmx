@@ -89,6 +89,54 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="other_PlannedBuy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sum" Type="float" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="other_Projects">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SumPerHour" Type="float" Nullable="false" />
+          <Property Name="TotalHours" Type="float" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CurrencyId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsEnded" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="other_sumStored">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sum" Type="float" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="other_FreelancePayement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectId" Type="int" Nullable="false" />
+          <Property Name="HoursPayed" Type="float" Nullable="false" />
+          <Property Name="SumPayed" Type="float" Nullable="false" />
+          <Property Name="PayDate" Type="date" Nullable="false" />
+          <Property Name="CurrencyId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="other_SpendHoursPerProject">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="SpendHours" Type="float" Nullable="false" />
+          <Property Name="ProjectId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -247,6 +295,66 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_other_Projects_Currencies">
+          <End Role="Currencies" Type="Self.Currencies" Multiplicity="1" />
+          <End Role="other_Projects" Type="Self.other_Projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currencies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="other_Projects">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_other_Projects_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="other_Projects" Type="Self.other_Projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="other_Projects">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_other_FreelancePayement_Currencies">
+          <End Role="Currencies" Type="Self.Currencies" Multiplicity="1" />
+          <End Role="other_FreelancePayement" Type="Self.other_FreelancePayement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currencies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="other_FreelancePayement">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_other_FreelancePayement_other_Projects">
+          <End Role="other_Projects" Type="Self.other_Projects" Multiplicity="1" />
+          <End Role="other_FreelancePayement" Type="Self.other_FreelancePayement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="other_Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="other_FreelancePayement">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_other_SpendHoursPerProject_other_Projects">
+          <End Role="other_Projects" Type="Self.other_Projects" Multiplicity="1" />
+          <End Role="other_SpendHoursPerProject" Type="Self.other_SpendHoursPerProject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="other_Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="other_SpendHoursPerProject">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_template_Operations_Operations">
           <End Role="Operations" Type="Self.Operations" Multiplicity="1" />
           <End Role="template_Operations" Type="Self.template_Operations" Multiplicity="*" />
@@ -329,6 +437,11 @@
           <EntitySet Name="Operations" EntityType="Self.Operations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OperationSources" EntityType="Self.OperationSources" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OperationTypes" EntityType="Self.OperationTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="other_PlannedBuy" EntityType="Self.other_PlannedBuy" Schema="dbo" Table="other.PlannedBuy" store:Type="Tables" />
+          <EntitySet Name="other_Projects" EntityType="Self.other_Projects" Schema="dbo" Table="other.Projects" store:Type="Tables" />
+          <EntitySet Name="other_sumStored" EntityType="Self.other_sumStored" Schema="dbo" Table="other.sumStored" store:Type="Tables" />
+          <EntitySet Name="other_FreelancePayement" EntityType="Self.other_FreelancePayement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="other_SpendHoursPerProject" EntityType="Self.other_SpendHoursPerProject" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="template_Operations" EntityType="Self.template_Operations" Schema="dbo" Table="template.Operations" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
@@ -375,6 +488,26 @@
           <AssociationSet Name="FK_OperationCategory_OperationType" Association="Self.FK_OperationCategory_OperationType">
             <End Role="OperationTypes" EntitySet="OperationTypes" />
             <End Role="OperationCategories" EntitySet="OperationCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_other_Projects_Currencies" Association="Self.FK_other_Projects_Currencies">
+            <End Role="Currencies" EntitySet="Currencies" />
+            <End Role="other_Projects" EntitySet="other_Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_other_Projects_Users" Association="Self.FK_other_Projects_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="other_Projects" EntitySet="other_Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_other_FreelancePayement_Currencies" Association="Self.FK_other_FreelancePayement_Currencies">
+            <End Role="Currencies" EntitySet="Currencies" />
+            <End Role="other_FreelancePayement" EntitySet="other_FreelancePayement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_other_FreelancePayement_other_Projects" Association="Self.FK_other_FreelancePayement_other_Projects">
+            <End Role="other_Projects" EntitySet="other_Projects" />
+            <End Role="other_FreelancePayement" EntitySet="other_FreelancePayement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_other_SpendHoursPerProject_other_Projects" Association="Self.FK_other_SpendHoursPerProject_other_Projects">
+            <End Role="other_Projects" EntitySet="other_Projects" />
+            <End Role="other_SpendHoursPerProject" EntitySet="other_SpendHoursPerProject" />
           </AssociationSet>
           <AssociationSet Name="FK_template_Operations_Operations" Association="Self.FK_template_Operations_Operations">
             <End Role="Operations" EntitySet="Operations" />
@@ -471,6 +604,7 @@
           <Property Name="Password" Type="Binary" MaxLength="50" FixedLength="false" Nullable="false" />
           <NavigationProperty Name="Operations" Relationship="Self.FK_Operation_User" FromRole="User" ToRole="Operation" />
           <NavigationProperty Name="debt_DebtOperations" Relationship="PAccountantModel.FK_debt_DebtOperations_Users" FromRole="User" ToRole="debt_DebtOperations" />
+          <NavigationProperty Name="other_Projects" Relationship="PAccountantModel.FK_other_Projects_Users" FromRole="User" ToRole="other_Projects" />
         </EntityType>
         <Association Name="FK_Operation_OperationCategory">
           <End Role="OperationCategory" Type="Self.OperationCategory" Multiplicity="1" />
@@ -593,6 +727,31 @@
             <End Role="Operation" EntitySet="Operations" />
             <End Role="template_Operations" EntitySet="template_Operations" />
           </AssociationSet>
+          <EntitySet Name="other_PlannedBuy" EntityType="PAccountantModel.other_PlannedBuy" />
+          <EntitySet Name="other_sumStored" EntityType="PAccountantModel.other_sumStored" />
+          <EntitySet Name="other_Projects" EntityType="PAccountantModel.other_Projects" />
+          <EntitySet Name="other_FreelancePayement" EntityType="PAccountantModel.other_FreelancePayement" />
+          <AssociationSet Name="FK_other_Projects_Currencies" Association="PAccountantModel.FK_other_Projects_Currencies">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="other_Projects" EntitySet="other_Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_other_FreelancePayement_Currencies" Association="PAccountantModel.FK_other_FreelancePayement_Currencies">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="other_FreelancePayement" EntitySet="other_FreelancePayement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_other_Projects_Users" Association="PAccountantModel.FK_other_Projects_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="other_Projects" EntitySet="other_Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_other_FreelancePayement_other_Projects" Association="PAccountantModel.FK_other_FreelancePayement_other_Projects">
+            <End Role="other_Projects" EntitySet="other_Projects" />
+            <End Role="other_FreelancePayement" EntitySet="other_FreelancePayement" />
+          </AssociationSet>
+          <EntitySet Name="other_SpendHoursPerProject" EntityType="PAccountantModel.other_SpendHoursPerProject" />
+          <AssociationSet Name="FK_other_SpendHoursPerProject_other_Projects" Association="PAccountantModel.FK_other_SpendHoursPerProject_other_Projects">
+            <End Role="other_Projects" EntitySet="other_Projects" />
+            <End Role="other_SpendHoursPerProject" EntitySet="other_SpendHoursPerProject" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Currency">
           <Key>
@@ -604,6 +763,8 @@
           <Property Name="Buy_Rate" Type="Double" Nullable="false" />
           <NavigationProperty Name="Operations" Relationship="PAccountantModel.FK_Operation_Currency" FromRole="Currency" ToRole="Operation" />
           <NavigationProperty Name="debt_DebtOperations" Relationship="PAccountantModel.FK_debt_DebtOperations_Currencies" FromRole="Currency" ToRole="debt_DebtOperations" />
+          <NavigationProperty Name="other_Projects" Relationship="PAccountantModel.FK_other_Projects_Currencies" FromRole="Currency" ToRole="other_Projects" />
+          <NavigationProperty Name="other_FreelancePayement" Relationship="PAccountantModel.FK_other_FreelancePayement_Currencies" FromRole="Currency" ToRole="other_FreelancePayement" />
         </EntityType>
         <Association Name="FK_Operation_Currency">
           <End Type="PAccountantModel.Currency" Role="Currency" Multiplicity="1" />
@@ -745,6 +906,121 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="other_PlannedBuy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sum" Type="Double" />
+          <Property Name="UserId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="other_sumStored">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Sum" Type="Double" />
+          <Property Name="UserId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="other_Projects">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SumPerHour" Type="Double" Nullable="false" />
+          <Property Name="TotalHours" Type="Double" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CurrencyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Currency" Relationship="PAccountantModel.FK_other_Projects_Currencies" FromRole="other_Projects" ToRole="Currency" />
+          <NavigationProperty Name="User" Relationship="PAccountantModel.FK_other_Projects_Users" FromRole="other_Projects" ToRole="User" />
+          <NavigationProperty Name="other_FreelancePayement" Relationship="PAccountantModel.FK_other_FreelancePayement_other_Projects" FromRole="other_Projects" ToRole="other_FreelancePayement" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="other_SpendHoursPerProject" Relationship="PAccountantModel.FK_other_SpendHoursPerProject_other_Projects" FromRole="other_Projects" ToRole="other_SpendHoursPerProject" />
+          <Property Name="IsEnded" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="other_FreelancePayement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectId" Type="Int32" Nullable="false" />
+          <Property Name="HoursPayed" Type="Double" Nullable="false" />
+          <Property Name="SumPayed" Type="Double" Nullable="false" />
+          <Property Name="PayDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CurrencyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Currency" Relationship="PAccountantModel.FK_other_FreelancePayement_Currencies" FromRole="other_FreelancePayement" ToRole="Currency" />
+          <NavigationProperty Name="other_Projects" Relationship="PAccountantModel.FK_other_FreelancePayement_other_Projects" FromRole="other_FreelancePayement" ToRole="other_Projects" />
+        </EntityType>
+        <Association Name="FK_other_Projects_Currencies">
+          <End Type="PAccountantModel.Currency" Role="Currency" Multiplicity="1" />
+          <End Type="PAccountantModel.other_Projects" Role="other_Projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="other_Projects">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_other_FreelancePayement_Currencies">
+          <End Type="PAccountantModel.Currency" Role="Currency" Multiplicity="1" />
+          <End Type="PAccountantModel.other_FreelancePayement" Role="other_FreelancePayement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="other_FreelancePayement">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_other_Projects_Users">
+          <End Type="PAccountantModel.User" Role="User" Multiplicity="1" />
+          <End Type="PAccountantModel.other_Projects" Role="other_Projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="other_Projects">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_other_FreelancePayement_other_Projects">
+          <End Type="PAccountantModel.other_Projects" Role="other_Projects" Multiplicity="1" />
+          <End Type="PAccountantModel.other_FreelancePayement" Role="other_FreelancePayement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="other_Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="other_FreelancePayement">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="other_SpendHoursPerProject">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="SpendHours" Type="Double" Nullable="false" />
+          <Property Name="ProjectId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="other_Projects" Relationship="PAccountantModel.FK_other_SpendHoursPerProject_other_Projects" FromRole="other_SpendHoursPerProject" ToRole="other_Projects" />
+        </EntityType>
+        <Association Name="FK_other_SpendHoursPerProject_other_Projects">
+          <End Type="PAccountantModel.other_Projects" Role="other_Projects" Multiplicity="1" />
+          <End Type="PAccountantModel.other_SpendHoursPerProject" Role="other_SpendHoursPerProject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="other_Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="other_SpendHoursPerProject">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -869,6 +1145,59 @@
               <MappingFragment StoreEntitySet="template_Operations">
                 <ScalarProperty Name="OperationId" ColumnName="OperationId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="other_PlannedBuy">
+            <EntityTypeMapping TypeName="PAccountantModel.other_PlannedBuy">
+              <MappingFragment StoreEntitySet="other_PlannedBuy">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Sum" ColumnName="Sum" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="other_sumStored">
+            <EntityTypeMapping TypeName="PAccountantModel.other_sumStored">
+              <MappingFragment StoreEntitySet="other_sumStored">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Sum" ColumnName="Sum" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="other_Projects">
+            <EntityTypeMapping TypeName="PAccountantModel.other_Projects">
+              <MappingFragment StoreEntitySet="other_Projects">
+                <ScalarProperty Name="IsEnded" ColumnName="IsEnded" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="TotalHours" ColumnName="TotalHours" />
+                <ScalarProperty Name="SumPerHour" ColumnName="SumPerHour" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="other_FreelancePayement">
+            <EntityTypeMapping TypeName="PAccountantModel.other_FreelancePayement">
+              <MappingFragment StoreEntitySet="other_FreelancePayement">
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="PayDate" ColumnName="PayDate" />
+                <ScalarProperty Name="SumPayed" ColumnName="SumPayed" />
+                <ScalarProperty Name="HoursPayed" ColumnName="HoursPayed" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="other_SpendHoursPerProject">
+            <EntityTypeMapping TypeName="PAccountantModel.other_SpendHoursPerProject">
+              <MappingFragment StoreEntitySet="other_SpendHoursPerProject">
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="SpendHours" ColumnName="SpendHours" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

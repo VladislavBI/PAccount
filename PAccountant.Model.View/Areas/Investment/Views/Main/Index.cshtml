@@ -1,8 +1,30 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Other manager";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div ng-app="app" ng-controller="accountantMainController" ng-init="init()">
+    <div ng-class="row" ng-controller="PlanedBuyController as plan" ng-init="plan.init()">
+        <div class="col-lg-6">
+            <div class="row">
+                @Html.Partial("~/Areas/Investment/Views/Plan/WishToBuyView.cshtml")
+            </div>
+            <div class="row">
+                @Html.Partial("~/Areas/Investment/Views/Plan/StoreMoneyView.cshtml")
+            </div>
+            <div class="row">
+                @Html.Partial("~/Areas/Investment/Views/Plan/WishListView.cshtml")
+            </div>
+        </div>
+        <div class="col-lg-6" ng-controller="FreelanceController as freelance" ng-init="freelance.init()">
+            <div class="row">
+                @Html.Partial("~/Areas/Investment/Views/Project/AddFreelanceProject.cshtml")
+            </div>
+            <div class="row">
+                @Html.Partial("~/Areas/Investment/Views/Project/FreelanceProjectsList.cshtml")
+            </div>
+        </div>
+    </div>
+</div>
 

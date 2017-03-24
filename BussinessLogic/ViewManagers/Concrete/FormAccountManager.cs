@@ -22,11 +22,12 @@ namespace BussinessLogic.Managers.Concrete
         {
             _mapperManager = DIManager.MapperHelper;
             _cryptography = DIManager.CryptographyManager;
+            UsersIdCache = new Dictionary<string, string>();
         }
         public void CreateUserFromModel<TModel>(TModel modelParam)
         {
             User userEntity = _mapperManager.MapModel<TModel, User>(modelParam);
-            if (userEntity!=null)
+            if (userEntity != null)
             {
                 using (_unitOfWork = DIManager.UnitOfWork)
                 {
@@ -43,25 +44,56 @@ namespace BussinessLogic.Managers.Concrete
 
         public TModel GetModelForConcreteUser<TModel>(Predicate<User> expression) where TModel : new()
         {
-            using (_unitOfWork=DIManager.UnitOfWork)
+            using (_unitOfWork = DIManager.UnitOfWork)
             {
-                User tempUser =_unitOfWork.PersonalAccountantContext.Set<User>().FirstOrDefault<User>(x=>expression(x));
+                User tempUser = _unitOfWork.PersonalAccountantContext.Set<User>().FirstOrDefault<User>(x => expression(x));
                 return _mapperManager.MapModel<User, TModel>(tempUser);
             }
-            
+
         }
 
         public bool userExists(string Name, byte[] password)
         {
             using (_unitOfWork = DIManager.UnitOfWork)
             {
-                if (_unitOfWork.PersonalAccountantContext.Set<User>().AsEnumerable().Any(x=>x.Name==Name&& _cryptography.CheckingEquals(x.Password, password)))
+                if (_unitOfWork.PersonalAccountantContext.Set<User>().AsEnumerable().Any(x => x.Name == Name && _cryptography.CheckingEquals(x.Password, password)))
                 {
                     return true;
                 }
                 return false;
             }
-               
+
         }
+        public bool userExists(string Name)
+        {
+            using (_unitOfWork = DIManager.UnitOfWork)
+            {
+                if (_unitOfWork.PersonalAccountantContext.Set<User>().AsEnumerable().Any(x => x.Name == Name))
+                {
+                    return true;
+                }
+                return false;
+            }
+
+        }
+        public string ReturnUserId(string userName)
+        {
+            using (_unitOfWork = DIManager.UnitOfWork)
+            {
+                if (userExists(userName))
+                {
+                    using (_unitOfWork = DIManager.UnitOfWork)
+                    {
+                        if (!UsersIdCache.ContainsKey(userName))
+                        {
+                            UsersIdCache[userName] = _unitOfWork.PersonalAccountantContext.Set<User>().AsEnumerable().FirstOrDefault(x => x.Name == userName).Id.ToString();
+                        }
+                        return UsersIdCache[userName];
+                    }
+                }
+                return null;
+            }
+        }
+        Dictionary<string, string> UsersIdCache { get; set; }
     }
 }

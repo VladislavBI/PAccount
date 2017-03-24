@@ -26,5 +26,17 @@
     me.getDebtTransctionDetailed = '/Debts/DebtTransaction/DetailedTransactionList';
     me.getDebtsNotifications = '/Debts/Notification/GetNotifications';
 
+    me.getPlanes = '/Investment/Plan/GetPlanes';
+    me.getStoredMoney = '/Investment/Plan/GetStoredMoney';
+    me.addPlan = '/Investment/Plan/AddPlan';
+    me.addMoneyToStore = '/Investment/Plan/AddMoneyToStore';
+
+    me.addNewProject = '/Investment/Project/AddNewProject';
+    me.getProjects = '/Investment/Project/GetProjects';
+    me.addPayment = '/Investment/Project/AddPayment';
+    me.changeProjectStatus = '/Investment/Project/ChangeProjectStatus';
+    me.addHours = '/Investment/Project/AddHours';
+    me.changeProjectData = '/Investment/Project/ChangeProjectData';
+
     return me;
 }]);

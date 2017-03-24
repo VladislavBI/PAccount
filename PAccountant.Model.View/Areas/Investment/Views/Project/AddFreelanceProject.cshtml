@@ -1,0 +1,29 @@
+﻿<form>
+    <div class="row">
+        <div class="col-lg-3"> <label>Name</label></div>
+        <div class="col-lg-9"> <input type="text" ng-model="freelance.newProject.Name" /> </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3"> <label>Sum per hour</label></div>
+        <div class="col-lg-9"> <input type="number" ng-model="freelance.newProject.SumPerHour" /> </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3"> <label>Total hours</label></div>
+        <div class="col-lg-9"> <input type="number" ng-model="freelance.newProject.TotalHours" /> </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3"> <label>Currency</label></div>
+        <div class="col-lg-9">
+            <select name="mySelect" id="mySelect" ng-model="freelance.newProject.currency" ng-options="option.Name for option in freelance.availableCurrency track by option.Id"></select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="row">
+            <div class="col-lg-4"> </div>
+            <div class="col-lg-4"> <button ng-click="freelance.addNewProject()">Save new project</button></div>
+            <div class="col-lg-4"> </div>
+        </div>
+    </div>
+</form>
+<br />
+

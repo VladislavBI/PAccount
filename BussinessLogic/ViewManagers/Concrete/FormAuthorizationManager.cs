@@ -5,13 +5,15 @@ using PAccountant.BussinessLogic.StaticClasses;
 using PAccountant.DataLayer.Entity;
 using PAccountant.Model.Infrastructure.Abstract;
 using System.Web.Security;
+using System;
+using System.Linq;
 
 namespace PAccountant.BussinessLogic.Managers.Concrete
 {
 
     public class FormAuthorizationManager: AuthorizationManagerBase
     {
-
+        IUnitOfWork _unitOfWork;
         public override bool Login(string name, byte[] password)
         {
             UserLoginModel model=CreateUserLoginModel(name, password);
@@ -49,7 +51,12 @@ namespace PAccountant.BussinessLogic.Managers.Concrete
 
         protected override void userAthorization(string name)
         {
-            FormsAuthentication.SetAuthCookie(name, false);
+            using (_unitOfWork=DIManager.UnitOfWork)
+            {
+                var id = _unitOfWork.PersonalAccountantContext.Set<User>().FirstOrDefault(x => x.Name == name).Id.ToString();
+                FormsAuthentication.SetAuthCookie(id, false);
+
+            }
         }
 
         public override void LogOff()

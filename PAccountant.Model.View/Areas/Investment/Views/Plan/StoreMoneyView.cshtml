@@ -1,0 +1,26 @@
+﻿
+    <div class="row">
+        <div class="col-lg-4"> </div>
+        <div class="col-lg-4"> <h3>Store money</h3></div>
+        <div class="col-lg-4"> </div>
+    </div>
+<form>
+    <div class="row">
+        <div class="col-lg-6"> <input type="number" ng-model="plan.newSum.Sum" /></div>
+        <div class="col-lg-4">
+            <select name="mySelect" id="mySelect" ng-model="plan.newSum.currency" ng-options="option.Name for option in plan.availableCurrency track by option.Id"></select>
+
+        </div>
+        <div class="col-lg-3"> <button ng-click="plan.addSum()">Add new sum</button></div>
+    </div>
+</form>
+
+    <div class="row">
+        <div class="row">
+            <div class="col-lg-3"> </div>
+            <div class="col-lg-3"> Money stored</div>
+            <div class="col-lg-3" ng-bind="plan.storedMoney"> </div>
+            <div class="col-lg-3"> </div>
+        </div>
+    </div>
+<br />

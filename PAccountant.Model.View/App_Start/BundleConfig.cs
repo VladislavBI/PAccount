@@ -81,6 +81,11 @@ namespace PAccountant.Model.View
                     "~/Scripts/Angular/Debts/Controller/debt-transaction-controller.js",
                     "~/Scripts/Angular/Debts/Controller/statistic-debt-controller.js",
                     "~/Scripts/Angular/Debts/Controller/debt-operations-table.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/otherJS").Include(
+                    "~/Scripts/Angular/Other/Controller/planed-buy-controller.js",
+                    "~/Scripts/Angular/Other/Controller/freelance-popup-controllers.js",
+                    "~/Scripts/Angular/Other/Controller/freelance-controller.js"));
         }
     }
 }

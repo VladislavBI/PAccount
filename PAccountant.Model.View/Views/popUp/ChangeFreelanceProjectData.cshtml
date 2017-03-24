@@ -1,0 +1,25 @@
+﻿<script type="text/ng-template" id="changeFreelanceProjectDataPopUp.html" >
+    <form ng-init="init()">
+        <div class="row">
+            <div class="col-lg-3"> <label>Name</label></div>
+            <div class="col-lg-9"> <input type="text" ng-model="changedProject.Name" /> </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3"> <label>Sum per hour</label></div>
+            <div class="col-lg-9"> <input type="text" ng-model="changedProject.SumPerHour" /> </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3"> <label>Total hours</label></div>
+            <div class="col-lg-9"> <input type="text" ng-model="changedProject.FullHours" /> </div>
+        </div>
+
+        <div class="row">
+            <div class="row">
+                <div class="col-lg-4"> </div>
+                <div class="col-lg-4"> <button ng-click="ok()">Change project data</button></div>
+                <div class="col-lg-4"> </div>
+            </div>
+        </div>
+    </form>
+</script>
+

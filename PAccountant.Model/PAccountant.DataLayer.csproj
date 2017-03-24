@@ -78,6 +78,21 @@
     <Compile Include="Entity\OperationType.cs">
       <DependentUpon>PAccountModelContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\other_FreelancePayement.cs">
+      <DependentUpon>PAccountModelContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\other_PlannedBuy.cs">
+      <DependentUpon>PAccountModelContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\other_Projects.cs">
+      <DependentUpon>PAccountModelContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\other_SpendHoursPerProject.cs">
+      <DependentUpon>PAccountModelContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\other_sumStored.cs">
+      <DependentUpon>PAccountModelContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entity\PAccountModelContext.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
