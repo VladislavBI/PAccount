@@ -1,14 +1,20 @@
 ﻿<script type="text/ng-template" id="editFreelancePopup.html">
     <div class="modal-header" ng-init="init()">
         <h3>Edit freelance project</h3>
-        <ol>
-            <li ng-click="addSpendedHours()">Add spended hours</li>
-            <li ng-click="changeProjectData()">Change project data</li>
-            <li ng-click="changeProjectStatus()" ng-show="project.IsEnded">Restart project</li>
-            <li ng-click="changeProjectStatus()" ng-show="!project.IsEnded">End project</li>
+        <ol class="list-group">
+            <li ng-click="addSpendedHours()" style="cursor:pointer" class="list-group-item">Add spended hours</li>
+            <li ng-click="changeProjectData()" style="cursor:pointer" class="list-group-item">Change project data</li>
+            <li ng-click="changeProjectStatus()" style="cursor:pointer" class="list-group-item" ng-show="project.IsEnded" >Restart project</li>
+            <li ng-click="changeProjectStatus()" style="cursor:pointer" class="list-group-item" ng-show="!project.IsEnded">End project</li>
         </ol>
     </div>
-    <button ng-click="cancel()">Close</button>
+    <div class="row">
+        <div class="col-lg-5"></div>
+        <div class="col-lg-2">
+            <button ng-click="cancel()" style="width:100%">Close</button>
+        </div>
+        <div class="col-lg-5"></div>
+    </div>
 </script>
 @Html.Partial("~/Views/popUp/AddSpendedHours.cshtml")
 @Html.Partial("~/Views/popUp/ChangeFreelanceProjectData.cshtml")

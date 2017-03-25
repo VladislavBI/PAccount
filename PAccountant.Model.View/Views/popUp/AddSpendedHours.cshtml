@@ -1,10 +1,24 @@
 ﻿<script type="text/ng-template" id="freelanceHoursSpendedPopup.html">
     <div class="modal-header" ng-init="init()">
         <h3>Add spended hours</h3>
-    <div>
-        <input type="number" ng-model="spendedModel.Hours"/></div>
-    </div>
-    <div>
-        <button ng-click="ok()">Add hours</button>
+        <div class="row">
+            <div class="col-lg-2">
+                <label for="spended-hours-quantity">Spended hours</label>
+            </div>
+            <div class="col-lg-9">
+                <input id="spended-hours-quantity" type="number" ng-model="spendedModel.Hours" min="0"/>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-lg-2">
+            </div>
+            <div class="col-lg-3">
+                <button ng-click="ok()">Add hours</button>
+            </div>
+            <div class="col-lg-6">
+                <button ng-click="cancel()">Close</button>
+            </div>
+        </div>
     </div>
 </script>

@@ -36,9 +36,9 @@ function ($scope, $uibModalInstance, items, httpService, apiUrlFactory) {
     }
 
     $scope.ok = function () {
+        $scope.cancel();
         $scope.newPayment.CurrencyId = $scope.newPayment.currency.Id;
         $scope.http.post($scope.url.addPayment, $scope.newPayment, null);
-        $scope.cancel();
 
     }
 
@@ -67,11 +67,16 @@ function ($scope, $uibModalInstance, items, httpService, apiUrlFactory, modalSer
             {
                 projectId: $scope.project.Id
             });
+        $scope.cancel();
     }
     $scope.changeProjectData = function () {
-        modalService.open('changeFreelanceProjectDataPopUp.html', 'changeFreelanceProjectDataController', $scope.project);
+        window.setTimeout(function () {
+            modalService.open('changeFreelanceProjectDataPopUp.html', 'changeFreelanceProjectDataController', $scope.project);
+        });
+        $scope.cancel();
     }
     $scope.changeProjectStatus = function () {
+        $scope.cancel();
         $scope.http.post($scope.url.changeProjectStatus, { projectId: $scope.project.Id }, null);
     }
 
@@ -96,6 +101,7 @@ function ($scope, $uibModalInstance, items, httpService, apiUrlFactory) {
     };
 
     $scope.ok = function () {
+        $scope.cancel();
         $scope.http.post($scope.url.addHours, $scope.spendedModel, null);
     }
 
@@ -119,6 +125,7 @@ function ($scope, $uibModalInstance, items, httpService, apiUrlFactory) {
     $scope.ok = function () {
         $scope.changedProject.TotalHours = $scope.changedProject.FullHours;
         $scope.http.post($scope.url.changeProjectData, $scope.changedProject, null);
+        $scope.cancel();
     }
 
     $scope.cancel = function () {

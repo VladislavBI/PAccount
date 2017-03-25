@@ -5,9 +5,9 @@
 }
 
 <div ng-app="app" ng-controller="accountantMainController" ng-init="init()">
-    <div ng-class="row" ng-controller="PlanedBuyController as plan" ng-init="plan.init()">
-        <div class="col-lg-6">
-            <div class="row">
+    <div ng-class="row" ng-controller="PlanedBuyController as plan" ng-init="plan.init()" style="height:500px">
+        <div class="col-lg-4" style="border-right:8px solid #46c2eb;">
+            <div class="row" >
                 @Html.Partial("~/Areas/Investment/Views/Plan/WishToBuyView.cshtml")
             </div>
             <div class="row">
@@ -17,7 +17,7 @@
                 @Html.Partial("~/Areas/Investment/Views/Plan/WishListView.cshtml")
             </div>
         </div>
-        <div class="col-lg-6" ng-controller="FreelanceController as freelance" ng-init="freelance.init()">
+        <div class="col-lg-8" ng-controller="FreelanceController as freelance" ng-init="freelance.init()">
             <div class="row">
                 @Html.Partial("~/Areas/Investment/Views/Project/AddFreelanceProject.cshtml")
             </div>

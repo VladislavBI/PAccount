@@ -6,7 +6,13 @@ namespace PAccountant.Model.View.Controllers
     {
        public JsonResult GetCurrentPageType()
         {
-            string type = Session["pageType"].ToString();
+            string type = string.Empty;
+            try
+            {
+                type = Session["pageType"].ToString();
+            }
+            catch (System.Exception)
+            {}
             return Json(type, JsonRequestBehavior.AllowGet);
         }
     }

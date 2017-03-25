@@ -1,23 +1,30 @@
 ﻿<script type="text/ng-template" id="changeFreelanceProjectDataPopUp.html" >
+    <h3>Change {{changedProject.Name}} data</h3>
     <form ng-init="init()">
         <div class="row">
-            <div class="col-lg-3"> <label>Name</label></div>
-            <div class="col-lg-9"> <input type="text" ng-model="changedProject.Name" /> </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-3"> <label for="changed-project-name">Name</label></div>
+            <div class="col-lg-8"> <input type="text" id="changed-project-name" ng-model="changedProject.Name" /> </div>
         </div>
+        <br />
         <div class="row">
-            <div class="col-lg-3"> <label>Sum per hour</label></div>
-            <div class="col-lg-9"> <input type="text" ng-model="changedProject.SumPerHour" /> </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-3"> <label for="changed-project-perhour">Sum per hour</label></div>
+            <div class="col-lg-8"> <input type="text" id="changed-project-perhour" ng-model="changedProject.SumPerHour" /> </div>
         </div>
+        <br />
         <div class="row">
-            <div class="col-lg-3"> <label>Total hours</label></div>
-            <div class="col-lg-9"> <input type="text" ng-model="changedProject.FullHours" /> </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-3"> <label for="changed-project-fullhour">Total hours</label></div>
+            <div class="col-lg-8"> <input type="text" id="changed-project-fullhour" ng-model="changedProject.FullHours" /> </div>
         </div>
-
+        <br />
         <div class="row">
             <div class="row">
-                <div class="col-lg-4"> </div>
-                <div class="col-lg-4"> <button ng-click="ok()">Change project data</button></div>
-                <div class="col-lg-4"> </div>
+                <div class="col-lg-3"> </div>
+                <div class="col-lg-3"> <button ng-click="ok()">Change data</button></div>
+                <div class="col-lg-3"> <button ng-click="cancel()">Close</button></div>
+                <div class="col-lg-3"> </div>
             </div>
         </div>
     </form>

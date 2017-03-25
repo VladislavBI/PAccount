@@ -1,17 +1,17 @@
 ﻿<div class="row">
-    <div class="col-lg-4">Name</div>
+    <div class="col-lg-3">Name</div>
     <div class="col-lg-1">Full hours</div>
     <div class="col-lg-1">Sum per hour</div>
     <div class="col-lg-1">Payed sum</div>
     <div class="col-lg-1">Payed hours</div>
     <div class="col-lg-1">Unpayed hours</div>
     <div class="col-lg-1">Edit</div>
-    <div class="col-lg-1">Payment</div>
+    <div class="col-lg-2">Payment</div>
     <div class="col-lg-1">End</div>
 
 </div>
 <div class="row" ng-repeat="project in freelance.projectsList">
-    <div class="col-lg-4" ng-bind="project.Name"></div>
+    <div class="col-lg-3" ng-bind="project.Name"></div>
     <div class="col-lg-1" ng-bind="project.FullHours"></div>
     <div class="col-lg-1" ng-bind="project.SumPerHour"></div>
     <div class="col-lg-1" ng-bind="project.PayedSum"></div>
@@ -20,7 +20,7 @@
     <div class="col-lg-1" >
         <button ng-click="freelance.editProject(project)">Edit</button>
     </div>
-    <div class="col-lg-1" >
+    <div class="col-lg-2" >
         <button ng-click="freelance.addPayement(project)">Payment</button>
     </div>
     <div class="col-lg-1" ng-click="freelance.IsEnded">

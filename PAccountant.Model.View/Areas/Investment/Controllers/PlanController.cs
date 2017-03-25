@@ -24,12 +24,12 @@ namespace PAccountant.Model.View.Areas.Investment.Controllers
         public void AddPlan(AddPlanToStoreModel model)
         {
             AddPlanToStoreWithUser modelToSend = _mapperManager.MapModel<AddPlanToStoreModel, AddPlanToStoreWithUser>(model);
-            modelToSend.UserId = Convert.ToInt32(Session["UserId"]);
+            modelToSend.UserId = Convert.ToInt32(User.Identity.Name);
             _planManager.AddPlan(modelToSend);
         }
         public JsonResult GetPlanes()
         {
-            var planes = _planManager.GetPlanes(Convert.ToInt32(Session["UserId"]));
+            var planes = _planManager.GetPlanes(Convert.ToInt32(User.Identity.Name));
             var a = User.Identity.Name;
 
             return Json(planes, JsonRequestBehavior.AllowGet);
@@ -37,13 +37,13 @@ namespace PAccountant.Model.View.Areas.Investment.Controllers
         public JsonResult GetStoredMoney()
         {
 
-            var moneyStored = _planManager.GetStoredMoney(Convert.ToInt32(Session["UserId"]));
+            var moneyStored = _planManager.GetStoredMoney(Convert.ToInt32(User.Identity.Name));
             return Json(moneyStored, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
         public void AddMoneyToStore(SumUserModel moneyModel)
         {
-            moneyModel.UserId = Convert.ToInt32(Session["UserId"]);
+            moneyModel.UserId = Convert.ToInt32(User.Identity.Name);
             _planManager.AddSum(moneyModel);
         }
     }
