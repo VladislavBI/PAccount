@@ -1,30 +1,33 @@
-﻿<div class="row">
-    <div class="col-lg-3">Name</div>
-    <div class="col-lg-1">Full hours</div>
-    <div class="col-lg-1">Sum per hour</div>
-    <div class="col-lg-1">Payed sum</div>
-    <div class="col-lg-1">Payed hours</div>
-    <div class="col-lg-1">Unpayed hours</div>
-    <div class="col-lg-1">Edit</div>
-    <div class="col-lg-2">Payment</div>
-    <div class="col-lg-1">End</div>
+﻿<div class="row" style="text-align:center;width: 100%;margin-top: 77px;">
+    <h2 style="width: 100%;">All freelance project</h2>
+</div>
+<div class="row" style="width: 100%; margin-left: 10px;">
+    <div class="col-lg-3 jsgrid-cell-imitate" style="padding:0px">Name</div>
+    <div class="col-lg-1 jsgrid-cell-imitate" style="padding:0px">Full hours</div>
+    <div class="col-lg-1 jsgrid-cell-imitate" style="padding:0px">Sum per hour</div>
+    <div class="col-lg-1 jsgrid-cell-imitate" style="padding:0px">Payed sum</div>
+    <div class="col-lg-1 jsgrid-cell-imitate" style="padding:0px">Payed hours</div>
+    <div class="col-lg-1 jsgrid-cell-imitate" style="padding:0px">Unpayed hours</div>
+    <div class="col-lg-1 jsgrid-cell-imitate" style="padding:0px">Edit</div>
+    <div class="col-lg-2 jsgrid-cell-imitate" style="padding:0px">Payment</div>
+    <div class="col-lg-1 jsgrid-cell-imitate" style="padding:0px">End</div>
 
 </div>
-<div class="row" ng-repeat="project in freelance.projectsList">
-    <div class="col-lg-3" ng-bind="project.Name"></div>
-    <div class="col-lg-1" ng-bind="project.FullHours"></div>
-    <div class="col-lg-1" ng-bind="project.SumPerHour"></div>
-    <div class="col-lg-1" ng-bind="project.PayedSum"></div>
-    <div class="col-lg-1" ng-bind="project.PayedHours"></div>
-    <div class="col-lg-1" ng-bind="project.UnpayedHours"></div>
-    <div class="col-lg-1" >
-        <button ng-click="freelance.editProject(project)">Edit</button>
+<div class="row" ng-repeat="project in freelance.projectsList" style="width: 100%; margin-left: 10px;" >
+    <div class="col-lg-3 jsgrid-cell-imitate" ng-bind="project.Name" style="padding:0px"></div>
+    <div class="col-lg-1 jsgrid-cell-imitate" ng-bind="project.FullHours"style="padding:0px"></div>
+    <div class="col-lg-1 jsgrid-cell-imitate" ng-bind="project.SumPerHour" style="padding:0px"></div>
+    <div class="col-lg-1 jsgrid-cell-imitate" ng-bind="project.PayedSum" style="padding:0px"></div>
+    <div class="col-lg-1 jsgrid-cell-imitate" ng-bind="project.PayedHours" style="padding:0px"></div>
+    <div class="col-lg-1 jsgrid-cell-imitate" ng-bind="project.UnpayedHours" style="padding:0px"></div>
+    <div class="col-lg-1 jsgrid-cell-imitate" style="padding:0px">
+        <button ng-click="freelance.editProject(project)"  style="padding:0px">Edit</button>
     </div>
-    <div class="col-lg-2" >
+    <div class="col-lg-2 jsgrid-cell-imitate" >
         <button ng-click="freelance.addPayement(project)">Payment</button>
     </div>
-    <div class="col-lg-1" ng-click="freelance.IsEnded">
-        <input type="checkbox" ng-model="project.IsEnded" title="Is End" readonly/>
+    <div class="col-lg-1 jsgrid-cell-imitate" ng-click="freelance.IsEnded">
+        <input type="checkbox" ng-model="project.IsEnded" title="Is End" ng-disabled="true"/>
     </div>
 </div>
 <br />

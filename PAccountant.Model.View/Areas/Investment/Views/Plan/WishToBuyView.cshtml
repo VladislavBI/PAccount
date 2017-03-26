@@ -1,24 +1,30 @@
-﻿<form>
+﻿<div class="row" style="text-align:center;width: 100%;">
+    <h2 style="width: 100%;">New planned buy</h2>
+</div>
+<form>
     <div class="row">
         <div class="col-lg-3"> <label>Name</label></div>
         <div class="col-lg-9"> <input type="text" ng-model="plan.newPlan.Name" /> </div>
     </div>
+    <br />
     <div class="row">
         <div class="col-lg-3"> <label>Sum</label></div>
         <div class="col-lg-9"> <input type="text" ng-model="plan.newPlan.Sum" /> </div>
     </div>
+    <br />
     <div class="row">
         <div class="col-lg-3"> <label>Currency</label></div>
         <div class="col-lg-9">
             <select name="mySelect" id="mySelect" ng-model="plan.newPlan.currency" ng-options="option.Name for option in plan.availableCurrency track by option.Id"></select>
         </div>
     </div>
+    <br />
     <div class="row">
-        <div class="row">
-            <div class="col-lg-4"> </div>
-            <div class="col-lg-4"> <button ng-click="plan.addNewPlan()">Save new plan</button></div>
-            <div class="col-lg-4"> </div>
+        <div class="row" style="width:100%">
+            <div class="col-lg-6"> </div>
+            <div class="col-lg-6"> <button ng-click="plan.addNewPlan()">Save new plan</button></div>
         </div>
     </div>
 </form>
+<br />
 <br />

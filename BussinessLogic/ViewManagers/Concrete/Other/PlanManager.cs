@@ -36,11 +36,8 @@ namespace BussinessLogic.ViewManagers.Concrete.Other
             {
                 PAccountantEntities context = _unitOfWork.PersonalAccountantContext as PAccountantEntities;
                 var planUSDSum = scriptor.ChangeBuyRateForCurrency(modelParam.Sum, modelParam.CurrencyName, "USD");
-                context.other_sumStored.Add(new other_sumStored()
-                {
-                    Sum = modelParam.Sum,
-                    UserId = modelParam.UserId
-                });
+                var storedMoney = context.other_sumStored.FirstOrDefault(x => x.UserId == modelParam.UserId);
+                storedMoney.Sum += planUSDSum;
                 _unitOfWork.Save();
             }
         }

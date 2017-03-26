@@ -40,18 +40,18 @@ namespace BussinessLogic.ViewManagers.Concrete.Debts
 
                 debt_DebtOperations newOperation = new debt_DebtOperations()
                 {
-                    StartDate=model.StartDate,
-                    EndDate=model.EndDate,
+                    StartDate = model.StartDate,
+                    EndDate = model.EndDate,
                     StartSum = model.StartSum,
                     RewardSum = model.RewardSum,
                     Comment = model.Commentary,
                     CurrencyId = model.CurrencyId,
-                    IsInProgress=true
+                    IsInProgress = true
                 };
                 DebtForeignKeyForSetModels fKModel = new DebtForeignKeyForSetModels
                 {
                     AgentModel = modelForOperation.AgentModel,
-                    UserName = userName,
+                    UserId = userName,
                     DebtType = operationType
                 };
                 SetIdForForeignKeys(fKModel, DIManager.UnitOfWork, ref newOperation);
@@ -81,13 +81,13 @@ namespace BussinessLogic.ViewManagers.Concrete.Debts
                 if (fKModel.AgentModel != null)
                 {
                     operation.AgentId = fKModel.AgentModel.Id;
-                }             
-                operation.UserId = unitOfWork.PersonalAccountantContext.Set<User>().FirstOrDefault(x => x.Name == fKModel.UserName).Id;
+                }
+                operation.UserId = Convert.ToInt32(fKModel.UserId);
                 operation.DebtTypeId = Convert.ToInt32(fKModel.DebtType);
             }
         }
 
-        public override bool AddOperationToDB<TOPerationModel>(TOPerationModel operationToAdd, TemplateModel templateParam=null)
+        public override bool AddOperationToDB<TOPerationModel>(TOPerationModel operationToAdd, TemplateModel templateParam = null)
         {
             try
             {

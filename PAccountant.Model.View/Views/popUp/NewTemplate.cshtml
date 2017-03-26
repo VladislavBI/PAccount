@@ -1,23 +1,22 @@
-﻿<div class="row">
-    <div class="col-lg-3">
+﻿<div class="row popup-row">
+    <div class="col-lg-4">
         Template name
     </div>
     <div class="col-lg-3">
-        <label><input type="checkbox" name="name" ng-model="templates.IsTemplateCreated" />New template</label>
+        <label><input type="checkbox" name="name" ng-model="templates.IsTemplateCreated" ng-click="templates.useTemplateCheckBox=false"/>New template</label>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-5">
         <input type="text" ng-model="templates.Name" ng-show="templates.IsTemplateCreated"/>
     </div>
 </div>
-<div class="row">
-    <div class="col-lg-3">
+<div class="row popup-row">
+    <div class="col-lg-4">
         Get from template
     </div>
     <div class="col-lg-3">
-        <label><input type="checkbox" name="name" ng-model="templates.useTemplateCheckBox" />Use tempate</label>
+        <label><input type="checkbox" name="name" ng-model="templates.useTemplateCheckBox" ng-click="templates.IsTemplateCreated=false"/>Use tempate</label>
     </div>
-    <div class="col-lg-6">
-        <select ng-model="templates.templates" ng-options="dataRepeat.Name for dataRepeat in templates.availableTemplate track by dataRepeat.Id" ng-show="templates.useTemplateCheckBox" ng-change="appendTemplate()"></select>
-        <input type="text" ng-model="popUpArguments.templateName"  />
+    <div class="col-lg-5">
+        <select ng-model="templates.templates" ng-options="dataRepeat.Name for dataRepeat in templates.availableTemplate track by dataRepeat.Id" ng-show="templates.useTemplateCheckBox" ng-change="appendTemplate()" style="width: 100%;"></select>
     </div>
 </div>

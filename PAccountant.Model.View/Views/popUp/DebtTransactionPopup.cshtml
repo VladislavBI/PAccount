@@ -1,9 +1,9 @@
 ﻿<script type="text/ng-template" id="addDebtTransactionPopup.html">
     <div class="modal-header" ng-init="init()">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <div>
+        <h2>
             Add transaction
-        </div>
+        </h2>
     </div>
     <div class="modal-body">
         <div class="row">
@@ -11,23 +11,23 @@
                 Transaction date
             </div>
             <div class="col-lg-9">
-                <input type="date" ng-model="popUpArguments.date" />
+                <input type="date" ng-model="popUpArguments.date" style="width:100%"/>
             </div>
         </div>
-        <div class="row">
+        <div class="row popup-row">
             <div class="col-lg-3">
                 Currency
             </div>
-            <div class="col-lg-5">
-                <select name="mySelect" id="mySelect" ng-model="popUpArguments.currency" ng-options="option.Name for option in popUpArguments.availableCurrency track by option.Id"></select>
+            <div class="col-lg-9">
+                <select name="mySelect" id="mySelect" ng-model="popUpArguments.currency" ng-options="option.Name for option in popUpArguments.availableCurrency track by option.Id" style="width:100%"></select>
             </div>
         </div>
-        <div class="row">
+        <div class="row popup-row">
             <div class="col-lg-3">
                 transaction sum
             </div>
             <div class="col-lg-9">
-                <input type="number" ng-model="popUpArguments.summ" />
+                <input type="number" ng-model="popUpArguments.summ" style="width:100%"/>
             </div>
         </div>
         

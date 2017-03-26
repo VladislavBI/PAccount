@@ -1,14 +1,17 @@
 ﻿<div class="table" ng-controller="statisticPersonalController as statistic" style="font-size:22px">
     <div ng-init="statistic.init()">
         <div class="row">
-        <img heigth="500"/>
+            <div style="text-align: center;width: 100%;">
+                <h2 style="width: 100%;">Currency balance</h2>
+            </div>
         </div>
-        <div class="row">
-            Overall balance: <span ng-bind="statistic.total"></span>
+        <div class="row" style="text-align:center">
+            Overall balance: <span ng-bind="statistic.total"></span>$
         </div>
-        <div class="row">
-                <ul class="list-group">
-                    <li ng-repeat="operation in statistic.currenciesOperations" class="list-group-item">
+        <br />
+        <div class="row" style="width: 100%;">
+                <ul class="list-group" style="width: 100%;">
+                    <li ng-repeat="operation in statistic.currenciesOperations" class="list-group-item" style="width: 100%;">
                         {{operation.Name}}:{{operation.Sum}}
                     </li>
                 </ul>

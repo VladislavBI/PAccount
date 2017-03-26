@@ -22,3 +22,34 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.popup-row{
+    margin-top:20px;
+}
+
+.vertical-center-container {
+  display: table;
+  height: 100px;
+  width: 100%;
+  text-align: center;
+  border: 2px dashed #f69c55;
+}
+.vertical-center-cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+.jsgrid-cell-imitate{
+    background-color:#f9f9f9; 
+    border:1px solid #e9e9e9;
+}
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  flex-wrap: wrap;
+}
+.row > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}

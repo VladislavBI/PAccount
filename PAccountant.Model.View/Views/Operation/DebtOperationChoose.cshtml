@@ -1,33 +1,40 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-<div class="row">
-    <div class="col-xs-6 col-centered">
+<div class="row" style="padding:0px;margin-left: 10px;">
+    <div class="col-xs-6 col-centered" style="padding:0px">
         <h2>Add operation</h2>
     </div>
 </div>
+<br />
 
 <div class="row">
+
     <div class="col-md-6">
-        <button type="button" class="btn btn-info btn-lg btn-with-image" ng-click="openDebtOperationModal(true)">
-            <img src="~/Images/plus-icon.png" alt="income operation" />
-        </button>
+        <div class="row"  style="font-size: 40px; cursor:pointer" ng-click="openDebtOperationModal(true)">
+            <div class="col-md-4" style="padding:0px">
+                <button type="button" class="btn btn-info btn-lg btn-with-image" >
+                    <img src="~/Images/plus-icon.png" alt="income operation" />
+                </button>
+            </div>
+            <div class="col-md-8" style="padding:0px">
+                <span class="vertical-center-cel">Add debit</span>
+            </div>
+        </div>
     </div>
-    <div class="col-md-6" style="font-size: 25px">
-        Add debit
+
+    <div class="col-md-6">
+        <div class="row" style="font-size: 40px; cursor:pointer"  ng-click="openDebtOperationModal(false)">
+            <div class="col-md-4" style="padding:0px">
+                <button type="button" class="btn btn-info btn-lg btn-with-image">
+                    <img src="~/Images/minus-icon.png" alt="outcome operation" />
+                </button>
+            </div>
+            <div class="col-md-8" style="padding:0px">
+                <span class="vertical-center-cel">Add credit</span>
+            </div>
+        </div>
     </div>
 </div>
-
-<div class="row">
-    <div class="col-md-6">
-        <button type="button" class="btn btn-info btn-lg btn-with-image" ng-click="openDebtOperationModal(false)">
-            <img src="~/Images/minus-icon.png" alt="outcome operation" />
-        </button>
-
-    </div>
-    <div class="col-md-6" style="font-size: 25px">
-        Add credit
-    </div>
-</div>
-
+<br />
 @Html.Partial("~/Views/popUp/DebtOperationPopup.cshtml")

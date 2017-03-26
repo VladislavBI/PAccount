@@ -2,15 +2,15 @@
 
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("SignOut", "Authorization", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    using (Html.BeginForm("SignOut", "Authorization", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right"}))
     {
         @Html.AntiForgeryToken()
 
-        <ul class="nav navbar-nav navbar-right">
-            <li>
+        <ul class="nav navbar-nav navbar-right" >
+            <li style="display:none">
                 @Html.ActionLink("Hello " + User.Identity.Name + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
             </li>
-            <li>@Html.ActionLink("Log off", "SignOut", "Authorization")</li>
+            <li>@Html.ActionLink("Log off", "SignOut", "Authorization", new { area = "" }, null)</li>
         </ul>
     }
 }

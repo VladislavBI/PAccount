@@ -8,19 +8,17 @@
     <h3>{{msg}}</h3>
     <div class="row">
         <div class="col-md-3" ng-controller="statisticDebtController as statistic" ng-init="statistic.init()">
-            <div class="row">
-                @Html.Partial("~/Areas/Debts/Views/Statistic/TotalDebts.cshtml")
-            </div>
-            <div class="row">
-                @Html.Partial("~/Views/Operation/DebtOperationChoose.cshtml")
-            </div>
+            @Html.Partial("~/Areas/Debts/Views/Statistic/TotalDebts.cshtml")
         </div>
         <div class="col-md-9">
             @Html.Partial("~/Areas/Debts/Views/DebtOperation/Notifications.cshtml")
         </div>
     </div>
     <div class="row">
-        @Html.Partial("~/Areas/Debts/Views/Statistic/OperationsListTable.cshtml")
+        @Html.Partial("~/Views/Operation/DebtOperationChoose.cshtml")
     </div>
+</div>
+<div class="row">
+    @Html.Partial("~/Areas/Debts/Views/Statistic/OperationsListTable.cshtml")
 </div>
 

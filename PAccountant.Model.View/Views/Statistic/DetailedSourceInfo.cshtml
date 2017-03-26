@@ -14,14 +14,16 @@
         </div>
     </div>
 
-    <div class="row">
-
-        <div class="col-lg-4">
+    <br />
+    <div class="row" style="width: 100%;">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-3">
             <form name="sourceDate">
                 <input type="date" ng-model="chart.periods.sourceDate.startPeriod" />
                 <input type="date" ng-model="chart.periods.sourceDate.endPeriod" />
                 <input type="submit" value="sendToServer" ng-click="chart.applyDate('source')" />
             </form>
+            <br />
             <div id="barchart_s" style="height: 500px;">
 
             </div>
@@ -33,18 +35,20 @@
                 <input type="date" ng-model="chart.periods.categoryDate.endPeriod" />
                 <input type="submit" value="sendToServer" ng-click="chart.applyDate('category')" />
             </form>
+            <br />
             <div id="barchart_c" style="height: 500px;">
 
             </div>
         </div>
-        <form name="currencyDate">
-            <input type="date" ng-model="chart.periods.currencyDate.startPeriod" />
-            <input type="date" ng-model="chart.periods.currencyDate.endPeriod" />
-            <input type="submit" value="sendToServer" ng-click="chart.applyDate('currency')" />
-        </form>
-        <div class="col-lg-4">
-            <div id="barchart_cr" style="height: 500px;">
 
+        <div class="col-lg-4">
+            <form name="currencyDate">
+                <input type="date" ng-model="chart.periods.currencyDate.startPeriod" />
+                <input type="date" ng-model="chart.periods.currencyDate.endPeriod" />
+                <input type="submit" value="sendToServer" ng-click="chart.applyDate('currency')" />
+            </form>
+            <br />
+            <div id="barchart_cr" style="height: 500px;">
             </div>
         </div>
     </div>

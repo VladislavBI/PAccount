@@ -9,72 +9,72 @@
         </div>
     </div>
     <div class="modal-body">
-        <div class="row">
+        <div class="row popup-row">
             <div class="col-lg-3">
                 Current date
             </div>
             <div class="col-lg-9">
-                <input type="date" ng-model="popUpArguments.startDate" />
+                <input type="date" ng-model="popUpArguments.startDate" style="width: 100%;"/>
             </div>
         </div>
-        <div class="row">
+        <div class="row popup-row">
             <div class="col-lg-3">
                 Return date
             </div>
             <div class="col-lg-9">
-                <input type="date" ng-model="popUpArguments.endDate" />
+                <input type="date" ng-model="popUpArguments.endDate" style="width: 100%;"/>
             </div>
         </div>
-        <div class="row">
+        <div class="row popup-row">
             <div class="col-lg-3">
                 Agent
             </div>
             <div class="col-lg-5">
-                <select ng-model="popUpArguments.agent" ng-options="dataRepeat.Name for dataRepeat in popUpArguments.availableAgents track by dataRepeat.Id"></select>
+                <select ng-model="popUpArguments.agent" ng-options="dataRepeat.Name for dataRepeat in popUpArguments.availableAgents track by dataRepeat.Id" style="width: 100%;"></select>
             </div>
             <div class="col-lg-4">
                 <label><input type="checkbox" name="name" ng-model="popUpArguments.newAgentCheckBox" />New</label>
             </div>
         </div>
-        <div class="row" ng-show="validation.variableIsTrue(popUpArguments.newAgentCheckBox)">
+        <div class="row popup-row" ng-show="validation.variableIsTrue(popUpArguments.newAgentCheckBox)">
             <div class="col-lg-3">
                 New Agent
             </div>
             <div class="col-lg-9">
-                <input type="text" ng-model="popUpArguments.newAgentText" />
+                <input type="text" ng-model="popUpArguments.newAgentText" style="width: 100%;"/>
             </div>
         </div>
         @* Currency are preinstalled now *@
-        <div class="row">
+        <div class="row popup-row">
             <div class="col-lg-3">
                 Currency
             </div>
             <div class="col-lg-5">
-                <select name="mySelect" id="mySelect" ng-model="popUpArguments.currency" ng-options="option.Name for option in popUpArguments.availableCurrency track by option.Id"></select>
+                <select name="mySelect" id="mySelect" ng-model="popUpArguments.currency" ng-options="option.Name for option in popUpArguments.availableCurrency track by option.Id" style="width: 100%;"></select>
             </div>
         </div>
-        <div class="row">
+        <div class="row popup-row">
             <div class="col-lg-3">
                 Start summ
             </div>
             <div class="col-lg-9">
-                <input type="number" ng-model="popUpArguments.summ" />
+                <input type="number" ng-model="popUpArguments.summ" style="width: 100%;"/>
             </div>
         </div>
-        <div class="row">
+        <div class="row popup-row">
             <div class="col-lg-3">
                 Reward summ
             </div>
             <div class="col-lg-9">
-                <input type="number" ng-model="popUpArguments.rewardSumm" />
+                <input type="number" ng-model="popUpArguments.rewardSumm" style="width: 100%;"/>
             </div>
         </div>
-        <div class="row">
+        <div class="row popup-row">
             <div class="col-lg-3">
                 Commentary
             </div>
             <div class="col-lg-9">
-                <textarea rows="4" ng-model="popUpArguments.commentary" />
+                <textarea rows="2" ng-model="popUpArguments.commentary" style="width: 100%;"/>
             </div>
         </div>
     </div>

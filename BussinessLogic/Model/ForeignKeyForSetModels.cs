@@ -13,12 +13,12 @@ namespace BussinessLogic.Model
         public NameIdClassModel CategoryModel { get; set; }
         public NameIdClassModel SourceModel { get; set; }
         public OperationType OperationType { get; set; }
-        public string UserName { get; set; }
+        public string UserId { get; set; }
     }
     public class DebtForeignKeyForSetModels
     {
         public NameIdClassModel AgentModel { get; set; }
         public DebtTypeEnum DebtType { get; set; }
-        public string UserName { get; set; }
+        public string UserId { get; set; }
     }
 }

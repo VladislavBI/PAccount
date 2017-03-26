@@ -90,7 +90,7 @@ namespace BussinessLogic.ViewManagers.Concrete
                     CurrencyModel = modelForOperation.CurrencyModel,
                     CategoryModel = modelForOperation.CategoryModel,
                     SourceModel = modelForOperation.SourceModel,
-                    UserName = userName,
+                    UserId = userName,
                     OperationType = operationType
                 };
                 SetIdForForeignKeys(fKModel, DIManager.UnitOfWork, ref newOperation);
@@ -139,7 +139,7 @@ namespace BussinessLogic.ViewManagers.Concrete
                 {
                     operation.SourceId = fKModel.SourceModel.Id;
                 }
-                operation.UserId = unitOfWork.PersonalAccountantContext.Set<User>().FirstOrDefault(x => x.Name == fKModel.UserName).Id;
+                operation.UserId = Convert.ToInt32(fKModel.UserId);
 
                 operation.OperationTypeId = Convert.ToInt32(fKModel.OperationType);
             }
