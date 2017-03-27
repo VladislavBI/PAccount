@@ -1,6 +1,6 @@
-﻿angular.module('app').controller('FreelanceController',
-['httpService', 'apiUrlFactory', 'modalService', '$uibModal',
-function (httpService, apiUrlFactory, modalService, $uibModal) {
+﻿angular.module('app').controller('FreelanceController', 
+['httpService', 'apiUrlFactory', 'modalService', '$uibModal', '$rootScope',
+function (httpService, apiUrlFactory, modalService, $uibModal, $rootScope) {
 
     var me = {};
     me.http = httpService;
@@ -32,7 +32,7 @@ function (httpService, apiUrlFactory, modalService, $uibModal) {
         });
     };
 
-
+    $rootScope.$on('flUpdated', me.init);
     me.addPayement = function (project) {
         modalService.open('freelancePaymentPopup.html', 'freelancePaymentController',
             {
@@ -49,6 +49,8 @@ function (httpService, apiUrlFactory, modalService, $uibModal) {
         me.http.post(me.url.addNewProject,
             {
                 model: me.newProject
+            }).then(function (response) {
+                $rootScope.$broadcast('flUpdated');
             });
     }
     return me;

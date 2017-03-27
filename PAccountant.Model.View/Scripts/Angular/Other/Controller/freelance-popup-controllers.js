@@ -1,6 +1,6 @@
 ﻿angular.module('app').controller('freelancePaymentController',
-['$scope', '$uibModalInstance', 'items', 'httpService', 'apiUrlFactory',
-function ($scope, $uibModalInstance, items, httpService, apiUrlFactory) {
+['$scope', '$uibModalInstance', 'items', 'httpService', 'apiUrlFactory', '$rootScope',
+function ($scope, $uibModalInstance, items, httpService, apiUrlFactory, $rootScope) {
 
 
     $scope.url = apiUrlFactory;
@@ -38,7 +38,9 @@ function ($scope, $uibModalInstance, items, httpService, apiUrlFactory) {
     $scope.ok = function () {
         $scope.cancel();
         $scope.newPayment.CurrencyId = $scope.newPayment.currency.Id;
-        $scope.http.post($scope.url.addPayment, $scope.newPayment, null);
+        $scope.http.post($scope.url.addPayment, $scope.newPayment, null).then(function (response) {
+            $rootScope.$broadcast('flUpdated');
+        });
 
     }
 
@@ -50,8 +52,8 @@ function ($scope, $uibModalInstance, items, httpService, apiUrlFactory) {
 }]);
 
 angular.module('app').controller('editFreelanceController',
-['$scope', '$uibModalInstance', 'items', 'httpService', 'apiUrlFactory', 'modalService', '$uibModal',
-function ($scope, $uibModalInstance, items, httpService, apiUrlFactory, modalService, $uibModal) {
+['$scope', '$uibModalInstance', 'items', 'httpService', 'apiUrlFactory', 'modalService', '$uibModal', '$rootScope',
+function ($scope, $uibModalInstance, items, httpService, apiUrlFactory, modalService, $uibModal, $rootScope) {
 
 
     $scope.url = apiUrlFactory;
@@ -77,7 +79,9 @@ function ($scope, $uibModalInstance, items, httpService, apiUrlFactory, modalSer
     }
     $scope.changeProjectStatus = function () {
         $scope.cancel();
-        $scope.http.post($scope.url.changeProjectStatus, { projectId: $scope.project.Id }, null);
+        $scope.http.post($scope.url.changeProjectStatus, { projectId: $scope.project.Id }, null).then(function (response) {
+            $rootScope.$broadcast('flUpdated');
+        });
     }
 
     $scope.cancel = function () {
@@ -86,8 +90,8 @@ function ($scope, $uibModalInstance, items, httpService, apiUrlFactory, modalSer
     };
 }]);
 angular.module('app').controller('freelanceHoursSpendedController',
-['$scope', '$uibModalInstance', 'items', 'httpService', 'apiUrlFactory',
-function ($scope, $uibModalInstance, items, httpService, apiUrlFactory) {
+['$scope', '$uibModalInstance', 'items', 'httpService', 'apiUrlFactory', '$rootScope',
+function ($scope, $uibModalInstance, items, httpService, apiUrlFactory, $rootScope) {
 
 
     $scope.url = apiUrlFactory;
@@ -102,7 +106,9 @@ function ($scope, $uibModalInstance, items, httpService, apiUrlFactory) {
 
     $scope.ok = function () {
         $scope.cancel();
-        $scope.http.post($scope.url.addHours, $scope.spendedModel, null);
+        $scope.http.post($scope.url.addHours, $scope.spendedModel, null).then(function (response) {
+            $rootScope.$broadcast('flUpdated');
+        });
     }
 
     $scope.cancel = function () {
@@ -111,8 +117,8 @@ function ($scope, $uibModalInstance, items, httpService, apiUrlFactory) {
     };
 }]);
 angular.module('app').controller('changeFreelanceProjectDataController',
-['$scope', '$uibModalInstance', 'items', 'httpService', 'apiUrlFactory',
-function ($scope, $uibModalInstance, items, httpService, apiUrlFactory) {
+['$scope', '$uibModalInstance', 'items', 'httpService', 'apiUrlFactory', '$rootScope',
+function ($scope, $uibModalInstance, items, httpService, apiUrlFactory, $rootScope) {
 
 
     $scope.url = apiUrlFactory;
@@ -124,7 +130,9 @@ function ($scope, $uibModalInstance, items, httpService, apiUrlFactory) {
 
     $scope.ok = function () {
         $scope.changedProject.TotalHours = $scope.changedProject.FullHours;
-        $scope.http.post($scope.url.changeProjectData, $scope.changedProject, null);
+        $scope.http.post($scope.url.changeProjectData, $scope.changedProject, null).then(function (response) {
+            $rootScope.$broadcast('flUpdated');
+        });
         $scope.cancel();
     }
 

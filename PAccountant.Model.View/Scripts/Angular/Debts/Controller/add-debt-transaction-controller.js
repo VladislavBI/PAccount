@@ -1,6 +1,6 @@
 ﻿angular.module('app').controller('addDebtTransactionController',
-    ['$scope', '$uibModalInstance', 'items', 'httpService', 'validationService', 'apiUrlFactory',
-function ($scope, $uibModalInstance, items, httpService, validationService, apiUrlFactory) {
+    ['$scope', '$uibModalInstance', 'items', 'httpService', 'validationService', 'apiUrlFactory', '$rootScope',
+function ($scope, $uibModalInstance, items, httpService, validationService, apiUrlFactory, $rootScope) {
 
 
     $scope.validation = validationService;
@@ -49,6 +49,7 @@ function ($scope, $uibModalInstance, items, httpService, validationService, apiU
             $scope.http.post(apiUrlFactory.addDebtTransction, postData, null).then(function (response) {
                 $scope.cancel();
                 $scope.NullifyArguments();
+                $rootScope.$broadcast("debtUpdated");
             }, function (e) {
                 console.log(e);
                 $scope.NullifyArguments();

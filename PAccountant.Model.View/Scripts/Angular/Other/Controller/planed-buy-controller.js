@@ -1,6 +1,6 @@
 ﻿angular.module('app').controller('PlanedBuyController',
-['httpService', 'apiUrlFactory',
-function (httpService, apiUrlFactory) {
+['httpService', 'apiUrlFactory', '$rootScope',
+function (httpService, apiUrlFactory, $rootScope) {
 
     var me = {};
     me.http = httpService;
@@ -42,7 +42,9 @@ function (httpService, apiUrlFactory) {
             CurrencyName: me.newSum.currency.Name
         }
         me.http.post(me.url.addMoneyToStore,
-            { moneyModel: model });
+            { moneyModel: model }).then(function () {
+                me.init();
+            });
     }
     me.addNewPlan = function () {
         var model = {
@@ -51,7 +53,9 @@ function (httpService, apiUrlFactory) {
             CurrencyName: me.newPlan.currency.Name
         }
         me.http.post(me.url.addPlan,
-            { model: model });
+            { model: model }).then(function () {
+                me.init();
+            });
     }
     return me;
 }]);

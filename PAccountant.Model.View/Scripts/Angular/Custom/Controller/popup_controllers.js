@@ -7,8 +7,8 @@
     newSourceText, popUpArguments, source, summ, then, url, validation
 */
 angular.module('app').controller('addOperationController',
-['$scope', '$uibModalInstance', 'items', 'httpService', 'validationService', 'apiUrlFactory', 'AddPersonalOperationFactory', 'AddDebtOperationFactory',
-function ($scope, $uibModalInstance, items, httpService, validationService, apiUrlFactory, AddPersonalOperationFactory, AddDebtOperationFactory) {
+['$scope', '$uibModalInstance', 'items', 'httpService', 'validationService', 'apiUrlFactory', 'AddPersonalOperationFactory', 'AddDebtOperationFactory', '$rootScope',
+function ($scope, $uibModalInstance, items, httpService, validationService, apiUrlFactory, AddPersonalOperationFactory, AddDebtOperationFactory, $rootScope) {
 
 
     $scope.validation = validationService;
@@ -67,6 +67,8 @@ function ($scope, $uibModalInstance, items, httpService, validationService, apiU
             $scope.http.post($scope.addFactory.addOperationUrl, postData, null).then(function (response) {
                 $scope.cancel();
                 $scope.NullifyArguments();
+                $rootScope.$broadcast("pAcUpdated");
+                $rootScope.$broadcast("debtUpdated");
             }, function (e) {
                 console.log(e);
                 $scope.NullifyArguments();

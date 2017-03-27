@@ -21,11 +21,12 @@ namespace PAccountant.Model.View.Areas.Investment.Controllers
             return View();
         }
         [HttpPost]
-        public void AddPlan(AddPlanToStoreModel model)
+        public JsonResult AddPlan(AddPlanToStoreModel model)
         {
             AddPlanToStoreWithUser modelToSend = _mapperManager.MapModel<AddPlanToStoreModel, AddPlanToStoreWithUser>(model);
             modelToSend.UserId = Convert.ToInt32(User.Identity.Name);
             _planManager.AddPlan(modelToSend);
+            return Json(null);
         }
         public JsonResult GetPlanes()
         {
@@ -41,10 +42,11 @@ namespace PAccountant.Model.View.Areas.Investment.Controllers
             return Json(moneyStored, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public void AddMoneyToStore(SumUserModel moneyModel)
+        public JsonResult AddMoneyToStore(SumUserModel moneyModel)
         {
             moneyModel.UserId = Convert.ToInt32(User.Identity.Name);
             _planManager.AddSum(moneyModel);
+            return Json(null);
         }
     }
 }

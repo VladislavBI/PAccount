@@ -1,5 +1,5 @@
-﻿angular.module('app').controller('extremumsController', ['$scope', 'httpService', 'apiUrlFactory',
-    function ($scope, httpService, apiUrlFactory) {
+﻿angular.module('app').controller('extremumsController', ['$scope', 'httpService', 'apiUrlFactory', '$rootScope',
+    function ($scope, httpService, apiUrlFactory, $rootScope) {
         var self = this;
         self.total = 0;
         self.init = function () {
@@ -15,6 +15,6 @@
                 })
             });
         };
-        
+        $rootScope.$on("pAcUpdated", loadExtremums);
         return self;
     }]);

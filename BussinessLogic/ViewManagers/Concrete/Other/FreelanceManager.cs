@@ -28,7 +28,7 @@ namespace BussinessLogic.ViewManagers.Concrete.Other
                 var hoursModel = _unitOfWork.PersonalAccountantContext.Set<other_SpendHoursPerProject>().FirstOrDefault(x => x.ProjectId == model.ProjectId);
                 if (hoursModel != null)
                 {
-                    hoursModel.SpendHours = model.Hours;
+                    hoursModel.SpendHours += model.Hours;
                 }
                 else
                 {

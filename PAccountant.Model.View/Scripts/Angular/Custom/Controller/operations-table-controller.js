@@ -1,10 +1,12 @@
-﻿angular.module('app').controller('operationTableController',
-    ['$scope', 'httpService', 'apiUrlFactory',
-function ($scope, httpService, apiUrlFactory) {
+﻿angular.module('app').controller('operationTableController', 
+    ['$scope', 'httpService', 'apiUrlFactory', '$rootScope',
+function ($scope, httpService, apiUrlFactory, $rootScope) {
     var self = this;
 
 
-
+    $rootScope.$on("pAcUpdated", function () {
+        $("#monthOperationStatistic").jsGrid("loadData");
+    });
     return self;
 }]);
 
@@ -32,7 +34,7 @@ $("#monthOperationStatistic").jsGrid({
             }).done(function (response) {
                 d.resolve(response);
             });
-
+            autoload: false;
             return d.promise();
         }
     },

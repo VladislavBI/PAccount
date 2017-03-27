@@ -20,33 +20,39 @@ namespace PAccountant.Model.View.Areas.Investment.Controllers
         {
             return View();
         }
-        public void AddNewProject(ProjectData model)
+        public JsonResult AddNewProject(ProjectData model)
         {
             model.UserId = Convert.ToInt32(User.Identity.Name);
             _freelanceManager.AddNewProject(model);
+            return Json(null);
         }
 
-        public void AddHours(HoursData model)
+        public JsonResult AddHours(HoursData model)
         {
             _freelanceManager.AddHours(model);
+            return Json(null);
         }
-        
-        public void ChangeProjectData(other_Projects model)
+
+        public JsonResult ChangeProjectData(other_Projects model)
         {
             model.UserId = Convert.ToInt32(User.Identity.Name);
             _freelanceManager.ChangeProjectData(model);
+            return Json(null);
         }
-        public void AddPayment(PaymentModel model)
+        public JsonResult AddPayment(PaymentModel model)
         {
             _freelanceManager.AddPayement(model);
+            return Json(null);
         }
         public JsonResult GetProjects()
         {
             return Json(_freelanceManager.GetProjects(User.Identity.Name), JsonRequestBehavior.AllowGet);
         }
-        public void ChangeProjectStatus(int projectId)
+        public JsonResult ChangeProjectStatus(int projectId)
         {
             _freelanceManager.ChangeProjectStatus(projectId);
+            return Json(null);
+
         }
     }
 }

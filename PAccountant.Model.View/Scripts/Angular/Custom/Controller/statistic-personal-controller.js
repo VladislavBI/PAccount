@@ -1,5 +1,5 @@
-﻿angular.module('app').controller('statisticPersonalController', ['$scope', 'httpService', 'apiUrlFactory',
-    function ($scope, httpService, apiUrlFactory) {
+﻿angular.module('app').controller('statisticPersonalController', ['$scope', 'httpService', 'apiUrlFactory', '$rootScope',
+    function ($scope, httpService, apiUrlFactory, $rootScope) {
         var self = this;
         self.total = 0;
         self.init = function () {
@@ -11,6 +11,7 @@
                 self.total = parseFloat(response.data).toFixed(2);
             });
         };
+        $rootScope.$on("pAcUpdated", self.init);
 
         var loadCurrenciesSumm = function () {
             httpService.get(apiUrlFactory.getCurrenciesOperationsSumms).then(function (response) {

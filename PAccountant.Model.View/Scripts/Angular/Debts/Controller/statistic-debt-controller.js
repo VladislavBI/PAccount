@@ -1,5 +1,5 @@
-﻿angular.module('app').controller('statisticDebtController', ['$scope', 'httpService', 'apiUrlFactory',
-    function ($scope, httpService, apiUrlFactory) {
+﻿angular.module('app').controller('statisticDebtController', ['$scope', 'httpService', 'apiUrlFactory', '$rootScope',
+    function ($scope, httpService, apiUrlFactory, $rootScope) {
         var self = this;
         self.totalDebit = 0;
         self.totalCredit = 0;
@@ -16,6 +16,8 @@
                 }
             });
         };
+
+        $rootScope.$on("debtUpdated", self.init);
 
         var getDetailedInfo = function () {
             //httpService.get(apiUrlFactory.getDetailedSourceInfo).then(function (response) {

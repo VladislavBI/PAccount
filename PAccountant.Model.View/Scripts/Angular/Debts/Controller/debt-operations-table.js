@@ -1,7 +1,11 @@
 ﻿angular.module('app').controller('debtTableController',
-    ['$scope', 'httpService', 'apiUrlFactory', '$compile', 'modalService', '$uibModal',
-function ($scope, httpService, apiUrlFactory, $compile, modalService, $uibModal) {
+    ['$scope', 'httpService', 'apiUrlFactory', '$compile', 'modalService', '$uibModal', '$rootScope',
+function ($scope, httpService, apiUrlFactory, $compile, modalService, $uibModal, $rootScope) {
     var self = this;
+
+    $rootScope.$on("debtUpdated", function () {
+        $("#fullDebtStatistic").jsGrid("loadData");
+    });
 
     $("#fullDebtStatistic").jsGrid({
         height: "auto",
