@@ -52,8 +52,9 @@ namespace PAccountant.Model.View.Controllers
         public ActionResult Registration(RegisterModel model)
         {
             byte[] userPassword = _cryptoManager.EncodingString(model.Password);
-            if (ValidationManager.modelIsValid(model) && !_accountManager.userExists(model.Name, userPassword) && _authorizationManager.Login(model.Name, userPassword))
+            if (ValidationManager.modelIsValid(model) && !_accountManager.userExists(model.Name, userPassword))
             {
+                _authorizationManager.Registration(model.Name, userPassword);
                 string i = _accountManager.ReturnUserId(model.Name);
                 if (i != null)
                 {

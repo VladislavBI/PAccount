@@ -63,3 +63,76 @@ D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\Newtonsoft.Json.xm
 D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\obj\Debug\PAccountant.Model.View.csprojResolveAssemblyReference.cache
 D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\obj\Debug\PAccountant.Model.View.dll
 D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\obj\Debug\PAccountant.Model.View.pdb
+D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\BussinessLogic.exe.config
+D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\bin\PAccountant.DataLayer.dll.config
+D:\VSProjects\Projects\PAccountant\PAccountant.Model.View\obj\Debug\PAccountant.Model.View.csproj.CoreCompileInputs.cache
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\roslyn\csc.exe
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\roslyn\System.Collections.Immutable.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\roslyn\System.Reflection.Metadata.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\roslyn\vbc.exe
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\roslyn\VBCSCompiler.exe
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\roslyn\VBCSCompiler.exe.config
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\PAccountant.Model.View.dll.config
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\PAccountant.Model.View.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\PAccountant.Model.View.pdb
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\Antlr3.Runtime.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\AutoMapper.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\BussinessLogic.exe
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\Elmah.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\EntityFramework.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\EntityFramework.SqlServer.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\Glimpse.Ado.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\Glimpse.AspNet.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\Glimpse.Core.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\Glimpse.EF6.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\Glimpse.Mvc5.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\Microsoft.Web.Infrastructure.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\Newtonsoft.Json.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\Ninject.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\Ninject.Web.Common.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\Ninject.Web.Mvc.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\PAccountant.DataLayer.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\RateScriptorLibrary.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\System.Web.Helpers.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\System.Web.Mvc.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\System.Web.Optimization.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\System.Web.Razor.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\System.Web.WebPages.Deployment.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\System.Web.WebPages.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\System.Web.WebPages.Razor.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\WebActivatorEx.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\WebGrease.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\BussinessLogic.pdb
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\BussinessLogic.exe.config
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\PAccountant.DataLayer.pdb
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\PAccountant.DataLayer.dll.config
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\AutoMapper.xml
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\EntityFramework.xml
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\EntityFramework.SqlServer.xml
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\Ninject.xml
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\Ninject.Web.Common.xml
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\Ninject.Web.Mvc.xml
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\RateScriptorLibrary.pdb
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\System.Web.Helpers.xml
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\System.Web.Mvc.xml
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\System.Web.Optimization.xml
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\System.Web.Razor.xml
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\System.Web.WebPages.xml
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\System.Web.WebPages.Deployment.xml
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\System.Web.WebPages.Razor.xml
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\Antlr3.Runtime.pdb
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\Newtonsoft.Json.xml
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\bin\ru\EntityFramework.resources.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\obj\Debug\PAccountant.Model.View.csprojAssemblyReference.cache
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\obj\Debug\PAccountant.Model.View.csproj.CoreCompileInputs.cache
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\obj\Debug\PAccountant.Model.View.csproj.CopyComplete
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\obj\Debug\PAccountant.Model.View.dll
+D:\Программирование\train project\PAccountant\PAccountant.Model.View\obj\Debug\PAccountant.Model.View.pdb
