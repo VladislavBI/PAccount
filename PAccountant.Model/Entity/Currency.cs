@@ -17,10 +17,10 @@ namespace PAccountant.DataLayer.Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Currency()
         {
-            this.Operations = new HashSet<Operation>();
             this.debt_DebtOperations = new HashSet<debt_DebtOperations>();
-            this.other_Projects = new HashSet<other_Projects>();
+            this.Operations = new HashSet<Operation>();
             this.other_FreelancePayement = new HashSet<other_FreelancePayement>();
+            this.other_Projects = new HashSet<other_Projects>();
         }
     
         public int Id { get; set; }
@@ -29,12 +29,12 @@ namespace PAccountant.DataLayer.Entity
         public double Buy_Rate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Operation> Operations { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<debt_DebtOperations> debt_DebtOperations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<other_Projects> other_Projects { get; set; }
+        public virtual ICollection<Operation> Operations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<other_FreelancePayement> other_FreelancePayement { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<other_Projects> other_Projects { get; set; }
     }
 }

@@ -2,12 +2,10 @@
 using BussinessLogic.ViewManagers.Abstract;
 using PAccountant.BussinessLogic.StaticClasses;
 using PAccountant.DataLayer.Entity;
-using RateScriptorLibrary.ProgrammModel;
+using PAccountant.Infrastructure.RatesUtil.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BussinessLogic.ViewManagers.Concrete.PersonalAccountant
 {

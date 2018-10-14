@@ -30,9 +30,9 @@ namespace PAccountant.DataLayer.Entity
         public bool IsEnded { get; set; }
     
         public virtual Currency Currency { get; set; }
-        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<other_FreelancePayement> other_FreelancePayement { get; set; }
+        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<other_SpendHoursPerProject> other_SpendHoursPerProject { get; set; }
     }

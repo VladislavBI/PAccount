@@ -2,8 +2,8 @@
 using PAccountant.BussinessLogic.Infrastructure.Abstract;
 using PAccountant.BussinessLogic.StaticClasses;
 using PAccountant.DataLayer.Entity;
+using PAccountant.Infrastructure.RatesUtil.Managers;
 using PAccountant.Model.Infrastructure.Abstract;
-using RateScriptorLibrary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,13 +12,13 @@ namespace BussinessLogic.ViewManagers.Abstract
 {
     public abstract class StatisticManagerBase
     {
-        protected RateScriptor _rateManager;
+        protected ICurrenciesManager _rateManager;
         protected IUnitOfWork _unitOfWork;
         protected IMapperHelper _mapperManager;
 
         public StatisticManagerBase()
         {
-            _rateManager = new RateScriptor();
+            _rateManager = new PBCurrenciesManager();
             _mapperManager = DIManager.MapperHelper;
         }
 

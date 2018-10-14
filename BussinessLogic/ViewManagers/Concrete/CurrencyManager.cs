@@ -9,8 +9,8 @@ using PAccountant.BussinessLogic.StaticClasses;
 using PAccountant.Model.Infrastructure.Abstract;
 using PAccountant.DataLayer.Entity;
 using PAccountant.BussinessLogic.Infrastructure.Abstract;
-using RateScriptorLibrary;
-using RateScriptorLibrary.ProgrammModel;
+using PAccountant.Infrastructure.RatesUtil.Managers;
+using PAccountant.Infrastructure.RatesUtil.Models;
 
 namespace BussinessLogic.ViewManagers.Concrete
 {
@@ -18,12 +18,12 @@ namespace BussinessLogic.ViewManagers.Concrete
     {
         IUnitOfWork _unitOfWork;
         IMapperHelper _mapperHelper;
-        RateScriptor _scriptor;
+        ICurrenciesManager _scriptor;
 
         public CurrencyManager(IMapperHelper mapperHelperParam)
         {
             _mapperHelper = mapperHelperParam;
-            _scriptor = new RateScriptor();
+            _scriptor = new PBCurrenciesManager();
         }
         public CurrencyNameIdRateClass GetCurrencyWithCurrentName(string nameParam)
         {

@@ -25,22 +25,22 @@ namespace PAccountant.DataLayer.Entity
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Operation> Operations { get; set; }
-        public virtual DbSet<OperationCategory> OperationCategories { get; set; }
-        public virtual DbSet<OperationSource> OperationSources { get; set; }
-        public virtual DbSet<OperationType> OperationTypes { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Currency> Currencies { get; set; }
         public virtual DbSet<debt_DebtAgent> debt_DebtAgent { get; set; }
-        public virtual DbSet<debt_Transactions> debt_Transactions { get; set; }
         public virtual DbSet<debt_DebtOperations> debt_DebtOperations { get; set; }
         public virtual DbSet<debt_DebtType> debt_DebtType { get; set; }
-        public virtual DbSet<template_Operations> template_Operations { get; set; }
-        public virtual DbSet<other_PlannedBuy> other_PlannedBuy { get; set; }
-        public virtual DbSet<other_sumStored> other_sumStored { get; set; }
-        public virtual DbSet<other_Projects> other_Projects { get; set; }
+        public virtual DbSet<debt_Transactions> debt_Transactions { get; set; }
+        public virtual DbSet<OperationCategory> OperationCategories { get; set; }
+        public virtual DbSet<Operation> Operations { get; set; }
+        public virtual DbSet<OperationSource> OperationSources { get; set; }
+        public virtual DbSet<OperationType> OperationTypes { get; set; }
         public virtual DbSet<other_FreelancePayement> other_FreelancePayement { get; set; }
+        public virtual DbSet<other_PlannedBuy> other_PlannedBuy { get; set; }
+        public virtual DbSet<other_Projects> other_Projects { get; set; }
         public virtual DbSet<other_SpendHoursPerProject> other_SpendHoursPerProject { get; set; }
+        public virtual DbSet<other_sumStored> other_sumStored { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<template_Operations> template_Operations { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

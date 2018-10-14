@@ -1,14 +1,11 @@
 ﻿using BussinessLogic.Model;
-using PAccountant.BussinessLogic.StaticClasses;
 using PAccountant.DataLayer.Entity;
+using PAccountant.Infrastructure.RatesUtil.Managers;
+using PAccountant.Infrastructure.RatesUtil.Models;
 using PAccountant.Model.Infrastructure.Abstract;
-using RateScriptorLibrary;
-using RateScriptorLibrary.ProgrammModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BussinessLogic.ViewManagers.Abstract
 {
@@ -16,7 +13,7 @@ namespace BussinessLogic.ViewManagers.Abstract
     {
 
         protected IUnitOfWork _unitOfWork;
-        protected RateScriptor _rateScripter = new RateScriptor();
+        protected ICurrenciesManager _rateScripter = new PBCurrenciesManager();
 
         public abstract ExtremumModel GetMaxOutcome();
 
@@ -49,10 +46,11 @@ namespace BussinessLogic.ViewManagers.Abstract
                     OperationId = x.Id.ToString(),
                     Summ = Convert.ToDouble(x.Summ)
                 }).ToList();
-                var correctedSum = _rateScripter.SetOneCurrencyForAllOperations(financeOperationsList, GetCurrentListCurrency ? financeOperationsList.FirstOrDefault().CurrencyName : "USd").Sum(x => x.Summ);
+                var correctedSum = _rateScripter.SetOneCurrencyForAllOperations(financeOperationsList, GetCurrentListCurrency ? financeOperationsList.FirstOrDefault().CurrencyName : "USD").Sum(x => x.Summ);
                 if (maxOperation.Summ < correctedSum)
                 {
                     maxOperation.Summ = correctedSum;
+                    maxOperation.CurrencyName = financeOperationsList.FirstOrDefault().CurrencyName;
                     maxOperation.OperationId = operation.FirstOrDefault().Id.ToString();
                 }
             }

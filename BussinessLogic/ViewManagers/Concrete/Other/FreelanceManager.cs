@@ -94,7 +94,7 @@ namespace BussinessLogic.ViewManagers.Concrete.Other
             using (_unitOfWork = DIManager.UnitOfWork)
             {
                 int userId = Convert.ToInt32(userIdParam);
-                var projects = _unitOfWork.PersonalAccountantContext.Set<other_Projects>().Where(x => x.UserId == userId).Select(x => new FreelanceListItem
+                var projects = _unitOfWork.PersonalAccountantContext.Set<other_Projects>().Where(x => x.UserId == userId)?.Select(x => new FreelanceListItem
                 {
                     Name = x.Name,
                     FullHours = x.TotalHours,

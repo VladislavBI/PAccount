@@ -2,13 +2,9 @@
 using BussinessLogic.ViewManagers.Abstract;
 using PAccountant.BussinessLogic.StaticClasses;
 using PAccountant.DataLayer.Entity;
-using RateScriptorLibrary;
-using RateScriptorLibrary.ProgrammModel;
+using PAccountant.Infrastructure.RatesUtil.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BussinessLogic.ViewManagers.Concrete.PersonalAccountant
 {
@@ -19,7 +15,7 @@ namespace BussinessLogic.ViewManagers.Concrete.PersonalAccountant
         {
             using (_unitOfWork = DIManager.UnitOfWork)
             {
-                var outComeFinanceOperations = _unitOfWork.PersonalAccountantContext.Set<Operation>().AsEnumerable().Where(x => x.OperationTypeId == 1).Select(x => new FinanceOperationModel
+                var outComeFinanceOperations = _unitOfWork.PersonalAccountantContext.Set<Operation>().AsEnumerable().Where(x => x.OperationTypeId == 2).Select(x => new FinanceOperationModel
                 {
                     CurrencyName = x.Currency.Name,
                     OperationId = x.Id.ToString(),
@@ -38,7 +34,7 @@ namespace BussinessLogic.ViewManagers.Concrete.PersonalAccountant
         {
             using (_unitOfWork = DIManager.UnitOfWork)
             {
-                var incomeFinanceOperations = _unitOfWork.PersonalAccountantContext.Set<Operation>().AsEnumerable().Where(x => x.OperationTypeId == 2).Select(x => new FinanceOperationModel
+                var incomeFinanceOperations = _unitOfWork.PersonalAccountantContext.Set<Operation>().AsEnumerable().Where(x => x.OperationTypeId == 1).Select(x => new FinanceOperationModel
                 {
                     CurrencyName = x.Currency.Name,
                     OperationId = x.Id.ToString(),
@@ -63,7 +59,7 @@ namespace BussinessLogic.ViewManagers.Concrete.PersonalAccountant
                 {
                     ExtremumCategory = "Max profitable category",
                     Summ = maxOperationModel.Summ,
-                    ExtremumName = _unitOfWork.PersonalAccountantContext.Set<Operation>().FirstOrDefault(x => x.Id.ToString().Equals(maxOperationModel.OperationId)).OperationCategory.Name
+                    ExtremumName = _unitOfWork.PersonalAccountantContext.Set<Operation>().FirstOrDefault(x => x.Id.ToString().Equals(maxOperationModel.OperationId))?.OperationCategory.Name
                 };
             }
         }
@@ -79,7 +75,7 @@ namespace BussinessLogic.ViewManagers.Concrete.PersonalAccountant
                     {
                         ExtremumCategory = "Max expenditure category",
                         Summ = maxOperationModel.Summ,
-                        ExtremumName = _unitOfWork.PersonalAccountantContext.Set<Operation>().FirstOrDefault(x => x.Id.ToString().Equals(maxOperationModel.OperationId)).OperationCategory.Name
+                        ExtremumName = _unitOfWork.PersonalAccountantContext.Set<Operation>().FirstOrDefault(x => x.Id.ToString().Equals(maxOperationModel.OperationId))?.OperationCategory.Name
                     };
                 }
 
@@ -96,7 +92,7 @@ namespace BussinessLogic.ViewManagers.Concrete.PersonalAccountant
                 {
                     ExtremumCategory = "Max profitable source",
                     Summ = maxOperationModel.Summ,
-                    ExtremumName = _unitOfWork.PersonalAccountantContext.Set<Operation>().FirstOrDefault(x => x.Id.ToString().Equals(maxOperationModel.OperationId)).OperationSource.Name
+                    ExtremumName = _unitOfWork.PersonalAccountantContext.Set<Operation>().FirstOrDefault(x => x.Id.ToString().Equals(maxOperationModel.OperationId))?.OperationSource.Name
                 };
             }
         }
@@ -111,7 +107,7 @@ namespace BussinessLogic.ViewManagers.Concrete.PersonalAccountant
                 {
                     ExtremumCategory = "Max expenditure source",
                     Summ = maxOperationModel.Summ,
-                    ExtremumName = _unitOfWork.PersonalAccountantContext.Set<Operation>().FirstOrDefault(x => x.Id.ToString().Equals(maxOperationModel.OperationId)).OperationSource.Name
+                    ExtremumName = _unitOfWork.PersonalAccountantContext.Set<Operation>().FirstOrDefault(x => x.Id.ToString().Equals(maxOperationModel.OperationId))?.OperationSource.Name
                 };
             }
         }
@@ -121,12 +117,12 @@ namespace BussinessLogic.ViewManagers.Concrete.PersonalAccountant
             using (_unitOfWork = DIManager.UnitOfWork)
             {
                 var incomeFinanceOperations = _unitOfWork.PersonalAccountantContext.Set<Operation>().Where(x => x.OperationTypeId == 1).GroupBy(x => x.Currency.Name);
-                var maxOperationModel = GetMaxOperations(incomeFinanceOperations, true);
+                var maxOperationModel = GetMaxOperations(incomeFinanceOperations);
                 return new ExtremumModel
                 {
                     ExtremumCategory = "Max profitable currency",
                     Summ = maxOperationModel.Summ,
-                    ExtremumName = _unitOfWork.PersonalAccountantContext.Set<Operation>().FirstOrDefault(x => x.Id.ToString().Equals(maxOperationModel.OperationId)).Currency.Name
+                    ExtremumName = maxOperationModel.CurrencyName
                 };
             }
         }
@@ -141,7 +137,7 @@ namespace BussinessLogic.ViewManagers.Concrete.PersonalAccountant
                 {
                     ExtremumCategory = "Max expenditure currency",
                     Summ = maxOperationModel.Summ,
-                    ExtremumName = _unitOfWork.PersonalAccountantContext.Set<Operation>().FirstOrDefault(x => x.Id.ToString().Equals(maxOperationModel.OperationId)).Currency.Name
+                    ExtremumName = _unitOfWork.PersonalAccountantContext.Set<Operation>().FirstOrDefault(x => x.Id.ToString().Equals(maxOperationModel.OperationId))?.Currency.Name
                 };
             }
         }

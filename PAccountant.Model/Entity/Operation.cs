@@ -30,11 +30,11 @@ namespace PAccountant.DataLayer.Entity
         public int CurrencyId { get; set; }
         public int OperationTypeId { get; set; }
     
+        public virtual Currency Currency { get; set; }
         public virtual OperationCategory OperationCategory { get; set; }
         public virtual OperationSource OperationSource { get; set; }
         public virtual OperationType OperationType { get; set; }
         public virtual User User { get; set; }
-        public virtual Currency Currency { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<template_Operations> template_Operations { get; set; }
     }

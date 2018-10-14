@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2019
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PAccountant.DataLayer", "PAccountant.Model\PAccountant.DataLayer.csproj", "{0A82A762-2E34-480E-A462-C7FB5B242429}"
 EndProject
@@ -10,6 +10,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PAccountant.Model.View.Tests", "PAccountant.Model.View.Tests\PAccountant.Model.View.Tests.csproj", "{BE8402FA-0C47-4FB1-93CD-A17BE52875AD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PAccountant.BussinessLogic", "BussinessLogic\PAccountant.BussinessLogic.csproj", "{9253194C-4878-4F92-A1AE-190D421B25DE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{EB6F9CAA-B299-4A44-A8D7-548EC93E87F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PAccountant.Services.Interfaces", "PAccountant.Services.Interfaces\PAccountant.Services.Interfaces.csproj", "{A44F01C8-BE86-4887-B01B-5B457C436FF4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{63BD8F0B-036F-4480-8DB4-11AE358EC983}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PAccountant.Infrastructure.Bussiness", "PAccountant.Infrastructure.Bussiness\PAccountant.Infrastructure.Bussiness.csproj", "{FF5EC8D2-9AC1-4253-9103-40B869164817}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PAccountant.Infrastructure.RatesUtil", "PAccountant.Infrastructure.RatesUtil\PAccountant.Infrastructure.RatesUtil.csproj", "{6CA04DB7-F7C8-4D40-89AE-15787AE01BC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,8 +43,28 @@ Global
 		{9253194C-4878-4F92-A1AE-190D421B25DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9253194C-4878-4F92-A1AE-190D421B25DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9253194C-4878-4F92-A1AE-190D421B25DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A44F01C8-BE86-4887-B01B-5B457C436FF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A44F01C8-BE86-4887-B01B-5B457C436FF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A44F01C8-BE86-4887-B01B-5B457C436FF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A44F01C8-BE86-4887-B01B-5B457C436FF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF5EC8D2-9AC1-4253-9103-40B869164817}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF5EC8D2-9AC1-4253-9103-40B869164817}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF5EC8D2-9AC1-4253-9103-40B869164817}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF5EC8D2-9AC1-4253-9103-40B869164817}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CA04DB7-F7C8-4D40-89AE-15787AE01BC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CA04DB7-F7C8-4D40-89AE-15787AE01BC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CA04DB7-F7C8-4D40-89AE-15787AE01BC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CA04DB7-F7C8-4D40-89AE-15787AE01BC6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A44F01C8-BE86-4887-B01B-5B457C436FF4} = {EB6F9CAA-B299-4A44-A8D7-548EC93E87F3}
+		{FF5EC8D2-9AC1-4253-9103-40B869164817} = {63BD8F0B-036F-4480-8DB4-11AE358EC983}
+		{6CA04DB7-F7C8-4D40-89AE-15787AE01BC6} = {63BD8F0B-036F-4480-8DB4-11AE358EC983}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {08F4CC32-2E8F-45A2-9C5E-3DD872068C47}
 	EndGlobalSection
 EndGlobal

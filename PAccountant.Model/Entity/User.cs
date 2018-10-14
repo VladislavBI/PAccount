@@ -17,8 +17,8 @@ namespace PAccountant.DataLayer.Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.Operations = new HashSet<Operation>();
             this.debt_DebtOperations = new HashSet<debt_DebtOperations>();
+            this.Operations = new HashSet<Operation>();
             this.other_Projects = new HashSet<other_Projects>();
         }
     
@@ -27,9 +27,9 @@ namespace PAccountant.DataLayer.Entity
         public byte[] Password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Operation> Operations { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<debt_DebtOperations> debt_DebtOperations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Operation> Operations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<other_Projects> other_Projects { get; set; }
     }
